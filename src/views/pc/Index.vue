@@ -18,10 +18,10 @@
           <div class="title">{{ $t("index.UENCTitle") }}</div>
           <div class="details">{{ $t("index.UENCContent") }}</div>
         </div>
-        <img src="@/assets/images/index/首页1@3x.png" alt="" />
+        <img src="@/assets/images/index/首页1@2x.png" alt="" />
       </div>
       <div class="what">
-        <img src="@/assets/images/index/首页2@3x.png" alt="" />
+        <img src="@/assets/images/index/首页2@2x.png" alt="" />
         <div class="text">
           <div class="title">{{ $t("index.UENCTitle") }}</div>
           <div class="details">{{ $t("index.UENCContent") }}</div>
@@ -164,7 +164,6 @@ export default {
   }
 };
 </script>
-
 <style lang="less" scoped>
 .index {
   /* width: 900px; */
@@ -209,6 +208,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 84px;
     .title {
       font-size: 50px;
       font-family: PingFangSC, PingFangSC-Medium;
