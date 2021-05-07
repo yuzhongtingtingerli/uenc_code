@@ -7,7 +7,8 @@
 -->
 <template>
   <div class="EconomicModels">
-    <div class="subTitle">{{ $t("index.MdelTitle") }}</div>
+    <div class="w1352">
+      <div class="subTitle">{{ $t("index.MdelTitle") }}</div>
         <div class="list1 list">
           <div class="img"><img src="@/assets/images/index/配图7@2x.png" alt="" /></div>
           <div class="content">
@@ -22,6 +23,7 @@
             </div>
             <div class="img"><img src="@/assets/images/index/配图8@2x.png" alt="" /></div>
         </div>
+      </div>
   </div>
 </template>
 

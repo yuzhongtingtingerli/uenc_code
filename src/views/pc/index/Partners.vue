@@ -7,16 +7,19 @@
 -->
 <template>
   <div class="Partners">
-    <div class="subTitle">{{ $t("index.Partner") }}</div>
-    <el-carousel :interval="5000" arrow="always" height="60px" indicator-position="outside">
-      <el-carousel-item v-for="item in partnerList.length%6+1" :key="item">
-        <el-row :gutter="20">
-          <el-col :span="4" v-for="item in partnerList" :key="item.usersId">
-            <img :src="item.images" alt="" />
-          </el-col>
-        </el-row>
-      </el-carousel-item>
-    </el-carousel>
+    <div class="w1352">
+      <div class="subTitle">{{ $t("index.Partner") }}</div>
+      <!-- <el-carousel :interval="5000" arrow="always" height="60px" indicator-position="outside">
+        <el-carousel-item v-for="item in partnerList.length%6+1" :key="item">
+          
+        </el-carousel-item>
+      </el-carousel> -->
+      <div class="imgs">
+        <div v-for="item in partnerList" :key="item.images">
+          <img :src="item.images" alt="" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,14 +35,12 @@ export default {
 
 <style lang="less" scoped>
 .Partners {
-    img {
-        width: 100%;
-        height: 60px;
-    }
-    .el-row {
-        margin-left: 50px !important;
-        margin-right: 50px !important;
-        box-sizing: border-box;
+   margin: 80px 0 200px;
+    .imgs{
+      display: flex;
+      img {
+        height: 50px;
+      }
     }
 }
 </style>

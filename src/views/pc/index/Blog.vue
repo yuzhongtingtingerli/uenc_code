@@ -7,8 +7,8 @@
 -->
 <template>
   <div class="Blog">
-    <div class="box-card box-card-p20">
-      <el-row :gutter="20">
+    <div class="w1352 box-card box-card-p20">
+      <el-row >
         <el-col :span="4">
           <div class="level2title">{{ $t("index.Blog") }}</div>
           <router-link to="/pc/Blog" class="btn_style">进入博客 <i class="el-icon-right"></i></router-link>
@@ -19,7 +19,7 @@
               <div>
                 <img :src="blog.images" alt="" />
               </div>
-              <div class="m10">
+              <div class="m">
                 <div class="level4title">{{blog.blogTitle}}</div>
                 <div class="content" v-html="blog.text"></div>
               </div>
@@ -49,7 +49,7 @@ export default {
 
 <style lang="less" scoped>
 .Blog {
-  margin: 300px 0;
+  margin: 448px 0 200px;
   .box-card {
     border-radius: 20px;
     background: #fbf6ff;
@@ -70,6 +70,7 @@ export default {
     
     .ra {
       padding: 0;
+      margin: 0;
       display: inline-flex;
       height: 374px;
       img {
@@ -99,13 +100,18 @@ export default {
   }
   .item {
     width: 280px;
-    margin: 0 10px;
+    margin-right:20px;
     padding: 0;
     background: #fff;
     height: 374px;
+    .m{
+      padding: 0 20px;
+    }
     .level4title {
-      font-size: 20px;
+      font-size: 26px;
       color: #333333;
+      margin-top: 10px;
+      line-height: 37px;
     }
     .content {
       margin-top: 4px;
