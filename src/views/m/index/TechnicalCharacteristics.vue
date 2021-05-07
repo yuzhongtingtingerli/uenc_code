@@ -2,60 +2,44 @@
  * @Author: yaoyuting
  * @Date: 2021-04-11 17:01:27
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-02 22:33:41
+ * @LastEditTime: 2021-05-07 17:03:40
  * @Descripttion: 
 -->
 <template>
   <div class="TechnicalCharacteristics">
-    <div class="subTitle">{{ $t("index.TechnicalTitle") }}</div>
-    <div>
-      <el-row :gutter="20">
-        <el-col :span="8" :offset="2" class="all_center">
-          <div>
-            <div class="level3title">{{ $t("index.Structure") }}</div>
-            <div class="content">{{ $t("index.StructureText") }}</div>
-          </div>
-        </el-col>
-        <el-col :span="10" :offset="2" class="all_center">
-          <img src="@/assets/images/right.png" alt="" />
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="10" class="all_center" :offset="2">
-          <img src="@/assets/images/right.png" alt="" />
-        </el-col>
-        <el-col :span="8" class="all_center" :offset="2">
-          <div>
-            <div class="level3title">{{ $t("index.Algorithm") }}</div>
-            <div class="content">{{ $t("index.AlgorithmText") }}</div>
-          </div>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="8" class="all_center" :offset="2">
-          <div>
-            <div class="level3title">{{ $t("index.Hybrid") }}</div>
-            <div class="content">{{ $t("index.HybridText") }}</div>
-          </div>
-        </el-col>
-        <el-col :span="10" :offset="2" class="all_center">
-          <img src="@/assets/images/right.png" alt="" />
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="10" class="all_center" :offset="2">
-          <img src="@/assets/images/right.png" alt="" />
-        </el-col>
-        <el-col :span="8" class="all_center" :offset="2">
-          <div>
-            <div class="level3title">{{ $t("index.WASM") }}</div>
-            <div class="content">{{ $t("index.WASMText") }}</div>
-          </div>
-        </el-col>
-      </el-row>
-      <div class="tac">
-          <router-link to="/m/Technology"><el-button type="primary" round size="mini">了解更多技术</el-button></router-link>
+    <div class="sub_title">{{ $t("index.TechnicalTitle") }}</div>
+    <div class="details">
+      <div class="list">
+        <div class="num">01</div>
+        <div class="bgc"></div>
+        <div class="title">{{ $t("index.Structure") }}</div>
+        <div class="content">{{ $t("index.StructureText") }}</div>
       </div>
+      <div class="list">
+        <div class="num">02</div>
+        <div class="bgc"></div>
+        <div class="title">{{ $t("index.Algorithm") }}</div>
+        <div class="content">{{ $t("index.AlgorithmText") }}</div>
+      </div>
+      <div class="list">
+        <div class="num">03</div>
+        <div class="bgc"></div>
+        <div class="title">{{ $t("index.Hybrid") }}</div>
+        <div class="content">{{ $t("index.HybridText") }}</div>
+      </div>
+      <div class="list">
+        <div class="num">04</div>
+        <div class="bgc"></div>
+        <div class="title">{{ $t("index.WASM") }}</div>
+        <div class="content">{{ $t("index.WASMText") }}</div>
+      </div>
+      <!-- <div class="btn">
+        <router-link to="/m/Technology">
+          <el-button type="text" class="btn_style"
+            >了解更多技术<i class="el-icon-right"></i
+          ></el-button>
+        </router-link>
+      </div> -->
     </div>
   </div>
 </template>
@@ -66,20 +50,57 @@ export default {};
 
 <style lang="less" scoped>
 .TechnicalCharacteristics {
-  margin: 50px 0;
-  .all_center {
-    height: 300px;
+  margin-top: 100px;
+  padding-bottom: 92px;
+  .sub_title {
+    font-size: 28px;
+    font-family: PingFangSC, PingFangSC-Medium;
+    font-weight: 500;
+    text-align: left;
+    color: #333333;
+    line-height: 40px;
+    margin-left: 36px;
   }
-  .level3title {
-    font-size: 18px;
-    line-height: 50px;
-  }
-  .content {
-    font-size: 14px;
-  }
-  img {
-    height: 200px;
-    width: 300px;
+  .details {
+    margin: 48px 30px 0;
+    .list {
+      .num {
+        font-size: 24px;
+        font-family: Futura, Futura-MediumItalic;
+        font-weight: MediumItalic;
+        text-align: left;
+        color: #6624fa;
+        line-height: 30px;
+        margin-bottom: 6px;
+      }
+      .bgc {
+        width: 540px;
+        height: 2px;
+        opacity: 1;
+        background: linear-gradient(270deg, rgba(98, 98, 98, 0), #333333);
+      }
+      .title {
+        font-size: 24px;
+        font-family: PingFangSC, PingFangSC-Medium;
+        font-weight: 500;
+        text-align: left;
+        color: #333333;
+        line-height: 34px;
+        margin-top: 20px;
+      }
+      .content {
+        font-size: 20px;
+        font-family: PingFangSC, PingFangSC-Medium;
+        font-weight: 500;
+        text-align: left;
+        color: #333333;
+        line-height: 40px;
+        margin-top: 12px;
+        margin-bottom: 30px;
+        opacity: 0.7;
+      }
+      
+    }
   }
 }
 </style>

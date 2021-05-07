@@ -2,81 +2,71 @@
  * @Author: yaoyuting
  * @Date: 2019-08-29 23:45:36
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-03 10:14:00
+ * @LastEditTime: 2021-05-07 17:02:55
  * @Descripttion: 
 -->
 <template>
   <div class="index">
-    <div class="banner">
-      <div class="content">
-        <div class="title">{{ $t("index.bannerTitle") }}</div>
-        <div class="list">{{ $t("index.bannerContent") }}</div>
-      </div>
-    </div>
     <div class="content">
       <div class="what">
-        <img src="@/assets/images/right.png" alt="" />
         <div class="text">
           <div class="title">{{ $t("index.UENCTitle") }}</div>
           <div class="details">{{ $t("index.UENCContent") }}</div>
         </div>
+        <div class="bottom">
+          <img src="@/assets/imagesm/index/首页1@2x.png" alt="" />
+        </div>
       </div>
-      <div class="overview">
-        <el-row class="zi-1">
-          <el-col :span="24" class="a_center">
-            <img src="@/assets/images/index/奖励@2x.png" alt="" />
-            <span class="l_title">{{ $t("index.Network") }}</span>
-          </el-col>
-          <el-col :span="24">
-            <el-row v-if="outcomeData">
-              <el-col :span="12" class="h100">
-                <div class="center100">
-                  <img src="@/assets/images/index/奖励@2x.png" alt="" />
-                  <div>
-                    <div class="num">{{ outcomeData.block_number || 0 }}</div>
-                    <div class="r_title">{{ $t("index.Height") }}</div>
-                  </div>
-                </div>
-              </el-col>
-              <el-col :span="12" class="h100">
-                <div class="center100">
-                  <img src="@/assets/images/index/奖励@2x.png" alt="" />
-                  <div>
-                    <div class="num">{{ outcomeData.node || 0 }}</div>
-                    <div class="r_title">{{ $t("index.Nodes") }}</div>
-                  </div>
-                </div>
-              </el-col>
-              <el-col :span="12" class="h100">
-                <div class="center100">
-                  <img src="@/assets/images/index/奖励@2x.png" alt="" />
-                  <div>
-                    <div class="num">{{ outcomeData.reward || 0 }}</div>
-                    <div class="r_title">{{ $t("index.Award") }}</div>
-                  </div>
-                </div>
-              </el-col>
-              <el-col :span="12" class="h100">
-                <div class="center100">
-                  <img src="@/assets/images/index/奖励@2x.png" alt="" />
-                  <div>
-                    <div class="num">{{ outcomeData.transaction_number || 0 }}</div>
-                    <div class="r_title">{{ $t("index.Number") }}</div>
-                  </div>
-                </div>
-              </el-col>
-              <el-col :span="24" class="tac">
-                <el-button type="primary" round size="mini">查看主网数据</el-button>
-              </el-col>
-            </el-row>
-          </el-col>
-        </el-row>
+      <div class="fast">
+        <div class="left">
+          <img src="@/assets/imagesm/index/首页2@2x.png" alt="" />
+        </div>
+        <div class="right">
+          <div class="title">经济 快速 安全</div>
+          <div class="text">
+            简单高效的算法实现低成本介入流通，自主发明新型DPOW共识机制让出块及验证更加快速，UTXO技术保障了UENC用户链上交易的安全可信
+          </div>
+        </div>
       </div>
-      <TechnicalCharacteristics></TechnicalCharacteristics>
+      <div class="bg_style">
+        <div class="overview">
+          <div class="title">
+            {{ $t("index.Network") }}
+          </div>
+          <div class="overview_con" v-if="outcomeData">
+            <div class="line">
+              <div class="center">
+                <div class="num">{{ outcomeData.block_number || 0 }}</div>
+                <div class="r_title">{{ $t("index.Height") }}</div>
+              </div>
+              <div class="center">
+                <div class="num">{{ outcomeData.reward || 0 }}</div>
+                <div class="r_title">{{ $t("index.Award") }}</div>
+              </div>
+            </div>
+            <div class="line">
+              <div class="center">
+                <div class="num">{{ outcomeData.node || 0 }}</div>
+                <div class="r_title">{{ $t("index.Nodes") }}</div>
+              </div>
+              <div class="center">
+                <div class="num">{{ outcomeData.transaction_number || 0 }}</div>
+                <div class="r_title">{{ $t("index.Number") }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="btn">
+            <el-button type="text" class="btn_style"
+              >查看主网数据<i class="el-icon-right"></i
+            ></el-button>
+          </div>
+        </div>
+        <TechnicalCharacteristics></TechnicalCharacteristics>
+      </div>
       <EconomicModels></EconomicModels>
       <Blog :blogList="blogList" v-if="blogList.length > 0"></Blog>
       <CoreMembers :msemberList="msemberList" v-if="msemberList.length > 0"></CoreMembers>
-      <Partners :partnerList="partnerList" v-if="partnerList.length > 0"></Partners>
+      <!-- <Partners :partnerList="partnerList" v-if="partnerList.length > 0"></Partners> -->
     </div>
   </div>
 </template>
@@ -164,7 +154,7 @@ export default {
             list = [];
           }
         }
-         this.partnerList.push(list);
+        this.partnerList.push(list);
       } else {
         this.$message.error(dataList.msg);
       }
@@ -174,104 +164,141 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.index {
-  /* width: 900px; */
-  font-size: 16px;
-}
-.banner {
-  width: 750px;
-  height: 750px;
-  background-image: url("../../assets/images/index/背景@2x.png");
-  background-size: cover;
-  background-position: center center;
-  padding-top: 203px;
-  .content {
-    text-align: center;
-    line-height: 30px;
-    margin-top: 48px;
-    width: 750px;
-    .title {
-      font-size: 40px;
-      line-height: 60px;
-      font-weight: bold;
-    }
-    .list {
-      // width: 750px;
-      font-size: 20px;
-      line-height: 50px;
-      margin: 0 auto;
-    }
-  }
-}
 .content {
   width: 750px;
-  margin: 0 auto;
-  padding: 0 20px;
 }
 .what {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  img {
-    height: 300px;
-    margin-bottom: 30px;
-  }
+  background-color: pink;
   .text {
-    width: 450px;
+    padding: 0 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     .title {
-      font-weight: bold;
-      margin-bottom: 20px;
+      margin-top: 60px;
+      font-size: 28px;
+      font-family: PingFangSC, PingFangSC-Medium;
+      font-weight: 500;
+      text-align: left;
+      color: #333333;
+      line-height: 28px;
+      margin-bottom: 40px;
     }
     .details {
-      font-size: 12px;
+      font-size: 20px;
+      font-family: PingFangSC, PingFangSC-Regular;
+      font-weight: 400;
+      text-align: left;
+      color: #333333;
+      line-height: 40px;
+      margin-bottom: 8px;
+    }
+  }
+  .bottom {
+    text-align: right;
+    margin-right: 20px;
+    img {
+      width: 270px;
+      height: 202px;
     }
   }
 }
-.overview {
-  margin: 100px 0;
-  img {
-    width: 50px;
-    height: 50px;
-  }
-  .tac {
-    margin-top: 20px;
-  }
-  .a_center {
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .center100 {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    padding-left: 80px;
+.fast {
+  display: flex;
+  justify-content: space-between;
+  .left {
+    margin-left: 70px;
+    margin-top: 70px;
     img {
-      margin-right: 10px;
+      width: 288px;
+      height: 242px;
     }
   }
-  .l_title {
-    line-height: 50px;
-    font-size: 26px;
-    font-weight: bold;
-    margin-left: 10px;
+  .right {
+    width: 300px;
+    margin-right: 22px;
+    .title {
+      text-align: center;
+      font-size: 28px;
+      font-family: PingFangSC, PingFangSC-Medium;
+      font-weight: 500;
+      color: #333333;
+      line-height: 28px;
+      margin-top: 100px;
+      margin-bottom: 8px;
+    }
+    .text {
+      font-size: 20px;
+      font-family: PingFangSC, PingFangSC-Regular;
+      font-weight: 400;
+      text-align: left;
+      color: #333333;
+      line-height: 40px;
+    }
   }
-  .num {
-    font-size: 26px;
-    font-weight: bold;
+}
+.bg_style {
+  background-color: lightblue;
+}
+.overview {
+  padding-top: 160px;
+  .title {
+    font-size: 28px;
+    font-family: PingFangSC, PingFangSC-Medium;
+    font-weight: 500;
+    text-align: left;
+    color: #333333;
+    line-height: 40px;
+    margin-left: 30px;
+    margin-bottom: 40px;
   }
-  .r_title {
-    font-size: 14px;
+  .overview_con {
+    display: flex;
+    justify-content: flex-start;
+    .line:nth-child(1) {
+      margin-left: 110px;
+    }
+    .line:nth-child(2) {
+      margin-left: 40px;
+    }
+    .line {
+      border-left: 2px solid #333333;
+      .center {
+        margin-left: 18px;
+        .num {
+          font-size: 20px;
+          font-family: Helvetica, Helvetica-Regular;
+          font-weight: 400;
+          text-align: left;
+          color: #333333;
+          line-height: 24px;
+          margin-bottom: 20px;
+          margin-top: 10px;
+        }
+        .r_title {
+          font-size: 24px;
+          font-family: PingFangSC, PingFangSC-Regular;
+          font-weight: 400;
+          text-align: left;
+          color: #333333;
+          line-height: 24px;
+          margin-bottom: 30px;
+        }
+      }
+    }
   }
-  .h100 {
-    height: 100px;
-    vertical-align: middle;
+  .btn {
+    text-align: right;
+    margin-right: 40px;
+    margin-top: 20px;
+    .btn_style {
+      font-size: 24px !important;
+      font-family: PingFangSC, PingFangSC-Medium;
+      font-weight: 500;
+      text-align: left;
+      color: #6624fa;
+      line-height: 34px;
+    }
   }
 }
 </style>

@@ -2,32 +2,27 @@
  * @Author: yaoyuting
  * @Date: 2020-03-20 19:30:58
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-02 21:59:20
+ * @LastEditTime: 2021-05-07 08:30:47
  * @Descripttion: 
 -->
 <template>
   <div class="foot">
-    <div class="top">
-      <div class="subTitle">{{ $t("navbar.Connect") }}</div>
-      <div class="aboutUs">
-        <img src="@/assets/images/index/奖励@2x.png" alt="" />
-        <img src="@/assets/images/index/奖励@2x.png" alt="" />
-        <img src="@/assets/images/index/奖励@2x.png" alt="" />
-        <img src="@/assets/images/index/奖励@2x.png" alt="" />
-        <img src="@/assets/images/index/奖励@2x.png" alt="" />
-        <img src="@/assets/images/index/奖励@2x.png" alt="" />
-        <img src="@/assets/images/index/奖励@2x.png" alt="" />
-        <div class="email">{{ $t("navbar.Email") }}：tech@uenc.net</div>
-      </div>
+    <div class="sub_title">{{ $t("navbar.Connect") }}</div>
+    <div class="aboutUs">
+      <img src="@/assets/images/index/奖励@2x.png" alt="" />
+      <img src="@/assets/images/index/奖励@2x.png" alt="" />
+      <img src="@/assets/images/index/奖励@2x.png" alt="" />
+      <img src="@/assets/images/index/奖励@2x.png" alt="" />
+      <img src="@/assets/images/index/奖励@2x.png" alt="" />
+      <img src="@/assets/images/index/奖励@2x.png" alt="" />
+      <img src="@/assets/images/index/奖励@2x.png" alt="" />
+      <div class="email">{{ $t("navbar.Email") }}：tech@uenc.net</div>
     </div>
-    <div class="bottom">COPYRIGHT 2019. ALL RIGHTS RESERVED</div>
   </div>
 </template>
 
 <script>
-export default {
-  
-}
+export default {};
 </script>
 
 <style lang="less" scoped>
@@ -35,44 +30,36 @@ export default {
   position: relative;
   left: 0;
   bottom: 0;
-  height: 300px;
+  height: 132px;
   width: 750px;
-  .top {
-    margin-top: 70px;
-    .subTitle {
-      text-align: left !important;
-      line-height: 80px;
-      margin-left: 15px;
+  padding: 20px 30px 0;
+  background: #2d2d2d;
+  .sub_title {
+    text-align: left !important;
+    margin-left: 30px;
+    font-size: 24px;
+    font-family: PingFangSC, PingFangSC-Medium;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 34px;
+    margin-bottom: 20px;
+  }
+  .aboutUs {
+    display: flex;
+    justify-content: flex-start;
+    img {
+      height: 16px;
+      width: 16px;
+      margin: 0 20px;
     }
-    .aboutUs {
-      display: flex;
-      justify-content: flex-start;
-      img {
-        height: 30px;
-        margin: 0 15px;
-      }
-      .email {
-        line-height: 30px;
-        font-size: 20px;
-        margin-left: 30px;
-      }
+    .email {
+      font-size: 20px;
+      font-family: PingFangSC, PingFangSC-Medium;
+      font-weight: 500;
+      text-align: center;
+      color: #ffffff;
+      line-height: 28px;
     }
   }
-  .bottom {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    height: 72px;
-    line-height: 72px;
-    text-align: center;
-    font-size:14px;
-    font-family:PingFang SC;
-    font-weight:400;
-    color:rgba(255,255,255,1);
-    width: 1140px;
-    border-top: 1px solid #172838;
-  }
-  
 }
 </style>
