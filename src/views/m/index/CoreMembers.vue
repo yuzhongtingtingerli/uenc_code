@@ -2,12 +2,12 @@
  * @Author: yaoyuting
  * @Date: 2021-04-12 21:25:05
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-07 08:24:13
+ * @LastEditTime: 2021-05-08 07:51:11
  * @Descripttion: 
 -->
 <template>
   <div class="CoreMembers">
-    <div class="sub_title">{{ $t("index.members") }}</div>
+    <router-link to="/m/CoreMembersDetails"><div class="sub_title">{{ $t("index.members") }}</div></router-link>
     <div class="banner">
       <el-row :gutter="20">
         <el-col :span="6" v-for="msember in msemberList" :key="msember.usersId">

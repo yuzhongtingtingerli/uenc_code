@@ -84,8 +84,7 @@
     <div
       :class="dialogVisible ? 'block dialog' : 'none dialog'"
       id="dialog"
-      :style="`width:${width}px;height:${height}px`"
-    >
+      :style="`width:${width}px;height:${height}px`">
       <div class="details">
         <div class="close" @click="close">x</div>
         <Login

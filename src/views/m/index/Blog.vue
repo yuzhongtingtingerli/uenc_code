@@ -2,12 +2,12 @@
  * @Author: yaoyuting
  * @Date: 2021-04-11 18:24:56
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-06 22:33:31
+ * @LastEditTime: 2021-05-08 07:49:36
  * @Descripttion: 
 -->
 <template>
   <div class="Blog">
-    <div class="sub_title">{{ $t("index.Blog") }}</div>
+    <router-link to="/m/Blog"><div class="sub_title">{{ $t("index.Blog") }}</div></router-link>
     <div class="scroll">
       <div class="details">
         <el-card class="box-card" v-for="blog in blogList" :key="blog.blogId">

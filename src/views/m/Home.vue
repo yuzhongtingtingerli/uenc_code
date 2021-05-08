@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2019-08-28 23:45:02
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-07 17:11:41
+ * @LastEditTime: 2021-05-07 21:53:19
  * @Descripttion: 
 -->
 <template>
@@ -11,7 +11,7 @@
       <Header></Header>
     </div>
     <div class="Main">
-      <Main></Main>
+      <Main ref="main"></Main>
     </div>
     <div class="Footer">
       <Footer></Footer>
@@ -33,10 +33,7 @@ export default {
     'Main': Main,
     'Footer': Footer,
   },
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
+  name: 'Home',
 };
 </script>
 
@@ -47,17 +44,16 @@ export default {
   height: 100%;
   overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0);
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 }
 .Header {
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
-  flex: 1;
+  // flex: 1;
 }
 .Main {
   width: 100%;
-  // height: 100%;
   // margin-top: 190px;
   background-color: rgba(0, 0, 0, 0);
 }
@@ -66,6 +62,6 @@ export default {
   display: flex;
   justify-content: center;
   background-color: #01192E;
-  flex: 1;
+  // flex: 1;
 }
 </style>

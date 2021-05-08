@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2019-08-29 23:45:36
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-06 08:28:15
+ * @LastEditTime: 2021-05-08 08:42:17
  * @Descripttion: 
 -->
 <template>
@@ -173,7 +173,7 @@ export default {
 .banner {
   height: 900px;
   background-image: url("../../assets/images/index/背景@2x.png");
-  background-size: cover;
+  background-size: 1920px 910px;
   background-position: center center;
   padding-top: 203px;
   .b_content {

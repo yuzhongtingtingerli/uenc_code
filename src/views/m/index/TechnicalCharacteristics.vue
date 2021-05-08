@@ -2,12 +2,12 @@
  * @Author: yaoyuting
  * @Date: 2021-04-11 17:01:27
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-07 17:03:40
+ * @LastEditTime: 2021-05-08 07:49:07
  * @Descripttion: 
 -->
 <template>
   <div class="TechnicalCharacteristics">
-    <div class="sub_title">{{ $t("index.TechnicalTitle") }}</div>
+    <router-link to="/m/Technology"><div class="sub_title">{{ $t("index.TechnicalTitle") }}</div></router-link>
     <div class="details">
       <div class="list">
         <div class="num">01</div>

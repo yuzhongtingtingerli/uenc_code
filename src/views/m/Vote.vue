@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-18 18:04:59
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-07 21:09:01
+ * @LastEditTime: 2021-05-07 21:45:38
  * @Descripttion: 
 -->
 <template>
@@ -90,7 +90,7 @@ export default {
     return {
       searchForm: {
         title: "",
-        status: "",
+        status: "2",
         pageNum: 1,
         pageSize: 10
       },
