@@ -2,7 +2,9 @@
   <div :class="headerclass ? 'header' : 'header top'">
     <div class="content">
       <div class="logo">
-        <router-link to="/pc/Index"><img src="@/assets/images/index/奖励@2x.png" alt=""/></router-link>
+        <router-link to="/pc/Index"
+          ><img src="@/assets/images/index/奖励@2x.png" alt=""
+        /></router-link>
       </div>
       <div class="nav">
         <el-menu
@@ -23,7 +25,11 @@
                 >{{ type === "zh" ? navItem.text : navItem.texten }}
               </template>
               <template v-for="submenu in navItem.submenus">
-                <el-menu-item :index="submenu.submenuUrl" :key="submenu.submenuName" v-if="submenu.submenuNameen !== 'Vote'">
+                <el-menu-item
+                  :index="submenu.submenuUrl"
+                  :key="submenu.submenuName"
+                  v-if="submenu.submenuNameen !== 'Vote'"
+                >
                   <span
                     style="display: block"
                     v-if="submenu.submenuName == '中文'"
@@ -63,7 +69,7 @@
           <el-button type="text" @click="goBack"><<返回</el-button>
         </div>
         <div class="login" v-if="isLogin">
-          <el-button plain size="small" @click="login">登录/注册</el-button>
+          <el-button plain size="small" @click="login" class="login_style">登录/注册</el-button>
         </div>
         <div class="login" v-if="!isLogin">
           <el-menu class="el-menu-vertical-demo" mode="horizontal" active-text-color="#00EBF2">
@@ -84,7 +90,8 @@
     <div
       :class="dialogVisible ? 'block dialog' : 'none dialog'"
       id="dialog"
-      :style="`width:${width}px;height:${height}px`">
+      :style="`width:${width}px;height:${height}px`"
+    >
       <div class="details">
         <div class="close" @click="close">x</div>
         <Login
@@ -313,8 +320,20 @@ export default {
     .el-button {
       background-color: rgba(0, 0, 0, 0);
       margin: 0 20px;
-      color: #909399;
+      font-size: 20px;
+      font-family: PingFangSC, PingFangSC-Regular;
+      font-weight: 400;
+      text-align: center;
+      color: #ffffff;
     }
+  }
+  .login_style {
+    width: 120px;
+    height: 40px;
+    opacity: 1;
+    border: 1px solid #ffffff;
+    border-radius: 11px;
+    // line-height: 40px;
   }
 }
 .top {
@@ -389,13 +408,23 @@ export default {
 }
 .el-menu--horizontal > .el-submenu .el-submenu__title:hover {
   background-color: #01192e;
-  color: #00ebf2;
+  font-size: 26px;
+  font-family: PingFangSC, PingFangSC-Semibold;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  line-height: 56px;
 }
 .el-menu--horizontal > .el-menu-item:not(.is-disabled):focus,
 .el-menu--horizontal > .el-menu-item:not(.is-disabled):hover,
 .el-menu--horizontal > .el-submenu .el-submenu__title:hover {
   background-color: rgba(0, 0, 0, 0);
-  color: #00ebf2;
+  font-size: 26px;
+  font-family: PingFangSC, PingFangSC-Semibold;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  line-height: 56px;
 }
 .el-submenu__title .el-menu--horizontal {
   background-color: #01192e;
@@ -408,7 +437,12 @@ export default {
 }
 .el-menu--horizontal .el-menu .el-menu-item:hover {
   background-color: #01192e;
-  color: #00ebf2;
+  font-size: 26px;
+  font-family: PingFangSC, PingFangSC-Semibold;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  line-height: 56px;
 }
 .el-menu {
   background-color: rgba(0, 0, 0, 0);
@@ -423,5 +457,24 @@ export default {
 }
 .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
   border: none;
+}
+.el-menu--horizontal > .el-menu-item {
+  font-size: 26px;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  line-height: 56px;
+}
+.el-menu--horizontal > .el-submenu .el-submenu__title {
+  font-size: 26px;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  line-height: 56px;
+}
+.el-menu--horizontal > .el-menu-item.is-active {
+  /* border: none; */
 }
 </style>
