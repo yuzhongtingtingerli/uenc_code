@@ -11,7 +11,7 @@
       <div class="userList">
         <div class="level2title">{{ $t("index.members") }}</div>
         <div class="banner">
-            <div :span="6" v-for="msember in [...msemberList,...msemberList]" :key="msember.usersId">
+            <div :class="introduce.usersId === msember.usersId?'border':''"  v-for="msember in msemberList" :key="msember.usersId">
               <img :src="msember.images" alt="" @click="tab(msember.usersId)" />
             </div>
             <!-- <div><el-button type="primary" round @click="goMore()">了解更多</el-button></div> -->
@@ -90,12 +90,20 @@ export default {
       height: 110px;
       margin-right: 40px;
       margin-bottom: 40px;
+      border-radius: 50%;
+      background:#ffffff;
     }
     img {
-      width: 110px;
-      height: 110px;
+      width: 100%;
+      height: 100%;
       cursor: pointer;
       border-radius: 50%;
+      z-index: 1;
+    }
+    .border{
+      border: 1px solid #ffffff;
+      box-shadow: 0 0px 12px 0 rgba(0, 0, 0, 0.6);
+
     }
   }
   .center{

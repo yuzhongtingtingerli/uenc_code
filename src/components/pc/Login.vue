@@ -7,82 +7,81 @@
 -->
 <template>
   <div class="Login">
-    <el-tabs v-model="activeName" @tab-click="handleClick" v-if="!isForget">
-      <el-tab-pane label="登录" name="first">
-        <el-form :model="loginForm" class="demo-form-inline">
-          <el-form-item label="">
-            <el-input v-model="loginForm.loginName" placeholder="用户名"></el-input>
-          </el-form-item>
-          <el-form-item label="">
-            <el-input v-model="loginForm.password" placeholder="密码" type="password"></el-input>
-          </el-form-item>
-          <el-form-item label="">
-            <div class="between">
-              <el-input v-model="loginForm.code" placeholder="验证码"></el-input>
-              <img :src="imgSrc" alt="" @click="getCaptchaImage" />
-            </div>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="onLogin" class="submit">登录</el-button>
-          </el-form-item>
-          <el-form-item label="">
-            <div class="between">
-              <el-checkbox-group v-model="loginForm.autoLogin">
-                <el-checkbox label="下次自动登录" name="type"></el-checkbox>
-              </el-checkbox-group>
-              <el-button type="text" @click="onForget(true)" class="forget">忘记密码</el-button>
-            </div>
-          </el-form-item>
-        </el-form>
-      </el-tab-pane>
-      <el-tab-pane label="注册" name="second">
-        <el-form :model="registeredForm" class="demo-form-inline">
-          <el-form-item label="">
-            <el-input v-model="registeredForm.loginName" placeholder="请输入用户名"></el-input>
-          </el-form-item>
-          <el-form-item label="">
-            <el-input v-model="registeredForm.phonenumber" placeholder="请输入手机号"></el-input>
-          </el-form-item>
-          <el-form-item label="">
-            <div class="between">
-              <el-input v-model="registeredForm.code" placeholder="验证码"></el-input>
-              <el-button type="text" @click="onSubmit" class="code">获取验证码</el-button>
-            </div>
-          </el-form-item>
-          <el-form-item label="">
-            <el-input v-model="registeredForm.email" placeholder="请输入邮箱"></el-input>
-          </el-form-item>
-          <el-form-item label="">
-            <el-input
-              v-model="registeredForm.password"
-              placeholder="请输入密码"
-              type="password"
-            ></el-input>
-          </el-form-item>
-          <el-form-item label="">
-            <el-input
-              v-model="registeredForm.arginPassword"
-              placeholder="再次输入密码"
-              type="password"
-            ></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="onRegistered" class="submit">注册</el-button>
-          </el-form-item>
-          <el-form-item label="">
-            <div class="between">
-              <el-checkbox-group v-model="registeredForm.autoLogin">
-                <el-checkbox
-                  label="我已阅读并同意《隐私政策》和《服务协议》"
-                  name="type"
-                ></el-checkbox>
-              </el-checkbox-group>
-            </div>
-          </el-form-item>
-        </el-form>
-      </el-tab-pane>
-    </el-tabs>
-    <div class="div" v-else>
+    <img class="logo" src="@/assets/images/index/首页1@2x.png" alt="" />
+    <el-form v-if="type === 'login'" :model="loginForm" class="demo-form-inline">
+      <el-form-item label="">
+        <el-input v-model="loginForm.loginName" placeholder="用户名"></el-input>
+      </el-form-item>
+      <el-form-item label="">
+        <el-input v-model="loginForm.password" placeholder="密码" type="password"></el-input>
+      </el-form-item>
+      <el-form-item label="">
+        <div class="between">
+          <el-input v-model="loginForm.code" placeholder="验证码"></el-input>
+          <img :src="imgSrc" alt="" @click="getCaptchaImage" />
+        </div>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onLogin" class="submit">登录</el-button>
+      </el-form-item>
+      <el-form-item label="">
+        <div class="between">
+          <div class="text" @click="type = 'password'">忘记密码</div>
+          <el-checkbox-group v-model="loginForm.autoLogin">
+            <el-checkbox label="自动登录" name="type"></el-checkbox>
+          </el-checkbox-group>
+          <div class="text" @click="type = 'register'">自动注册<i class="el-icon-arrow-right"></i></div>
+
+
+        </div>
+      </el-form-item>
+    </el-form>
+    <el-form v-if="type === 'register'" :model="registeredForm" class="demo-form-inline">
+      <el-form-item label="">
+        <el-input v-model="registeredForm.loginName" placeholder="请输入用户名"></el-input>
+      </el-form-item>
+      <el-form-item label="">
+        <el-input v-model="registeredForm.phonenumber" placeholder="请输入手机号"></el-input>
+      </el-form-item>
+      <el-form-item label="">
+        <div class="between">
+          <el-input v-model="registeredForm.code" placeholder="验证码"></el-input>
+          <div @click="onSubmit" class="code">发送验证码</div>
+        </div>
+      </el-form-item>
+      <el-form-item label="">
+        <el-input v-model="registeredForm.email" placeholder="请输入邮箱"></el-input>
+      </el-form-item>
+      <el-form-item label="">
+        <el-input
+          v-model="registeredForm.password"
+          placeholder="请输入密码"
+          type="password"
+        ></el-input>
+      </el-form-item>
+      <el-form-item label="">
+        <el-input
+          v-model="registeredForm.arginPassword"
+          placeholder="再次输入密码"
+          type="password"
+        ></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onRegistered" class="submit">注册</el-button>
+      </el-form-item>
+      <el-form-item label="">
+        <div class="between">
+          <el-checkbox-group v-model="registeredForm.autoLogin">
+            <el-checkbox
+              label="我已阅读并同意《隐私政策》和《服务协议》"
+              name="type"
+            ></el-checkbox>
+          </el-checkbox-group>
+        </div>
+      </el-form-item>
+      <div @click="type = 'login'" class="back">返回登陆<i class="el-icon-arrow-right"></i></div>
+    </el-form>
+    <div class="div"  v-if="type === 'password'">
       <el-form :model="updatePwdForm" class="demo-form-inline">
         <el-form-item label="">
           <el-input v-model="updatePwdForm.phonenumber" placeholder="请输入手机号"></el-input>
@@ -90,7 +89,7 @@
         <el-form-item label="">
           <div class="between">
             <el-input v-model="updatePwdForm.code" placeholder="验证码"></el-input>
-            <el-button type="text" @click="onSubmit" class="code">获取验证码</el-button>
+            <div @click="onSubmit" class="code">获取验证码</div>
           </div>
         </el-form-item>
         <el-form-item label="">
@@ -103,7 +102,7 @@
           <el-button type="primary" @click="onUpdatePwd" class="submit">确认</el-button>
         </el-form-item>
         <el-form-item>
-          <el-button type="text" @click="onForget(false)" class="submit">返回</el-button>
+          <div @click="type = 'login'" class="back">返回</div>
         </el-form-item>
       </el-form>
     </div>
@@ -140,9 +139,15 @@ class UpdatePwdForm {
 }
 import { Registered, GetCaptchaImage, Login, UpdatePwd } from "@/assets/server/api.js";
 export default {
+  // props: {
+  //   type: {
+  //     type: String,
+  //     default: 'login'
+  //   },
+  // },
   data() {
     return {
-      activeName: "first",
+      type:'login',
       loginForm: new LoginForm(),
       registeredForm: new RegisteredForm(),
       updatePwdForm: new UpdatePwdForm(),
@@ -151,11 +156,7 @@ export default {
     };
   },
   methods: {
-    handleClick() {},
     onSubmit() {},
-    onForget(type) {
-      this.isForget = type;
-    },
     async onRegistered() {
       for (const key in this.registeredForm) {
         const element = this.registeredForm[key];
@@ -169,7 +170,6 @@ export default {
       const data = await Registered({ ...this.registeredForm });
       if (data.code === 0) {
         this.$message.success("注册成功，请登录！");
-        this.activeName = 'first'
         this.registeredForm = new RegisteredForm();
       } else {
         this.$message.error(data.msg);
@@ -210,8 +210,6 @@ export default {
       const data = await UpdatePwd({ ...this.updatePwdForm });
       if (data.code === 0) {
         this.$message.success("密码修改成功，请登录！");
-        this.activeName = 'first'
-        this.onForget(false)
         this.updatePwdForm = new UpdatePwdForm();
       } else {
         this.$message.error(data.msg);
@@ -220,27 +218,84 @@ export default {
   }
 };
 </script>
-
+<style lang="less">
+  .Login{
+    .el-input__inner,input{
+      height: 70px;
+      font-size: 28px;
+    }
+    input::placeholder{
+      font-size:  28px;
+    }
+    .el-checkbox__inner{
+      width: 22px;
+      height: 22px;
+    }
+    .el-checkbox__input{
+      vertical-align: sub;
+    }
+    .el-checkbox__inner::after{
+      height: 14px;
+      left: 6px;
+      width: 6px;
+      top: 0px;
+    }
+    .el-checkbox__label{
+      font-size: 24px;
+    }
+  }
+</style>
 <style lang="less" scoped>
+.Login{
+  text-align: center;
+  .logo{
+    width: 164px;
+    height: 112px;
+    margin: 36px auto;
+  }
+  .el-button{
+    height: 70px;
+    background: #4c67ef;
+    font-size: 28px;
+  }
+  
+}
 .el-tabs__item.is-active {
   font-size: 20px;
 }
-.submit {
+.submit{
   width: 100%;
+}
+.back {
+  
+  font-size: 24px;
+  color: #4c67ef;
+  text-align: right;
 }
 .between {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  font-size: 24px;
+  
+  .text{
+    color: #4c67ef;
+  }
   .forget {
     color: #ccc;
   }
   img {
-    height: 40px;
-    width: 80px;
+    height: 70px;
+    width: 150px;
     margin-left: 10px;
   }
   .code {
     margin-left: 10px;
+    width: 220px;
+    height: 70px;
+    line-height: 70px;
+    color: #305bbc;
+    font-size: 28px;
   }
 }
 </style>

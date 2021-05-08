@@ -10,21 +10,20 @@
     <div class="banner">
         <div class="placeholder"></div>
         <div class="details">
-            <div class="date">{{blogList[0].createTime}} / {{blogList[0].createBy}}</div>
             <div class="title">{{blogList[0].blogTitle}}</div>
+            <div class="date">{{blogList[0].createTime}} {{blogList[0].createBy}}</div>
             <div class="text" v-html="blogList[0].text"></div>
-            <div class="btn">
-                <router-link :to="{path: '/pc/Blog/Details', query: {id: blogList[0].blogId}}">
-                  <el-button type="primary">More</el-button>
+            <div class="btns">
+                <router-link class="btn" :to="{path: '/pc/Blog/Details', query: {id: blogList[0].blogId}}">
+                  More
                 </router-link>
-                <el-button type="primary" style="margin-left: 10px">订阅</el-button>
+                <div  class="btn">订阅</div>
             </div>
         </div>
     </div>
     <div class="content">
-      <el-row>
-        <el-col :span="8" v-for="blog in blogList" :key="blog.blogId">
-          <el-card class="box-card">
+      <div class="w1352 w">
+        <div class="box-card" v-for="blog in blogList" :key="blog.blogId">
             <div class="images">
               <img :src="blog.images" alt="" />
             </div>
@@ -35,15 +34,16 @@
                 <div class="username">{{blog.createBy}}</div>
                 <div class="date">{{blog.createTime}}</div>
               </div>
-              <div class="btn">
+              <!-- <div class="btn">
                 <router-link :to="{path: '/pc/Blog/Details', query: {id: blog.blogId}}">
                   <el-button type="text">More</el-button>
                 </router-link>
-              </div>
+              </div> -->
             </div>
-          </el-card>
-        </el-col>
-      </el-row>
+        </div>
+        <div class="box-card"></div>
+        <div class="box-card"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -92,55 +92,68 @@ export default {
         flex: 1;
     }
     .details {
-        border-top: 1px solid #fff;
+      color: #fff;
         margin: 0 300px;
         .date {
-            line-height: 50px;
-            font-size: 12px;
+            font-size: 16px;
         }
         .title {
-            font-size: 20px;
-            font-weight: bold;
-            line-height: 30px;
+            font-size: 40px;
         }
         .text {
-            font-size: 12px;
-            line-height: 20px;
+            font-size: 18px;
             height: 100px;
             overflow: hidden;
         }
-        .btn {
-            margin: 20px 0;
-            .el-button {
-                padding: 10px 50px;
+        .btns {
+            margin: 50px 0 76px;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            .btn {
+                font-size: 24px;
+                color: #ffffff;
+                width: 140px;
+                text-align: center;
+                height: 54px;
+                line-height: 54px;
+                background: linear-gradient(90deg,#4d71ff, #003cfb);
+                border-radius: 33px;
+                margin-left: 50px;
             }
         }
     }
   }
-  .content {
-    width: 1280px;
-    margin: 0 auto;
+  .content{
+    background: sandybrown;
+  }
+  .w {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 150px 0;
     .box-card {
+      width: 420px;
       border-radius: 20px;
-      padding: 10px;
-      padding-bottom: 0px;
+      padding: 10px 0;
+      padding-bottom: 40px;
       box-sizing: border-box;
-      margin: 30px 35px;
       .images {
         img {
-          height: 225px;
+          height: 300px;
           width: 100%;
         }
       }
       .main {
-        margin: 10px;
-        margin-bottom: 0px;
+        background: #fff;
+        padding: 10px 30px;
         .top {
-          font-size: 14px;
-          font-weight: bold;
+          font-size: 26px;
         }
         .medile {
-          font-size: 14px;
+          font-size: 16px;
+          color: #8179a1;
           height: 80px;
           margin-bottom: 20px;
           overflow: hidden;
@@ -148,7 +161,8 @@ export default {
         .bottom {
           display: flex;
           justify-content: space-between;
-          font-size: 12px;
+          font-size: 16px;
+          color: #8179a1;
         }
         .btn {
           text-align: center;
