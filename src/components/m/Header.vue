@@ -1,21 +1,18 @@
 <template>
-  <div :class="show ? 'show_header header' : 'header'">
+  <div class="header">
     <div class="content">
-      <div class="logo">
-        <router-link to="/m/Index"><img src="@/assets/images/index/奖励@2x.png" alt=""/></router-link>
-      </div>
-
+      <div class="title">UENC</div>
       <div class="navLists" @click="showNav">
-        <img src="@/assets/images/icon.png" alt="" />
+        <img src="@/assets/imagesm/index/奖励@2x.png" alt="" />
       </div>
     </div>
     <div class="navTag" v-if="show">
-      <div class="navtitle">
+      <!-- <div class="navtitle">
         <div class="text">{{ type === "zh" ? "导航" : "navigation" }}</div>
         <div class="back" @click="show = false">
           <img src="@/assets/images/no.png" alt="" />
         </div>
-      </div>
+      </div> -->
       <div
         class="navitems"
         v-for="(navItem, index) in navList"
@@ -30,41 +27,25 @@
         <div class="text" v-else>
           {{ type === "zh" ? navItem.text : navItem.texten }}
         </div>
-        <div class="go"><img src="@/assets/images/go.png" alt="" /></div>
+        <!-- <div class="go"><img src="@/assets/images/go.png" alt="" /></div> -->
       </div>
-      <div class="navitems" @click="login" v-if="isLogin">登录/注册</div>
+      <div class="navitems" @click="login" v-if="isLogin">
+        <div class="text">登录/注册</div>
+      </div>
       <div class="navitems" v-if="!isLogin">
         <div class="text" @click="showUserMenu">{{ userName }}</div>
-        <div class="go"><img src="@/assets/images/go.png" alt="" /></div>
+        <!-- <div class="go"><img src="@/assets/images/go.png" alt="" /></div> -->
       </div>
-      <div class="navitems" @click="changelang">En/中文</div>
-      <div class="kong" @click="back"></div>
+      <div class="navitems" @click="changelang"><div class="text">En/中文</div></div>
+      <!-- <div class="kong" @click="back"></div> -->
     </div>
     <div class="navTagitem" v-if="userMenu"></div>
     <div class="navTagitem" v-if="showsubmenu">
       <template v-if="userMenu">
-        <div class="navtitle">
-          <div class="left" @click="showNav">
-            <img src="@/assets/images/back.png" alt="" />
-          </div>
-          <div class="text">{{ userName }}</div>
-          <div class="back" @click="back">
-            <img src="@/assets/images/no.png" alt="" />
-          </div>
-        </div>
         <div class="navitems" v-if="usersStatus == '1'" @click="check">绑定钱包</div>
         <div class="navitems" @click="logout">退出登录</div>
       </template>
       <template v-else>
-        <div class="navtitle">
-          <div class="left" @click="showNav">
-            <img src="@/assets/images/back.png" alt="" />
-          </div>
-          <div class="text">{{ type === "zh" ? submenu.text : submenu.texten }}</div>
-          <div class="back" @click="back">
-            <img src="@/assets/images/no.png" alt="" />
-          </div>
-        </div>
         <div
           class="navitems"
           v-for="(navItem, index) in submenu.submenus"
@@ -92,7 +73,7 @@
         </div>
       </template>
 
-      <div class="kong" @click="back"></div>
+      <!-- <div class="kong" @click="back"></div> -->
     </div>
     <div
       :class="dialogVisible ? 'block dialog' : 'none dialog'"
@@ -243,8 +224,9 @@ export default {
       }
     },
     showNav() {
+      let show = this.show;
       this.userMenu = false;
-      this.show = true;
+      this.show = !show;
       this.showsubmenu = false;
     },
     back() {
@@ -266,143 +248,60 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.header {
+  height: 90px;
+  box-sizing: border-box;
+  position: relative;
+  .content {
+    position: relative;
+    .title {
+      height: 90px;
+      line-height: 90px;
+      font-size: 16px;
+      font-family: Helvetica, Helvetica-Regular;
+      font-weight: 400;
+      text-align: center;
+      color: #121518;
+    }
+    .navLists {
+      position: absolute;
+      right: 34px;
+      top: 34px;
+      img {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+}
 .navTag {
-  position: fixed;
-  left: 0;
-  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  right: 0;
+  top: 90px;
   z-index: 999;
-  width: 100%;
-  height: 100%;
-  color: #dbdbdb;
-  font-size: 28px;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 1);
-  line-height: 43px;
+  width: 236px;
+  height: auto;
   display: flex;
   flex-direction: column;
+
   .kong {
     flex: 1;
-  }
-  .navitems {
-    background-color: #fff;
-    width: 100%;
-    height: 80px;
-    line-height: 80px;
-    padding: 0 30px;
-    border-bottom: 1px solid #dbdbdb;
-    display: flex;
-    justify-content: space-between;
-    img {
-      height: 24px;
-      margin-top: 30px;
-    }
-    .text {
-      width: 100%;
-      /* height: 80px; */
-      a {
-        display: block;
-      }
-      span {
-        display: block;
-      }
-    }
   }
 }
 .navTagitem {
-  position: fixed;
-  left: 0;
-  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  right: 0;
+  top: 90px;
   z-index: 999;
-  width: 100%;
-  height: 100%;
-  color: #dbdbdb;
-  font-size: 28px;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 1);
+  width: 236px;
+  height: auto;
   display: flex;
   flex-direction: column;
   .kong {
     flex: 1;
   }
-  .navitems {
-    background-color: #fff;
-    width: 100%;
-    height: 80px;
-    line-height: 80px;
-    padding: 0 30px;
-    border-bottom: 1px solid #dbdbdb;
-    a {
-      display: block;
-    }
-    span {
-      display: block;
-    }
-  }
-}
-
-.navtitle {
-  position: relative;
-  width: 100%;
-  height: 80px;
-  line-height: 80px;
-  padding: 0 30px;
-  text-align: center;
-  border-bottom: 1px solid #dbdbdb;
-  .back {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    img {
-      width: 22px;
-    }
-  }
-  .left {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    img {
-      height: 24px;
-    }
-  }
-}
-.show_header {
-  height: 100%;
-  background: rgba(1, 25, 46, 0.7);
-}
-.header {
-  // position: fixed;
-  // top: 0;
-  // left: 50%;
-  width: 100%;
-  // height: 100px;
-  // transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0);
-  padding: 0 32px;
-  box-sizing: border-box;
-  // z-index: 999;
-  .logo {
-    a {
-      display: block;
-    }
-    img {
-      height: 54px;
-      margin-top: 70px;
-    }
-  }
-}
-.navLists {
-  img {
-    height: 50px;
-    margin-top: 70px;
-  }
-}
-.content {
-  height: 190px;
-  line-height: 190px;
-  display: flex;
-  justify-content: space-between;
 }
 .top {
   background: rgba(1, 25, 46, 0.7);
@@ -421,6 +320,37 @@ export default {
   color: #000;
   text-align: center;
   border-bottom: 1px solid #000;
+}
+.navitems {
+  opacity: 0.6;
+  background: #000000;
+  // background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 60px;
+  .text {
+    text-align: center;
+    font-size: 28px;
+    font-family: PingFangSC, PingFangSC-Medium;
+    font-weight: 400;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    padding: 10px 0;
+    // opacity: 0.6;
+    a {
+      display: block;
+      font-size: 28px;
+      font-family: PingFangSC, PingFangSC-Medium;
+      font-weight: 400;
+      text-align: center;
+      color: #ffffff;
+      line-height: 40px;
+      // opacity: 0.6;
+    }
+    span {
+      display: block;
+    }
+  }
 }
 .dialog {
   position: fixed;

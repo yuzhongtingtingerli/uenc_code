@@ -2,30 +2,35 @@
  * @Author: yaoyuting
  * @Date: 2021-04-12 21:25:05
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-02 21:29:30
+ * @LastEditTime: 2021-05-07 08:24:13
  * @Descripttion: 
 -->
 <template>
   <div class="CoreMembers">
-    <div class="level2title">{{ $t("index.members") }}</div>
+    <div class="sub_title">{{ $t("index.members") }}</div>
     <div class="banner">
       <el-row :gutter="20">
-        <el-col :span="4" v-for="msember in msemberList" :key="msember.usersId">
-          <img :src="msember.images" alt="" @click="tab(msember.usersId)" />
+        <el-col :span="6" v-for="msember in msemberList" :key="msember.usersId">
+          <img
+            :src="msember.images"
+            alt=""
+            :class="msember.usersId == id ? 'active' : ''"
+            @click="tab(msember.usersId)"
+          />
         </el-col>
       </el-row>
     </div>
-    <div v-if="introduce">
-      <el-card class="box-card">
+    <div v-if="introduce" class="content">
+      <div class="top">
         <div class="name">{{ introduce.userName }}</div>
         <div class="position">{{ introduce.job }}</div>
-        <div class="about">{{ introduce.introduction }}</div>
-      </el-card>
+      </div>
+
+      <div class="about">{{ introduce.introduction }}</div>
     </div>
-    <div class="horizontal_center">
+    <!-- <div class="horizontal_center">
       <el-button type="primary" size="mini" round @click="goMore()">了解更多</el-button>
-    </div>
-    
+    </div> -->
   </div>
 </template>
 
@@ -34,7 +39,8 @@ import { GetMsemberDetail } from "@/assets/server/api.js";
 export default {
   data() {
     return {
-      introduce: null
+      introduce: null,
+      id: ""
     };
   },
   props: {
@@ -44,9 +50,11 @@ export default {
   },
   created() {
     this.introduce = this.msemberList[0];
+    this.id = this.msemberList[0].usersId;
   },
   methods: {
     async tab(id) {
+      this.id = id;
       const data = await GetMsemberDetail(id);
       if (data.code === 0) {
         this.introduce = data.data;
@@ -65,44 +73,60 @@ export default {
 
 <style lang="less" scoped>
 .CoreMembers {
-  margin: 50px 0;
-  .level2title {
-    border-bottom: 1px solid #ccc;
-    // line-height: 60px;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-  }
-  .box-card {
-    padding: 30px;
-    margin-bottom: 50px;
+  margin: 40px 30px 80px;
+  .sub_title {
+    font-size: 28px;
+    font-family: PingFangSC, PingFangSC-Medium;
+    font-weight: 500;
+    text-align: left;
+    color: #333333;
+    line-height: 40px;
+    margin-top: 40px;
+    margin-bottom: 16px;
   }
   .banner {
     .el-col {
-      height: 120px;
+      height: 140px;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: 32px;
     }
     img {
-      height: 80px;
-      width: 80px;
+      height: 112px;
+      width: 112px;
       cursor: pointer;
       border-radius: 50%;
     }
+    .active {
+      height: 140px;
+      width: 140px;
+    }
   }
-  .name {
-    // margin-top: 60px;
-    font-size: 26px;
-    font-weight: bold;
-    line-height: 40px;
-  }
-  .position {
-    font-size: 20px;
-    line-height: 30px;
-    margin-bottom: 20px;
-  }
-  .about {
-    font-size: 14px;
+  .content {
+    .top {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 32px;
+      font-size: 28px;
+      font-family: PingFangSC, PingFangSC-Medium;
+      font-weight: 500;
+      text-align: left;
+      color: #333333;
+      line-height: 40px;
+      .name {
+        margin-right: 20px;
+      }
+    }
+    .about {
+      margin-top: 20px;
+      font-size: 24px;
+      font-family: PingFangSC, PingFangSC-Regular;
+      font-weight: 400;
+      text-align: left;
+      color: #333333;
+      line-height: 36px;
+    }
   }
 }
 </style>
