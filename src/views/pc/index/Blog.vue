@@ -7,32 +7,33 @@
 -->
 <template>
   <div class="Blog">
-    <el-card class="box-card box-card-p20">
-      <el-row :gutter="20">
-        <el-col :span="3">
+    <div class="w1352 box-card box-card-p20">
+      <el-row >
+        <el-col :span="4">
           <div class="level2title">{{ $t("index.Blog") }}</div>
-          <router-link to="/pc/Blog"><el-button type="primary" size="small" round>进入博客 ></el-button></router-link>
+          <router-link to="/pc/Blog" class="btn_style">进入博客 <i class="el-icon-right"></i></router-link>
         </el-col>
-        <el-col :span="21" class="pr">
+        <el-col :span="20" class="pr">
           <div class="ra">
-            <el-card class="box-card box-card-p0" v-for="blog in blogList" :key="blog.blogId">
-              <div class="p5">
+            <div class="item" v-for="blog in blogList" :key="blog.blogId">
+              <div>
                 <img :src="blog.images" alt="" />
               </div>
-              <div class="m10">
+              <div class="m">
                 <div class="level4title">{{blog.blogTitle}}</div>
                 <div class="content" v-html="blog.text"></div>
               </div>
-              <div class="btn">
+              <div class="footerUser"><span>{{blog.createBy}}</span>{{blog.createTime}}</div>
+              <!-- <div class="btn">
                 <router-link :to="{path: '/pc/Blog/Details', query: {id: blog.blogId}}">
                   <el-button type="text" size="mini">More</el-button>
                 </router-link>
-              </div>
-            </el-card>
+              </div> -->
+            </div>
           </div>
         </el-col>
       </el-row>
-    </el-card>
+    </div>
   </div>
 </template>
 
@@ -48,48 +49,78 @@ export default {
 
 <style lang="less" scoped>
 .Blog {
-  margin: 300px 0;
+  margin: 448px 0 200px;
   .box-card {
     border-radius: 20px;
+    background: #fbf6ff;
+    border-radius: 50px 50px 50px 0px 50px;
+    padding: 60px 0 0 26px;
+    box-sizing: border-box;
+    height: 320px;
     .level2title {
-      margin-bottom: 50px;
+      font-size: 40px;
+      color: #333333;
+      margin-bottom: 80px;
     }
+    .btn_style{
+      font-size: 20px;
+      color: #6624fa;
+      display: block;
+    }
+    
     .ra {
-      height: 330px;
       padding: 0;
+      margin: 0;
       display: inline-flex;
+      height: 374px;
       img {
-        height: 120px;
-        width: 100%;
+        height: 200px;
+        width: 280px;
       }
     }
     .pr {
-        height: 280px;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        transform: translateY(-100px);
+      overflow-x: scroll;
+      margin-top: -180px;
+      scrollbar-width:none;/* firefox */
+      -ms-overflow-style:none;/* IE 10+ */
+      overflow-x:auto;
     }
-    .content {
-      font-size: 12px;
-      height: 82px;
-      overflow: hidden;
-    }
+    .pr::-webkit-scrollbar {display:none}
     .btn {
       text-align: center;
       padding-bottom: 5px;
     }
   }
-  .box-card-p20 {
-    padding: 40px;
-    height: 280px;
-    overflow: visible;
+  .footerUser{
+    font-size: 16px;
+    color: #8d8a9a;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 19px;
   }
-  .box-card-p0 {
-    height: 280px;
-    width: 250px;
-    margin: 0 10px;
+  .item {
+    width: 280px;
+    margin-right:20px;
     padding: 0;
-    box-sizing: border-box;
+    background: #fff;
+    height: 374px;
+    .m{
+      padding: 0 20px;
+    }
+    .level4title {
+      font-size: 26px;
+      color: #333333;
+      margin-top: 10px;
+      line-height: 37px;
+    }
+    .content {
+      margin-top: 4px;
+      font-size: 16px;
+      height: 74px;
+      line-height: 24px;
+      overflow: hidden;
+      display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+    }
   }
 }
 </style>

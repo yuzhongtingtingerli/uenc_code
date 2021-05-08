@@ -11,6 +11,7 @@
       <el-form :inline="true" :model="searchForm" class="demo-form-inline">
         <el-form-item label="">
           <el-input
+           class="title_bn"
             v-model="searchForm.title"
             placeholder="输入提案标题"
             style="width: 320px"
@@ -18,12 +19,15 @@
         </el-form-item>
         <el-form-item label="">
           <el-select
+              class="status_bn"
+
             v-model="searchForm.status"
             placeholder="选择提案状态"
             clearable
             style="width: 320px"
           >
             <el-option
+            class="statusItem"
               v-for="item in statusList"
               :key="item.dictValue"
               :label="item.dictLabel"
@@ -32,9 +36,9 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="search">查询</el-button>
-          <router-link to="/pc/community/Proposal/Add"
-            ><el-button type="primary">发布+</el-button></router-link
+          <span class="btn" @click="search">查询</span>
+          <router-link class="btn" to="/pc/community/Proposal/Add"
+            >+ 发布</router-link
           >
         </el-form-item>
       </el-form>
@@ -42,18 +46,22 @@
     <div class="content">
       <template v-for="list in proposalList">
         <div class="details" @click="details(list.id)" :key="list.id">
-          <div class="num">{{list.id}}</div>
-          <div class="title">{{list.title}}</div>
-          <div class="text" v-html="list.summary">{{list.summary}}</div>
-          <div class="bottom">
-            <div class="people">提议人:{{list.name}}</div>
-            <div class="date">创建时间：{{list.createTime}}</div>
+          <div class="head">
+            <div class="num">{{list.id}}</div>
+            <div class="cen">
+              <div class="title">{{list.title}}</div>
+              <div class="date">{{list.createTime}}</div>
+            </div>
             <div class="status">状态：{{getStatus(list.status)}}</div>
+          </div>
+          <div class="bottom">
+            <div class="text" v-html="list.summary">{{list.summary}}</div>
+            <div class="people">提议人:{{list.name}}</div>
           </div>
         </div>
       </template>
 
-      <div class="page">
+      <!-- <div class="page">
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
@@ -65,7 +73,7 @@
           background
         >
         </el-pagination>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -144,64 +152,130 @@ export default {
   }
 };
 </script>
-
+<style lang="less">
+.statusItem.el-select-dropdown__item{
+  height: 48px;
+  line-height: 48px;
+  font-size: 22px;
+}
+  .Proposal{
+    .title_bn{
+      width: 670px !important;
+      height: 78px;
+      input{
+        height: 78px;
+        font-size: 32px;
+      }
+      input::placeholder{
+        font-size: 32px;
+        color: #9a9a9a;
+        height: 78px;
+        line-height: 78px;
+      }       
+    }
+    
+    .status_bn{
+      width: 270px !important;
+      height: 78px;
+      input{
+        height: 78px;
+        font-size: 32px;
+        
+      }
+      i{
+          font-size: 24px!important;
+        }
+      input::placeholder{
+        font-size: 32px;
+        color: #9a9a9a;
+        height: 78px;
+        line-height: 78px;
+      } 
+      
+    }
+  }
+</style>
 <style lang="less" scoped>
 .Proposal {
-  width: 900px;
-  margin: 200px auto;
-  .el-button {
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-left: 20px;
+  .search{
+    height: 900px;
+    background-image: url("../../assets/images/index/背景@2x.png");
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    width: 200px;
+    height: 78px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    font-size: 32px;
+    text-align: center;
+    color: #ffffff;
+    line-height: 78px;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .content{
+    margin-top: 96px ;
   }
   .details {
+    width: 1400px;
     cursor: pointer;
-    margin-top: 20px;
+    margin: 20px auto;
+    
     border-radius: 20px;
     background-color: #fff;
-    box-shadow: 2px 2px 10px 2px #999;
     color: #000;
-    position: relative;
-    .num {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100px;
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
-      background-color: purple;
-      color: #fff;
-      font-size: 20px;
-      font-weight: bold;
-      border-radius: 20px 0 0 0;
-    }
-    .title {
-      line-height: 40px;
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .text {
-      padding: 0 20px;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-    .bottom {
-      padding: 0 20px;
+    .head{
       display: flex;
-      padding-bottom: 10px;
-      font-weight: bold;
-      font-size: 14px;
-      .people {
-        flex: 1;
+      align-items: center;
+      .num {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        background-color: #5459ff;
+        color: #fff;
+        font-size: 32px;
+        font-weight: bold;
+        border-radius: 6px;
       }
-      .status {
+      .cen{
         flex: 1;
+        padding: 0 20px;
+        .title{
+          font-size: 32px;
+          color: #333;
+        }
+        .date{
+          font-size: 24px;
+          color: #666;
+        }
+      }
+      .status{
+        font-size: 28px;
+        color: #323232;
+      }
+    }
+    .bottom{
+      background: #f6f6f6;
+      padding: 12px 32px;
+      margin-top: 34px;
+      .text{
+        font-size: 24px;
+        color: #656565;
+      }
+      .people{
+        font-size: 24px;
+        color: #323232;
         text-align: right;
       }
     }
+    
+    
   }
   .page {
     margin-top: 50px;

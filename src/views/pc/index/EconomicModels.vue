@@ -7,23 +7,23 @@
 -->
 <template>
   <div class="EconomicModels">
-    <div class="subTitle">{{ $t("index.MdelTitle") }}</div>
-    <el-row :gutter="20">
-      <el-col :span="11">
-        <el-card class="box-card">
-            <div class="level3title">{{ $t("index.Distribution") }}</div>
-            <div class="content">{{ $t("index.DistributionText") }}</div>
-            <div><img src="@/assets/images/right.png" alt="" /></div>
-        </el-card>
-      </el-col>
-      <el-col :span="11" :offset="2">
-        <el-card class="box-card">
-            <div class="level3title">{{ $t("index.Economic") }}</div>
-            <div class="content">{{ $t("index.EconomicText") }}</div>
-            <div><img src="@/assets/images/right.png" alt="" /></div>
-        </el-card>
-      </el-col>
-    </el-row>
+    <div class="w1352">
+      <div class="subTitle">{{ $t("index.MdelTitle") }}</div>
+        <div class="list1 list">
+          <div class="img"><img src="@/assets/images/index/配图7@2x.png" alt="" /></div>
+          <div class="content">
+            <div class="title">{{ $t("index.Distribution") }}</div>
+            <div class="text">{{ $t("index.DistributionText") }}</div>
+          </div>
+        </div>
+        <div class="list2 list">
+            <div class="content">
+              <div class="title">{{ $t("index.Economic") }}</div>
+              <div class="text">{{ $t("index.EconomicText") }}</div>
+            </div>
+            <div class="img"><img src="@/assets/images/index/配图8@2x.png" alt="" /></div>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -35,22 +35,59 @@ export default {};
 .EconomicModels {
   margin: 100px 0;
   .subTitle {
-      margin-bottom: 40px;
+    padding-left: 460px;
+    margin-bottom: 40px;
   }
-  .box-card {
-      padding: 30px;
-      border-radius: 20px;
-      .level3title {
-          line-height: 40px;
+  .list {
+    background: salmon;
+    display: flex;
+    padding:0 26px;
+    .img{
+      width: 800px;
+      height: 660px;
+      background: #d8e9ff;
+      img{
+        width: 580px;
+        margin: 78px 110px;
       }
-      .content {
-          font-size: 14px;
-          line-height: 20px;
+    }
+    .content{
+      box-sizing: border-box;
+      width: 570px;
+      height: 440px;
+      padding: 0 40px;
+      background: #ffffff;
+      .title{
+        font-size: 40px;
+        color: #1b104b;
+        margin: 112px 0 40px;
       }
-      img {
-          margin-top: 30px;
-          height: 150px;
+      .text{
+        font-size: 16px;
+        color: #8179a1;
+        line-height: 40px;
       }
+    }
+  }
+  .list1{
+    padding-bottom:  360px;
+    .img{
+      margin-top: -116px;
+    }
+    .content{
+      margin-top: 300px;
+      margin-left: -52px;
+    }
+  }
+  .list2{
+    .content{
+      margin-top: -220px;
+      margin-right: -52px;
+      z-index: 1;
+    }
+    .img{
+      margin-bottom: -116px;
+    }
   }
 }
 </style>

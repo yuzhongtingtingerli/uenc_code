@@ -7,28 +7,22 @@
 -->
 <template>
   <div class="CoreMembers">
-    <el-row :gutter="20">
-      <el-col :span="10">
+    <div class="w1352 flex">
+      <div class="userList">
         <div class="level2title">{{ $t("index.members") }}</div>
         <div class="banner">
-          <el-row :gutter="20">
-            <el-col :span="6" v-for="msember in msemberList" :key="msember.usersId">
+            <div :class="introduce.usersId === msember.usersId?'border':''"  v-for="msember in msemberList" :key="msember.usersId">
               <img :src="msember.images" alt="" @click="tab(msember.usersId)" />
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24"><el-button type="primary" round @click="goMore()">了解更多</el-button></el-col>
-          </el-row>
+            </div>
+            <!-- <div><el-button type="primary" round @click="goMore()">了解更多</el-button></div> -->
         </div>
-      </el-col>
-      <el-col :span="12" :offset="2" class="all_center">
-        <div v-if="introduce">
+      </div>
+      <div class="center">
           <div class="name">{{ introduce.userName }}</div>
           <div class="position">{{ introduce.job }}</div>
           <div class="about">{{ introduce.introduction }}</div>
-        </div>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -68,38 +62,73 @@ export default {
 
 <style lang="less" scoped>
 .CoreMembers {
+  background: salmon;
   margin: 100px 0;
+  padding: 146px 0;
+  height: 800px;
+  box-sizing: border-box;
+  .flex{
+    display: flex;
+    .userList{
+      width: 720px;
+    }
+  }
+  
   .level2title {
-    border-bottom: 1px solid #ccc;
     line-height: 60px;
+    font-size: 50px;
+    color: #333333;
+    line-height: 70px;
+    margin-bottom: 106px;
   }
   .banner {
-    .el-col {
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+     display: flex;
+     align-items: center;
+     flex-wrap: wrap;
+    div {
+      width: 110px;
+      height: 110px;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      border-radius: 50%;
+      background:#ffffff;
     }
     img {
-      height: 80px;
-      width: 80px;
+      width: 100%;
+      height: 100%;
       cursor: pointer;
       border-radius: 50%;
+      z-index: 1;
+    }
+    .border{
+      border: 1px solid #ffffff;
+      box-shadow: 0 0px 12px 0 rgba(0, 0, 0, 0.6);
+
     }
   }
-  .name {
-    margin-top: 60px;
-    font-size: 26px;
-    font-weight: bold;
-    line-height: 40px;
+  .center{
+    width: 632px;
+    height: 348px;
+    background: #ffffff;
+    margin-top: 106px;
+    padding: 60px;
+    box-sizing: border-box;
+    text-align: left;
+    .name {
+      font-size: 50px;
+      font-weight: bold;
+      line-height: 70px;
+    }
+    .position {
+      font-size: 30px;
+      line-height: 42px;
+      margin-bottom: 30px;
+    }
+    .about {
+      font-size: 16px;
+      line-height: 30px;
+    }
   }
-  .position {
-    font-size: 20px;
-    line-height: 30px;
-    margin-bottom: 20px;
-  }
-  .about {
-    font-size: 14px;
-  }
+  
 }
 </style>

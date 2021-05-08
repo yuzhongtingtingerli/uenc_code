@@ -18,10 +18,10 @@
           <div class="title">{{ $t("index.UENCTitle") }}</div>
           <div class="details">{{ $t("index.UENCContent") }}</div>
         </div>
-        <img src="@/assets/images/index/首页1@3x.png" alt="" />
+        <img src="@/assets/images/index/首页1@2x.png" alt="" />
       </div>
       <div class="what">
-        <img src="@/assets/images/index/首页2@3x.png" alt="" />
+        <img src="@/assets/images/index/首页2@2x.png" alt="" />
         <div class="text">
           <div class="title">{{ $t("index.UENCTitle") }}</div>
           <div class="details">{{ $t("index.UENCContent") }}</div>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="content_bg">
-      <div class="content">
+      <div class="w1352">
         <div class="overview">
           <el-row class="zi-1">
             <el-col :span="24" class="a_center">
@@ -64,12 +64,13 @@
             </el-col>
           </el-row>
         </div>
-        <TechnicalCharacteristics></TechnicalCharacteristics>
+        
+      </div>
+      <TechnicalCharacteristics></TechnicalCharacteristics>
         <EconomicModels></EconomicModels>
         <Blog :blogList="blogList" v-if="blogList.length > 0"></Blog>
         <CoreMembers :msemberList="msemberList" v-if="msemberList.length > 0"></CoreMembers>
         <Partners :partnerList="partnerList" v-if="partnerList.length > 0"></Partners>
-      </div>
     </div>
   </div>
 </template>
@@ -164,7 +165,12 @@ export default {
   }
 };
 </script>
-
+<style lang="less">
+  .w1352 {
+    width: 1352px;
+    margin: 0 auto;
+  }
+</style>
 <style lang="less" scoped>
 .index {
   /* width: 900px; */
@@ -209,6 +215,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 84px;
     .title {
       font-size: 50px;
       font-family: PingFangSC, PingFangSC-Medium;
@@ -229,10 +236,7 @@ export default {
     }
   }
 }
-.content {
-  width: 1352px;
-  margin: 0 auto;
-}
+
 .overview {
   margin-top: 160px;
   img {
