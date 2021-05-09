@@ -8,19 +8,27 @@
 <template>
   <div class="Fastoken">
     <div class="banner">
-      <div class="content">
-        <div class="title">{{ $t("index.bannerTitle") }}</div>
-        <div class="list">{{ $t("index.bannerContent") }}</div>
+      <div class="content w1300">
+        <img src="@/assets/images/index/手机@2x.png" alt="">
+        <div class="r">
+          <div class="title">{{ $t("index.bannerTitle") }}</div>
+          <div class="list">{{ $t("index.bannerContent") }}</div>
+          <div class="box">
+            <div class="flex"></div>
+            <div class="code">
+              <img src="@/assets/images/index/appCode.png" alt="">
+              <span>扫描二维码，下载APP</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="main">
+    <div class="main w1352">
         <div class="about">
             <div class="top">{{ $t("Fastoken.software") }}</div>
             <div class="bottom">{{ $t("Fastoken.provides") }}</div>
         </div>
-        <div class="images">
-            <img src="@/assets/images/right.png" alt="">
-        </div>
+        <img src="@/assets/images/index/6-1.png" alt="">
     </div>
   </div>
 </template>
@@ -31,45 +39,71 @@ export default {};
 
 <style lang="less" scoped>
 .banner {
-  height: 750px;
-  background-image: url("../../assets/images/index/背景@2x.png");
+  height: 900px;
+  background-image: url("../../assets/images/index/Fastoken.png");
   background-size: cover;
   background-position: center center;
   padding-top: 203px;
+  padding-bottom: 16px;
+  box-sizing: border-box;
   .content {
-    text-align: center;
-    line-height: 30px;
-    margin-top: 48px;
+    color: #fff;
+    display: flex;
+    .r{
+      display: flex;
+      flex-direction: column;
+    }
+    img   {
+      width: 645px;
+      height: 700px;
+    }
+    .box{
+      flex: 1;
+      display: flex;
+      .flex{
+        flex: 1;
+      }
+    }
+    .code{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      img{
+        width: 167px;
+        height: 167px;
+      }
+      span{
+        padding: 20px 0;
+        font-size: 26px;
+      }
+    }
     .title {
-      font-size: 40px;
-      line-height: 60px;
-      font-weight: bold;
+      font-size: 80px;
+      margin-top: 150px;
     }
     .list {
-      width: 900px;
-      font-size: 30px;
-      line-height: 50px;
-      margin: 0 auto;
+      margin-top: 30px;
+      font-size: 40px;
     }
   }
 }
 .main {
     display: flex;
     justify-content: space-between;
-    width: 900px;
-    margin: 100px auto;
+    align-items: center;
+    margin: 130px auto 176px;
     .about {
-        width: 365px;
-        font-size: 12px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+      width: 700px;
+      font-size: 16px;
+      color: #333333;
+      line-height: 40px;
+      .top{
+        margin-bottom: 40px;
+      }
     }
-    .images {
-        img {
-            width: 300px;
-            height: 250px;
-        }
+    img {
+        width: 548px;
     }
 }
 </style>

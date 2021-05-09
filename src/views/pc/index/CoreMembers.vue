@@ -62,7 +62,9 @@ export default {
 
 <style lang="less" scoped>
 .CoreMembers {
-  background: salmon;
+  background-image: url("../../../assets/images/index/indexbg3.png");
+  background-size: cover;
+  background-position: center center;
   margin: 100px 0;
   padding: 146px 0;
   height: 800px;

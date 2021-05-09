@@ -8,11 +8,10 @@
 <template>
   <div class="Developers">
     <div class="banner">
-      <div class="logo">
-        <router-link to="/pc/synopsis"><img src="@/assets/images/index/奖励@2x.png" alt=""/></router-link>
-      </div>
-      <div class="content">
-        <div class="list">{{ $t("index.index1") }}</div>
+      <div class="content w1300">
+        <div class="title">{{ $t("index.index1") }}</div>
+        <router-link to="/">文档 <i class="el-icon-right"></i></router-link>
+        <router-link to="/">GitHub <i class="el-icon-right"></i></router-link>
       </div>
     </div>
     <div class="content">
@@ -36,26 +35,21 @@ export default {
 <style lang="less" scoped>
 .Developers {
   .banner {
-    height: 750px;
+    height: 900px;
     background-image: url("../../assets/images/index/背景@2x.png");
     background-size: cover;
     background-position: center center;
     padding-top: 203px;
-    .logo {
-      width: 348px;
-      height: 96px;
-      margin: 0 auto;
-      img {
-        width: 100%;
+    .content{
+      padding: 250px 0 0;
+      .title{
+        font-size: 80px;
+        color: #ffffff;
       }
-    }
-    .content {
-      text-align: center;
-      line-height: 30px;
-      margin-top: 48px;
-      .list {
-        width: 900px;
-        margin: 0 auto;
+      a{
+        color: #fff;
+        font-size: 20px;
+        margin-right: 80px;
       }
     }
   }

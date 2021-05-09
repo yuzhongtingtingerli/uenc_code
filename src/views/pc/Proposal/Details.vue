@@ -8,26 +8,20 @@
 <template>
   <div class="ProposaDetails">
     <div class="banner">
-      <div class="placeholder">编号：{{ ProposaData.id }}</div>
       <div class="details">
+        <div>提案人：{{ ProposaData.createBy }}</div>
+        <div>创建时间：{{ ProposaData.createTime }}</div>
+        <div>状态：{{ getStatus(ProposaData.status) }}</div>
+        <div>编号：{{ ProposaData.id }}</div>
+
         <div class="title">{{ ProposaData.title }}</div>
-        <div class="createBy">提案人：{{ ProposaData.createBy }}</div>
-        <div class="date">创建时间：{{ ProposaData.createTime }}</div>
-        <div class="status">状态：{{ getStatus(ProposaData.status) }}</div>
-        <div class="votes" v-if="$route.query.type === 'vote'">
-          <div
-            class="left"
-            :style="`color: ${ProposaData.userPollStatus === 0 ? 'green' : '#ccc'}`"
-          >
-            ({{ ProposaData.approve ? ProposaData.approve : 0 }})赞成
-          </div>
+        <div class="votes" v-if="$route.query.type === 'vote'&&false">
+          
           <div class="meddile">
             <div
               class="approve"
               :style="
-                `height: 10px;background-color: ${
-                  ProposaData.userPollStatus === 0 ? 'green' : '#ccc'
-                }; width: ${
+                `width: ${
                   ProposaData.approve
                     ? ((ProposaData.approve + ProposaData.oppose) / ProposaData.approve) * 100
                     : 0
@@ -37,7 +31,7 @@
             <div
               class="oppose"
               :style="
-                `height: 10px;background-color: red; width: ${
+                `width: ${
                   ProposaData.oppose
                     ? ((ProposaData.approve + ProposaData.oppose) / ProposaData.oppose) * 100
                     : 0
@@ -45,25 +39,30 @@
               "
             ></div>
           </div>
-          <div class="right" style="color: red;">
-            反对 ({{ ProposaData.oppose ? ProposaData.oppose : 0 }})
-          </div>
+          
         </div>
       </div>
     </div>
     <div class="content">
-      <el-card class="box-card">
-        <div class="lebelTitle">摘要</div>
-        <div class="text" v-html="ProposaData.summary"></div>
-      </el-card>
-      <el-card class="box-card">
-        <div class="lebelTitle">目标</div>
-        <div class="text">{{ ProposaData.target }}</div>
-        <div class="lebelTitle">计划</div>
-        <div class="text">{{ ProposaData.plan }}</div>
-        <div class="lebelTitle">预算</div>
-        <div class="text">{{ ProposaData.budget }}</div>
-      </el-card>
+      <div class="w1300">
+        <div>
+          <div class="title">摘要</div>
+          <div class="text" v-html="ProposaData.summary"></div>
+        </div>
+        <div>
+          <div class="title">目标</div>
+          <div class="text">{{ ProposaData.target }}</div>
+        </div>
+        <div>
+          <div class="title">计划</div>
+          <div class="text">{{ ProposaData.plan }}</div>
+        </div>
+        <div>
+          <div class="title">预算</div>
+          <div class="text">{{ ProposaData.budget }}</div>
+        </div>
+      </div>
+      
     </div>
   </div>
 </template>
@@ -131,72 +130,72 @@ export default {
 
 <style lang="less" scoped>
 .banner {
-  //   height: 350px;
-  background-image: url("../../../assets/images/index/背景@2x.png");
+  height: 900px;
+  background-image: url("../../../assets/images/index/voteD.png");
   background-size: cover;
   background-position: center center;
   display: flex;
   flex-direction: column;
-  .placeholder {
-    margin: 0 120px;
-    align-items: flex-end;
-    display: flex;
-    padding-bottom: 20px;
-    padding-top: 100px;
-    box-sizing: border-box;
-  }
+  
   .details {
-    border-top: 1px solid #fff;
-    margin: 0 120px;
+    margin: 260px 274px;
     margin-bottom: 10px;
-    .date {
-      line-height: 50px;
-      font-size: 14px;
-    }
+    color: #fff;
+    font-size: 26px;
+    line-height: 60px;
     .title {
-      font-size: 40px;
+      margin-top: 70px;
       font-weight: bold;
-      line-height: 60px;
-    }
-    .text {
-      font-size: 12px;
-      line-height: 20px;
-      height: 100px;
-      overflow: hidden;
+      font-size: 80px;
     }
   }
   .votes {
-    height: 50px;
-    line-height: 50px;
-    font-size: 12px;
-    background-color: #efefef;
-    margin: 10px 30px;
-    display: flex;
-    justify-content: center;
+    margin-top: 74px;
     .meddile {
-      height: 10px;
-      width: 500px;
-      border-radius: 20px;
+      border-radius: 56px;
+      height: 112px;
       overflow: hidden;
-      margin: 20px 20px;
+      background: #ccc;
+      display: flex;
+      .approve{
+        height: 112px;
+        background: linear-gradient(90deg,#4d71ff, #003cfb);
+      }
+      .oppose{
+        height: 112px;
+        background: linear-gradient(270deg,#f78069, #ed4038);
+      }
     }
   }
 }
 .content {
-  margin: 0 120px;
-  font-size: 14px;
-  .box-card {
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
+  background-image: url("../../../assets/images/index/votebg.png");
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+  padding: 180px 0;
+  .title{
+    font-size: 32px;
+    color: #333333;
+    position: relative;
+    margin-top: 60px;
   }
-  .lebelTitle {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  .title::before{
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    content: '';
+    width: 97px;
+    height: 7px;
+    background: linear-gradient(270deg,rgba(141,146,255,0.00), #5459ff);
   }
-  .text {
-    margin-bottom: 30px;
+  .text{
+    background: #f9f9f9;
+    padding: 20px;
+    font-size: 24px;
+    color: #656565;
+    line-height: 40px;
+    margin-top: 22px;
   }
 }
 </style>

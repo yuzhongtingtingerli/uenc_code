@@ -3,7 +3,7 @@
     <div class="content">
       <div class="logo">
         <router-link to="/pc/Index"
-          ><img src="@/assets/images/index/奖励@2x.png" alt=""
+          ><img src="@/assets/images/index/logo@2x.png" alt=""
         /></router-link>
       </div>
       <div class="nav">
@@ -294,14 +294,13 @@ export default {
   top: 0;
   left: 50%;
   width: 100%;
+  z-index: 2;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0);
-  z-index: 9999;
-  // color: #fff;
   .logo {
     margin-left: 40px;
     img {
-      height: 45px;
+      height: 64px;
       margin-top: 25px;
     }
   }

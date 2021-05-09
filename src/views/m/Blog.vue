@@ -12,7 +12,7 @@
         <div class="details">
             <div class="date">{{blogList[0].createTime}} / {{blogList[0].createBy}}</div>
             <div class="title">{{blogList[0].blogTitle}}</div>
-            <div class="text" v-html="blogList[0].text"></div>
+            <div class="text"  v-html="blogList[0].text"></div>
             <div class="btn">
                 <router-link :to="{path: '/m/Blog/Details', query: {id: blogList[0].blogId}}">
                   <el-button type="primary">More</el-button>

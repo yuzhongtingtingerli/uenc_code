@@ -24,6 +24,7 @@
     <div class="content">
       <div class="w1352 w">
         <div class="box-card" v-for="blog in blogList" :key="blog.blogId">
+          <router-link :to="{path: '/pc/Blog/Details', query: {id: blog.blogId}}">
             <div class="images">
               <img :src="blog.images" alt="" />
             </div>
@@ -40,6 +41,7 @@
                 </router-link>
               </div> -->
             </div>
+          </router-link>
         </div>
         <div class="box-card"></div>
         <div class="box-card"></div>
@@ -81,8 +83,8 @@ export default {
 <style lang="less" scoped>
 .Blog {
   .banner {
-    height: 550px;
-    background-image: url("../../assets/images/index/背景@2x.png");
+    height: 900px;
+    background-image: url("../../assets/images/index/blogbg.png");
     background-size: cover;
     background-position: center center;
     padding-top: 203px;

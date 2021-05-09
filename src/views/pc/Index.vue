@@ -12,16 +12,16 @@
         <div class="title">{{ $t("index.bannerContent") }}</div>
       </div>
     </div>
-    <div class="w_content">
+    <div class="content1">
       <div class="what">
         <div class="text">
           <div class="title">{{ $t("index.UENCTitle") }}</div>
           <div class="details">{{ $t("index.UENCContent") }}</div>
         </div>
-        <img src="@/assets/images/index/首页1@2x.png" alt="" />
+        <img width="566" src="@/assets/images/index/1-1.png" alt="" />
       </div>
       <div class="what">
-        <img src="@/assets/images/index/首页2@2x.png" alt="" />
+        <img width="566" src="@/assets/images/index/1-2.png" alt="" />
         <div class="text">
           <div class="title">{{ $t("index.UENCTitle") }}</div>
           <div class="details">{{ $t("index.UENCContent") }}</div>
@@ -66,7 +66,7 @@
         </div>
         
       </div>
-      <TechnicalCharacteristics></TechnicalCharacteristics>
+        <TechnicalCharacteristics></TechnicalCharacteristics>
         <EconomicModels></EconomicModels>
         <Blog :blogList="blogList" v-if="blogList.length > 0"></Blog>
         <CoreMembers :msemberList="msemberList" v-if="msemberList.length > 0"></CoreMembers>
@@ -170,6 +170,10 @@ export default {
     width: 1352px;
     margin: 0 auto;
   }
+  .w1300 {
+    width: 1300px;
+    margin: 0 auto;
+  }
 </style>
 <style lang="less" scoped>
 .index {
@@ -179,7 +183,7 @@ export default {
 .banner {
   height: 900px;
   background-image: url("../../assets/images/index/背景@2x.png");
-  background-size: 1920px 910px;
+  background-size: cover;
   background-position: center center;
   padding-top: 203px;
   .b_content {
@@ -197,19 +201,20 @@ export default {
     }
   }
 }
+.content1{
+  background-image: url("../../assets/images/index/indexbg1.png");
+  background-size: cover;
+  background-position: center center;
+}
 .what {
-  height: 640px;
   // background-image: url("../../assets/images/index/背景4@2x.png");
   // background-size: cover;
   // background-position: center center;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 124px 0 42px;
   // margin: 100px 0;
-  img {
-    width: 525px;
-    height: 391px;
-  }
   .text {
     width: 700px;
     display: flex;
