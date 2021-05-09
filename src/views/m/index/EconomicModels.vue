@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-11 18:05:00
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-07 20:09:37
+ * @LastEditTime: 2021-05-09 14:46:23
  * @Descripttion: 
 -->
 <template>
@@ -10,15 +10,15 @@
     <div class="sub_title">{{ $t("index.MdelTitle") }}</div>
     <div class="details">
       <div class="list">
-        <div class="left">
+        <div class="images"><img src="@/assets/imagesm/index/配图7.png" alt="" /></div>
+        <div class="item">
           <div class="title">{{ $t("index.Distribution") }}</div>
           <div class="content">{{ $t("index.DistributionText") }}</div>
         </div>
-        <div class="images"><img src="@/assets/imagesm/index/配图7@2x.png" alt="" /></div>
       </div>
       <div class="list">
-        <div class="images"><img src="@/assets/imagesm/index/配图8@2x.png" alt="" /></div>
-        <div class="right">
+        <div class="images"><img src="@/assets/imagesm/index/配图8.png" alt="" /></div>
+        <div class="item">
           <div class="title">{{ $t("index.Economic") }}</div>
           <div class="content">{{ $t("index.EconomicText") }}</div>
         </div>
@@ -36,55 +36,51 @@ export default {};
   // background-color: pink;
   background-size: cover;
   background-position: center center;
-  background-image: url('../../../assets/imagesm/index/背景3_1@2x.png');
+  background-image: url("../../../assets/imagesm/index/jj_bg.png");
   padding: 0 30px;
   padding-bottom: 76px;
   .sub_title {
-    padding-top: 40px;
-    margin-bottom: 30px;
-    font-size: 28px;
-    font-family: PingFangSC, PingFangSC-Medium;
-    font-weight: 500;
-    text-align: left;
-    color: #333333;
-    line-height: 40px;
+    padding-top: 66px;
+    font-size: 34px;
+    font-family: PingFang-SC-Heavy, PingFang-SC;
+    font-weight: 800;
+    color: #6624fa;
+    line-height: 48px;
   }
   .list {
-    display: flex;
-    justify-content: space-between;
+    padding: 0 30px;
     padding-bottom: 80px;
-    .left {
-      margin-right: 90px;
-    }
-    .right {
-      margin-left: 36px;
-    }
-    .title {
-      font-size: 24px;
-      font-family: PingFangSC, PingFangSC-Medium;
-      font-weight: 500;
-      text-align: left;
-      color: #333333;
-      line-height: 34px;
-      margin-bottom: 14px;
-    }
-    .content {
-      font-size: 20px;
-      font-family: PingFangSC, PingFangSC-Medium;
-      font-weight: 500;
-      text-align: left;
-      color: #333333;
-      line-height: 32px;
-      opacity: 0.7;
-    }
+    margin-top: 52px;
     .images {
-      width: 214px;
-      height: 176px;
+      width: 624px;
+      height: 380px;
       background: #d8e9ff;
-      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       img {
-        width: 156px;
-        height: 136px;
+        width: 334px;
+        height: 292px;
+      }
+    }
+    .item {
+      padding: 32px 16px;
+      background-color: #fff;
+      .title {
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        line-height: 36px;
+        margin-bottom: 12px;
+      }
+      .content {
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        line-height: 40px;
+        opacity: 0.7;
       }
     }
   }

@@ -2,12 +2,14 @@
  * @Author: yaoyuting
  * @Date: 2021-04-12 21:25:05
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-08 07:51:11
+ * @LastEditTime: 2021-05-09 14:59:30
  * @Descripttion: 
 -->
 <template>
   <div class="CoreMembers">
-    <router-link to="/m/CoreMembersDetails"><div class="sub_title">{{ $t("index.members") }}</div></router-link>
+    <router-link to="/m/CoreMembersDetails"
+      ><div class="sub_title">{{ $t("index.members") }}</div></router-link
+    >
     <div class="banner">
       <el-row :gutter="20">
         <el-col :span="6" v-for="msember in msemberList" :key="msember.usersId">
@@ -73,16 +75,14 @@ export default {
 
 <style lang="less" scoped>
 .CoreMembers {
-  margin: 40px 30px 80px;
+  margin: 90px 30px 80px;
   .sub_title {
-    font-size: 28px;
-    font-family: PingFangSC, PingFangSC-Medium;
-    font-weight: 500;
-    text-align: left;
-    color: #333333;
-    line-height: 40px;
-    margin-top: 40px;
-    margin-bottom: 16px;
+    font-size: 34px;
+    font-family: PingFang-SC-Heavy, PingFang-SC;
+    font-weight: 800;
+    color: #6624fa;
+    line-height: 48px;
+    margin-bottom: 60px;
   }
   .banner {
     .el-col {

@@ -2,18 +2,18 @@
  * @Author: yaoyuting
  * @Date: 2020-03-20 19:30:58
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-08 08:00:16
+ * @LastEditTime: 2021-05-09 13:19:05
  * @Descripttion: 
 -->
 <template>
   <div class="foot">
     <div class="sub_title">{{ $t("navbar.Connect") }}</div>
     <div class="aboutUs">
+      <!-- <img src="@/assets/imagesm/index/github@2x.png" alt="" />
       <img src="@/assets/imagesm/index/github@2x.png" alt="" />
       <img src="@/assets/imagesm/index/github@2x.png" alt="" />
       <img src="@/assets/imagesm/index/github@2x.png" alt="" />
-      <img src="@/assets/imagesm/index/github@2x.png" alt="" />
-      <img src="@/assets/imagesm/index/github@2x.png" alt="" />
+      <img src="@/assets/imagesm/index/github@2x.png" alt="" /> -->
       <div class="email">{{ $t("navbar.Email") }}：tech@uenc.net</div>
     </div>
   </div>

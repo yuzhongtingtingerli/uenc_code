@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-25 20:37:07
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-02 22:23:34
+ * @LastEditTime: 2021-05-09 22:42:03
  * @Descripttion: 
 -->
 <template>
@@ -18,7 +18,9 @@
         </div>
       </div>
     </div>
-    <div class="content" v-html="blogData.text"></div>
+    <div class="content_bg">
+      <div class="content" v-html="blogData.text"></div>
+    </div>
   </div>
 </template>
 
@@ -39,8 +41,7 @@ export default {
       const data = await GetBlogDetail(id);
       if (data.code === 0) {
         data.data.images = baseURL + data.data.images;
-        data.data.text = data.data.text
-          .replace(/\n/g, "<br>");
+        data.data.text = data.data.text.replace(/\n/g, "<br>");
         this.blogData = data.data;
       } else {
         this.$message.error(data.msg);
@@ -52,28 +53,30 @@ export default {
 
 <style lang="less" scoped>
 .banner {
-  height: 550px;
-  background-image: url("../../../assets/images/index/背景@2x.png");
+  height: 660px;
+  background-image: url("../../../assets/imagesm/bk/banner2.png");
   background-size: cover;
   background-position: center center;
-  padding-top: 203px;
   display: flex;
   flex-direction: column;
   .placeholder {
     flex: 1;
   }
   .details {
-    border-top: 1px solid #fff;
-    // margin: 0 300px;
     margin: 20px;
     .date {
-      line-height: 50px;
-      font-size: 14px;
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+      margin-bottom: 28px;
     }
     .title {
-      font-size: 40px;
-      font-weight: bold;
-      line-height: 60px;
+      font-size: 62px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 80px;
     }
     .text {
       font-size: 12px;
@@ -82,17 +85,37 @@ export default {
       overflow: hidden;
     }
     .btn {
-      margin: 20px 0;
       .el-button {
-        padding: 10px 50px;
+        padding: 0;
+        width: 160px;
+        height: 62px;
+        background: linear-gradient(90deg, #4d71ff 0%, #003cfb 100%);
+        border-radius: 38px;
+        line-height: 62px;
+        border: none;
+        font-size: 28px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #ffffff;
+        line-height: 40px;
+        margin-bottom: 68px;
       }
     }
   }
 }
+.content_bg {
+  width: 750px;
+  flex-wrap: wrap;
+  background-image: url("../../../assets/imagesm/bk/bg2.png");
+  background-size: 750px;
+  // background-position: center center;
+}
 .content {
-    width: 750px;
-    padding: 20px;
-    margin: 50px auto 100px;
-    font-size: 14px;
+  padding: 54px 32px;
+  font-size: 20px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #656565;
+  line-height: 36px;
 }
 </style>

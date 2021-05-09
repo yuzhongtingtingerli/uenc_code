@@ -2,12 +2,14 @@
  * @Author: yaoyuting
  * @Date: 2021-04-11 18:24:56
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-08 07:49:36
+ * @LastEditTime: 2021-05-09 14:48:51
  * @Descripttion: 
 -->
 <template>
   <div class="Blog">
-    <router-link to="/m/Blog"><div class="sub_title">{{ $t("index.Blog") }}</div></router-link>
+    <router-link to="/m/Blog"
+      ><div class="sub_title">{{ $t("index.Blog") }}</div></router-link
+    >
     <div class="scroll">
       <div class="details">
         <el-card class="box-card" v-for="blog in blogList" :key="blog.blogId">
@@ -41,15 +43,14 @@ export default {
 <style lang="less" scoped>
 .Blog {
   .sub_title {
-    margin-top: 64px;
-    margin-bottom: 32px;
+    margin-top: 66px;
+    margin-bottom: 62px;
     margin-left: 30px;
-    font-size: 28px;
-    font-family: PingFangSC, PingFangSC-Medium;
-    font-weight: 500;
-    text-align: left;
-    color: #333333;
-    line-height: 40px;
+    font-size: 34px;
+    font-family: PingFang-SC-Heavy, PingFang-SC;
+    font-weight: 800;
+    color: #6624fa;
+    line-height: 48px;
   }
   .scroll {
     overflow-x: scroll;
@@ -57,10 +58,10 @@ export default {
       margin-left: 30px;
       height: 396px;
       display: inline-flex;
-
       .box-card {
         width: 320px;
         margin-right: 16px;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
         img {
           height: 180px;
           width: 320px;

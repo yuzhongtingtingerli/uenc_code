@@ -2,95 +2,77 @@
  * @Author: yaoyuting
  * @Date: 2021-04-14 07:52:31
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-02 22:18:45
+ * @LastEditTime: 2021-05-09 19:30:46
  * @Descripttion: 
 -->
 <template>
   <div class="Task">
-    <div class="subTitle">{{ $t("Developer.Bounty") }}</div>
+    <div class="sub_title">{{ $t("Developer.Bounty") }}</div>
     <div class="task_const">
-      <div class="level2title">{{ $t("Developer.Mission") }}</div>
-      <el-row :gutter="20" v-if="bountyData">
-        <el-col :span="24">
-          <el-card class="box-card">
-            <div class="dfsp">
-              <div class="all_center">
-                <img src="@/assets/images/right.png" alt="" />
-              </div>
-              <div class="other">
-                <div class="level3title">{{ $t("Developer.Total") }}</div>
-                <div class="num">{{ bountyData.count }}</div>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-        <el-col :span="24">
-          <el-card class="box-card">
-            <div class="dfsp">
-              <div class="all_center">
-                <img src="@/assets/images/right.png" alt="" />
-              </div>
-              <div class="other">
-                <div class="level3title">{{ $t("Developer.Finished") }}</div>
-                <div class="num">{{ bountyData.end }}</div>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-        <el-col :span="24">
-          <el-card class="box-card">
-            <div class="dfsp">
-              <div class="all_center">
-                <img src="@/assets/images/right.png" alt="" />
-              </div>
-              <div class="other">
-                <div class="level3title">{{ $t("Developer.Award") }}</div>
-                <div class="num">{{ bountyData.reward }}</div>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-    </div>
-    <div class="task_list">
-      <div class="level2title">{{ $t("Developer.list") }}</div>
-      <div class="lists">
-        <el-carousel :interval="5000" arrow="always" height="110px" indicator-position="outside">
-          <el-carousel-item v-for="bount in bountyList" :key="bount.taskId">
-            <el-card class="box-card">
-              <div class="top">
-                <div class="title">{{ bount.title }}</div>
-                <div class="reward">
-                  奖励：<span>{{ bount.reward }}</span>
-                </div>
-              </div>
-              <div class="medile">{{ bount.introduction }}</div>
-              <div class="bottom">
-                <router-link :to="{ path: '/m/Task/Details', query: { id: bount.taskId } }">
-                  <el-button type="text">了解更多></el-button>
-                </router-link>
-              </div>
-            </el-card>
-          </el-carousel-item>
-        </el-carousel>
+      <div class="title">{{ $t("Developer.Mission") }}</div>
+      <div class="details">
+        <div class="list">
+          <div class="left">
+            <img src="@/assets/imagesm/kfz/任务.png" alt="" srcset="" />
+          </div>
+          <div class="right">
+            <div class="level3title">{{ $t("Developer.Total") }}</div>
+            <div class="num">{{ bountyData && bountyData.count }}</div>
+          </div>
+        </div>
+        <div class="list">
+          <div class="left">
+            <img src="@/assets/imagesm/kfz/完成.png" alt="" srcset="" />
+          </div>
+          <div class="right">
+            <div class="level3title">{{ $t("Developer.Finished") }}</div>
+            <div class="num">{{ bountyData && bountyData.end }}</div>
+          </div>
+        </div>
+        <div class="list">
+          <div class="left">
+            <img src="@/assets/imagesm/kfz/奖励.png" alt="" srcset="" />
+          </div>
+          <div class="right">
+            <div class="level3title">{{ $t("Developer.Award") }}</div>
+            <div class="num">{{ bountyData && bountyData.reward }}</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="vulnerability">
-      <el-card class="box-card">
-        <el-row :gutter="20">
-          <el-col :span="24">
-            <div class="all_center">
-              <img src="@/assets/images/right.png" alt="" />
+    <div class="task_list">
+      <div class="title">{{ $t("Developer.list") }}</div>
+      <div class="scroll">
+        <div class="details">
+          <el-card class="box-card" v-for="bount in bountyList" :key="bount.taskId">
+            <div class="title">{{ bount.title }}</div>
+            <div class="medile">{{ bount.introduction }}</div>
+            <div class="bottom">
+              <div class="reward">
+                奖励：<span>{{ bount.reward }}</span>
+              </div>
+              <router-link :to="{ path: '/m/Task/Details', query: { id: bount.taskId } }">
+                <el-button type="text">了解更多<i class="el-icon-right"></i></el-button>
+              </router-link>
             </div>
-          </el-col>
-          <el-col :span="24">
-            <div class="title">{{ $t("Developer.Security") }}</div>
-            <div class="content">{{ $t("Developer.SecurityText") }}</div>
-            <div class="content">{{ $t("Developer.SecurityNote") }}</div>
-            <div style="text-align: center"><el-button type="primary" size="mini" round>复制邮箱</el-button></div>
-          </el-col>
-        </el-row>
-      </el-card>
+          </el-card>
+        </div>
+      </div>
+    </div>
+    <div class="vulnerabilitybg">
+      <div class="vulnerability">
+        <div class="title">{{ $t("Developer.Security") }}</div>
+        <div class="content">{{ $t("Developer.SecurityText") }}</div>
+        <div class="content">{{ $t("Developer.SecurityNote") }}</div>
+        <div class="btn">
+          <el-button type="text" @click="copyLink">复制邮箱<i class="el-icon-right"></i></el-button>
+        </div>
+        <div class="all_center">
+          <div class="images all_center">
+            <img src="@/assets/imagesm/kfz/安全漏洞奖励.png" alt="" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -124,6 +106,16 @@ export default {
       } else {
         this.$message.error(data.msg);
       }
+    },
+    copyLink() {
+      var link = "tech@uenc.net";
+      var newNode = document.createElement("input");
+      newNode.value = link;
+      document.body.appendChild(newNode);
+      newNode.select(); // 选择对象
+      document.execCommand("Copy"); // 执行浏览器复制命令
+      newNode.style.display = "none";
+      this.$message.success("复制成功");
     }
   }
 };
@@ -131,120 +123,177 @@ export default {
 
 <style lang="less" scoped>
 .Task {
-  padding: 0 30px;
+  .sub_title {
+    margin: 0 32px;
+    margin-top: 80px;
+    padding-top: 40px;
+    font-size: 44px;
+    font-family: PingFang-SC-Heavy, PingFang-SC;
+    font-weight: 800;
+    color: #000000;
+    border-top: 1px solid #000;
+  }
+  .title {
+    font-size: 34px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #323232;
+    line-height: 48px;
+    margin-top: 60px;
+    margin-bottom: 28px;
+  }
   .task_const {
-    margin-bottom: 50px;
-    .box-card {
-      padding: 30px 50px;
-      box-sizing: border-box;
-      border-radius: 20px;
-      margin-bottom: 30px;
-      .dfsp {
+    margin: 0 32px;
+    .details {
+      display: flex;
+      justify-content: space-between;
+      .list {
+        width: 94 * 2px;
+        height: 49 * 2px;
+        background: #fbf6ff;
         display: flex;
         justify-content: space-around;
-        .all_center {
+        align-items: center;
+        .left {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: #e8ddf1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           img {
-            width: 88px;
-            height: 88px;
+            width: 30px;
+            height: 30px;
           }
         }
-        .other {
-          .num {
-            text-align: center;
-            font-size: 40px;
-            font-weight: bold;
-            margin-top: 10px;
-          }
+        .level3title {
+          font-size: 20px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #333333;
+          line-height: 36px;
+          text-align: center;
+        }
+        .num {
+          font-size: 28px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #333333;
+          line-height: 40px;
+          text-align: center;
         }
       }
     }
   }
   .task_list {
-    .lists {
-      .box-card {
-        padding: 10px 50px;
-        box-sizing: border-box;
-        margin: 10px 0px;
-        border-radius: 20px;
-        .top {
-          display: flex;
-          justify-content: space-between;
+    margin-left: 32px;
+    .scroll {
+      overflow-x: scroll;
+      .details {
+        display: inline-flex;
+        margin-bottom: 84px;
+        .box-card {
+          width: 600px;
+          // height: 272 * 2px;
+          background: #fbf6ff;
+          margin-right: 20px;
+          padding: 0 44px;
+          padding-bottom: 52px;
           .title {
-            font-weight: bold;
-            line-height: 50px;
+            font-size: 28px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #0d051f;
+            line-height: 40px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 34px;
+            margin-bottom: 30px;
           }
-          .reward {
-            font-size: 14px;
-            span {
-              font-size: 30px;
+          .medile {
+            height: 98 * 2px;
+            overflow: hidden;
+            font-size: 20px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #0d051f;
+            line-height: 36px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 34px;
+            margin-bottom: 24px;
+          }
+          .bottom {
+            display: flex;
+            justify-content: space-between;
+            .reward {
+              font-size: 20px;
+              font-family: PingFangSC-Regular, PingFang SC;
+              font-weight: 400;
+              color: #0d051f;
+              line-height: 28px;
+              span {
+                font-size: 60px;
+                font-family: Helvetica;
+                color: #0d051f;
+                line-height: 72px;
+              }
+            }
+            .el-button {
+              font-size: 24px !important;
+              font-family: PingFangSC-Regular, PingFang SC;
+              font-weight: 400;
+              color: #6624fa;
+              line-height: 34px;
             }
           }
         }
-        .medile {
-          font-size: 12px;
-          height: 50px;
-          overflow: hidden;
-        }
-        .bottom {
-          text-align: right;
-        }
-      }
-      .el-row {
-        .el-col:nth-child(1) {
-          .box-card {
-            margin-right: 15px;
-          }
-        }
-        .el-col:nth-child(2) {
-          .box-card {
-            margin-left: 15px;
-          }
-        }
-        .el-col:nth-child(3) {
-          .box-card {
-            margin-right: 15px;
-          }
-        }
-        .el-col:nth-child(4) {
-          .box-card {
-            margin-left: 15px;
-          }
-        }
       }
     }
   }
-  .vulnerability {
-    .box-card {
-      border-radius: 20px;
-      padding: 50px;
-      box-sizing: border-box;
-      img {
-        width: 300px;
-        height: 250px;
-      }
+  .vulnerabilitybg {
+    background-image: url("../../../assets/imagesm/kfz/bg2.png");
+    background-size: cover;
+    background-position: center center;
+    .vulnerability {
+      margin: 0 32px;
+      padding-bottom: 130px;
       .title {
-        font-size: 36px;
-        font-weight: bold;
-        text-align: center;
+        padding-top: 56px;
+        font-size: 44px;
+        font-family: PingFang-SC-Heavy, PingFang-SC;
+        font-weight: 800;
+        color: #000000;
+        line-height: 60px;
       }
       .content {
-        font-size: 14px;
-        // line-height: 30px;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        margin-right: 50px;
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        line-height: 40px;
+        margin-bottom: 40px;
       }
-      .all_center {
-        height: 290px;
+      .btn {
+        text-align: right;
+      }
+      .el-button {
+        font-size: 32px !important;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #6624fa;
+        line-height: 44px;
+      }
+      .images {
+        width: 234 * 2px;
+        height: 273 * 2px;
+        background: #ffffff;
+        margin-top: 60px;
+        img {
+          width: 196 * 2px;
+          height: 195 * 2px;
+        }
       }
     }
-  }
-
-  .level3title {
-    font-size: 20px;
-  }
-  .level2title {
-    margin-bottom: 50px;
   }
 }
 </style>

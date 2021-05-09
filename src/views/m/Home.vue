@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2019-08-28 23:45:02
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-07 21:53:19
+ * @LastEditTime: 2021-05-09 15:25:24
  * @Descripttion: 
 -->
 <template>
@@ -39,29 +39,24 @@ export default {
 
 <style scoped lang="less">
 .home {
-  /* width: 1920px; */
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  background-color: rgba(0, 0, 0, 0);
-  // display: flex;
-  // flex-direction: column;
 }
 .Header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  // flex: 1;
+  background: rgba(102, 36, 250, .6);
 }
 .Main {
   width: 100%;
-  // margin-top: 190px;
-  background-color: rgba(0, 0, 0, 0);
 }
 .Footer {
   width: 100%;
   display: flex;
   justify-content: center;
   background-color: #01192E;
-  // flex: 1;
 }
 </style>

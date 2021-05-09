@@ -1,18 +1,20 @@
 <template>
   <div class="header">
     <div class="content">
-      <div class="title">UENC</div>
+      <div class="title">
+        <img src="@/assets/imagesm/index/logo.png" alt="" />
+      </div>
       <div class="navLists" @click="showNav">
-        <img src="@/assets/imagesm/index/奖励@2x.png" alt="" />
+        <img src="@/assets/imagesm/index/菜单栏.png" alt="" />
       </div>
     </div>
     <div class="navTag" v-if="show">
-      <!-- <div class="navtitle">
+      <div class="navtitle">
         <div class="text">{{ type === "zh" ? "导航" : "navigation" }}</div>
         <div class="back" @click="show = false">
           <img src="@/assets/images/no.png" alt="" />
         </div>
-      </div> -->
+      </div>
       <div
         class="navitems"
         v-for="(navItem, index) in navList"
@@ -41,6 +43,12 @@
     </div>
     <div class="navTagitem" v-if="userMenu"></div>
     <div class="navTagitem" v-if="showsubmenu">
+      <div class="navtitle">
+        <div class="text">{{ type === "zh" ? "导航" : "navigation" }}</div>
+        <div class="back" @click="showsubmenu = false">
+          <img src="@/assets/images/no.png" alt="" />
+        </div>
+      </div>
       <template v-if="userMenu">
         <div class="navitems" v-if="usersStatus == '1'" @click="check">绑定钱包</div>
         <div class="navitems" @click="logout">退出登录</div>
@@ -249,38 +257,36 @@ export default {
 </script>
 <style lang="less" scoped>
 .header {
-  height: 90px;
+  height: 140px;
   box-sizing: border-box;
-  position: relative;
   .content {
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
     .title {
-      height: 90px;
-      line-height: 90px;
-      font-size: 16px;
-      font-family: Helvetica, Helvetica-Regular;
-      font-weight: 400;
-      text-align: center;
-      color: #121518;
+      margin-top: 24px;
+      img {
+        height: 92px;
+        width: 248px;
+      }
     }
     .navLists {
-      position: absolute;
-      right: 34px;
-      top: 34px;
+      margin-top: 44px;
       img {
-        width: 36px;
-        height: 36px;
+        width: 64px;
+        height: 54px;
       }
     }
   }
 }
 .navTag {
-  background: rgba(0, 0, 0, 0.6);
+  padding: 0 30px;
+  background-color: rgba(0, 0, 0, 0.85);
   position: absolute;
   right: 0;
-  top: 90px;
+  top: 0px;
   z-index: 999;
-  width: 236px;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -290,12 +296,13 @@ export default {
   }
 }
 .navTagitem {
-  background: rgba(0, 0, 0, 0.6);
+  padding: 0 30px;
+  background-color: rgba(0, 0, 0, 0.85);
   position: absolute;
   right: 0;
-  top: 90px;
+  top: 0;
+  width: 100%;
   z-index: 999;
-  width: 236px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -314,38 +321,35 @@ export default {
   left: 0;
 }
 .navtitle {
-  height: 80px;
-  line-height: 80px;
-  background-color: #fff;
-  color: #000;
-  text-align: center;
+  height: 140px;
+  line-height: 140px;
+  color: #fff;
+  text-align: left;
   border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  img {
+    margin-top: 50px;
+    width: 40px;
+    height: 40px;
+  }
 }
 .navitems {
-  opacity: 0.6;
-  background: #000000;
-  // background: rgba(0, 0, 0, 0.6);
   width: 100%;
-  height: 60px;
+  // background-color: rgba(0, 0, 0, 0.85);
+  padding: 30px 0;
   .text {
-    text-align: center;
     font-size: 28px;
     font-family: PingFangSC, PingFangSC-Medium;
     font-weight: 400;
-    text-align: center;
+    text-align: left;
     color: #ffffff;
-    line-height: 40px;
-    padding: 10px 0;
-    // opacity: 0.6;
     a {
       display: block;
       font-size: 28px;
-      font-family: PingFangSC, PingFangSC-Medium;
-      font-weight: 400;
-      text-align: center;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
       color: #ffffff;
-      line-height: 40px;
-      // opacity: 0.6;
     }
     span {
       display: block;
