@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-14 07:28:54
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-04-14 08:00:33
+ * @LastEditTime: 2021-05-08 23:01:20
  * @Descripttion: 
 -->
 <template>
@@ -58,10 +58,6 @@ export default {
         margin: 0 auto;
       }
     }
-  }
-  .content {
-      width: 1110px;
-      margin: 0 auto;
   }
 }
 </style>

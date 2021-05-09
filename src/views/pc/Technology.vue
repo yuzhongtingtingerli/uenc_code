@@ -2,100 +2,121 @@
  * @Author: yaoyuting
  * @Date: 2021-04-13 07:55:01
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-04-22 08:28:30
+ * @LastEditTime: 2021-05-09 10:32:10
  * @Descripttion: 
 -->
 <template>
   <div class="Technology">
     <div class="banner">
       <div class="logo">
-        <router-link to="/pc/synopsis"><img src="@/assets/images/index/奖励@2x.png" alt=""/></router-link>
+        <router-link to="/pc/synopsis"
+          ><img src="@/assets/images/index/奖励@2x.png" alt=""
+        /></router-link>
       </div>
       <div class="content">
         <div class="list">{{ $t("index.index1") }}</div>
       </div>
     </div>
     <div class="introduced">
-      <div class="about">
-        <div class="subTitle">{{ $t("Technology.TechnologyTitle") }}</div>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <el-card class="box-card">
-              <div class="level3title">
-                <div class="icon"><img src="@/assets/images/right.png" alt="" /></div>
-                {{ $t("Technology.DHT") }}
+      <div class="about_bg">
+        <div class="about">
+          <div class="sub_title">{{ $t("Technology.TechnologyTitle") }}</div>
+          <div class="list">
+            <div class="item">
+              <div class="images">
+                <img src="@/assets/images/index/网状网络@2x.png" alt="" />
               </div>
+              <div class="title">{{ $t("Technology.DHT") }}</div>
               <div class="content">{{ $t("Technology.DHTText") }}</div>
-            </el-card>
-          </el-col>
-          <el-col :span="12">
-            <el-card class="box-card">
-              <div class="level3title">
-                <div class="icon"><img src="@/assets/images/right.png" alt="" /></div>
-                {{ $t("Technology.DPOW") }}
-              </div>
-              <div class="content">{{ $t("Technology.DPOWText") }}</div>
-            </el-card>
-          </el-col>
-          <el-col :span="12">
-            <el-card class="box-card">
-              <div class="level3title">
-                <div class="icon"><img src="@/assets/images/right.png" alt="" /></div>
-                {{ $t("Technology.Cross") }}
-              </div>
-              <div class="content">{{ $t("Technology.CrossaText") }}</div>
-            </el-card>
-          </el-col>
-          <el-col :span="12">
-            <el-card class="box-card">
-              <div class="level3title">
-                <div class="icon"><img src="@/assets/images/right.png" alt="" /></div>
-                {{ $t("Technology.Verifiable") }}
-              </div>
-              <div class="content">{{ $t("Technology.VerifiableText") }}</div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="features">
-        <div class="subTitle">{{ $t("Technology.Characteristic") }}</div>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <ul>
-              <li>
-                <div class="title5leve">{{ $t("Technology.Decentralization") }}</div>
-                <div class="content">{{ $t("Technology.DecentralizationText") }}</div>
-              </li>
-              <li>
-                <div class="title5leve">{{ $t("Technology.Privacy") }}</div>
-                <div class="content">{{ $t("Technology.PrivacyText") }}</div>
-              </li>
-              <li>
-                <div class="title5leve">{{ $t("Technology.concurrency") }}</div>
-                <div class="content">{{ $t("Technology.concurrencyText") }}</div>
-              </li>
-              <li>
-                <div class="title5leve">{{ $t("Technology.speed") }}</div>
-                <div class="content">{{ $t("Technology.speedText") }}</div>
-              </li>
-              <li>
-                <div class="title5leve">{{ $t("Technology.cost") }}</div>
-                <div class="content">{{ $t("Technology.costText") }}</div>
-              </li>
-            </ul>
-          </el-col>
-          <el-col :span="12">
-            <div class="all_center">
-              <img src="@/assets/images/right.png" alt="" />
             </div>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="path">
-          <div class="subTitle">{{ $t("Technology.roadmap") }}</div>
-          <div class="all_center">
-            <img src="@/assets/images/right.png" alt="" />
+            <div class="item">
+              <div class="images">
+                <img src="@/assets/images/index/共识算法@2x.png" alt="" />
+              </div>
+              <div class="title">{{ $t("Technology.DPOW") }}</div>
+              <div class="content">{{ $t("Technology.DPOWText") }}</div>
+            </div>
           </div>
+          <div class="list">
+            <div class="item">
+              <div class="images">
+                <img src="@/assets/images/index/存储技术@2x.png" alt="" />
+              </div>
+              <div class="title">{{ $t("Technology.Cross") }}</div>
+              <div class="content">{{ $t("Technology.CrossaText") }}</div>
+            </div>
+            <div class="item">
+              <div class="images">
+                <img src="@/assets/images/index/可验证计算@2x.png" alt="" />
+              </div>
+              <div class="title">{{ $t("Technology.Verifiable") }}</div>
+              <div class="content">{{ $t("Technology.VerifiableText") }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="features_bg">
+        <div class="features">
+          <div class="sub_title">{{ $t("Technology.Characteristic") }}</div>
+          <div class="list">
+            <div class="item">
+              <div class="num">01</div>
+              <div class="title">{{ $t("Technology.Decentralization") }}</div>
+              <div class="content">{{ $t("Technology.DecentralizationText") }}</div>
+            </div>
+            <div class="images">
+              <img src="@/assets/images/index/去中心化@2x.png" alt="" />
+            </div>
+          </div>
+          <div class="list">
+            <div class="images">
+              <img src="@/assets/images/index/隐私及安全@2x.png" alt="" />
+            </div>
+            <div class="item">
+              <div class="num">02</div>
+              <div class="title">{{ $t("Technology.Privacy") }}</div>
+              <div class="content">{{ $t("Technology.PrivacyText") }}</div>
+            </div>
+          </div>
+          <div class="list">
+            <div class="item">
+              <div class="num">03</div>
+              <div class="title">{{ $t("Technology.concurrency") }}</div>
+              <div class="content">{{ $t("Technology.concurrencyText") }}</div>
+            </div>
+            <div class="images">
+              <img src="@/assets/images/index/高并发@2x.png" alt="" />
+            </div>
+          </div>
+          <div class="list">
+            <div class="images">
+              <img src="@/assets/images/index/高速度@2x.png" alt="" />
+            </div>
+            <div class="item">
+              <div class="num">04</div>
+              <div class="title">{{ $t("Technology.speed") }}</div>
+              <div class="content">{{ $t("Technology.speedText") }}</div>
+            </div>
+          </div>
+          <div class="list">
+            <div class="item">
+              <div class="num">05</div>
+              <div class="title">{{ $t("Technology.cost") }}</div>
+              <div class="content">{{ $t("Technology.costText") }}</div>
+            </div>
+            <div class="images">
+              <img src="@/assets/images/index/低成本@2x.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="path_bg">
+        <div class="path">
+          <div class="subTitle">{{ $t("Technology.roadmap") }}</div>
+          <div class="images">
+            <img src="@/assets/images/index/路线图.png" alt="" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -108,9 +129,9 @@ export default {};
 <style lang="less" scoped>
 .Technology {
   .banner {
-    height: 750px;
+    height: 900px;
     background-image: url("../../assets/images/index/背景@2x.png");
-    background-size: cover;
+    background-size: 1920px 910px;
     background-position: center center;
     padding-top: 203px;
     .logo {
@@ -121,77 +142,166 @@ export default {};
         width: 100%;
       }
     }
-    .content {
-      text-align: center;
-      line-height: 30px;
-      margin-top: 48px;
-      .list {
-        width: 900px;
-        margin: 0 auto;
-      }
-    }
   }
   .introduced {
-    width: 1000px;
-    margin: 0 auto;
+    .about_bg {
+      background-image: url("../../assets/images/index/js_bg.png");
+      background-size: cover;
+      background-position: center center;
+    }
+    .features_bg {
+      background-image: url("../../assets/images/index/tx_bg.png");
+      background-size: cover;
+      background-position: center center;
+    }
+    .path_bg {
+      background-image: url("../../assets/images/index/path_bg.png");
+      background-size: cover;
+      background-position: center center;
+    }
+    .sub_title {
+      border-top: 4px solid #0d051f;
+      font-size: 50px;
+      font-family: PingFangSC, PingFangSC-Medium;
+      font-weight: 500;
+      text-align: left;
+      color: #0d051f;
+      padding-top: 40px;
+    }
     .about {
-      margin-bottom: 150px;
-      .el-card {
-        margin: 30px 20px;
-        padding: 50px;
-        height: 360px;
-        box-sizing: border-box;
-        border-radius: 30px;
-        .level3title {
-          text-align: center;
-          margin-bottom: 30px;
-          position: relative;
-          .icon {
-            position: absolute;
-            top: 0;
-            left: 0;
+      width: 1300px;
+      margin: 0 auto;
+      padding-top: 140px;
+      padding-bottom: 165px;
+      .list {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 60px;
+        margin-bottom: 20px;
+        .item {
+          width: 520px;
+          .images {
+            width: 520px;
+            height: 300px;
             img {
-              width: 40px;
-              height: 40px;
+              width: 100%;
+              height: 100%;
             }
           }
-        }
-        .content {
-          font-size: 14px;
-          line-height: 30px;
+          .title {
+            font-size: 40px;
+            font-family: PingFangSC, PingFangSC-Medium;
+            font-weight: 500;
+            text-align: left;
+            color: #0d051f;
+            margin-top: 10px;
+          }
+          .content {
+            font-size: 16px;
+            font-family: PingFangSC, PingFangSC-Medium;
+            font-weight: 500;
+            text-align: left;
+            color: #0d051f;
+            line-height: 32px;
+            margin-top: 30px;
+          }
         }
       }
     }
     .features {
-        margin-bottom: 200px;
-      .subTitle {
-        text-align: left !important;
-      }
-      .all_center {
-          height: 450px;
-        img {
-          width: 390px;
-          height: 330px;
+      width: 1300px;
+      margin: 0 auto;
+      padding-top: 117px;
+      padding-bottom: 200px;
+      .list {
+        display: flex;
+        justify-content: space-between;
+        .item {
+          width: 480px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .num {
+            font-size: 20px;
+            font-family: Futura, Futura-MediumItalic;
+            font-weight: MediumItalic;
+            text-align: left;
+            color: #0d051f;
+            line-height: 27px;
+            border-bottom: 1px solid #0d051f;
+          }
+          .title {
+            font-size: 40px;
+            font-family: PingFangSC, PingFangSC-Medium;
+            font-weight: 500;
+            text-align: left;
+            color: #0d051f;
+            line-height: 56px;
+            margin-top: 37px;
+            margin-bottom: 30px;
+          }
+          .content {
+            font-size: 16px;
+            font-family: PingFangSC, PingFangSC-Medium;
+            font-weight: 500;
+            text-align: left;
+            color: #0d051f;
+            line-height: 32px;
+          }
         }
       }
-      li {
-        // list-style-image: url(images/disc.gif);
-        list-style-type: circle;
+      .list:nth-child(2) {
+        img {
+          width: 463px;
+          height: 498px;
+        }
       }
-      .title5leve {
-        line-height: 50px;
+      .list:nth-child(3) {
+        img {
+          width: 434px;
+          height: 497px;
+        }
       }
-      .content {
-        font-size: 12px;
+      .list:nth-child(4) {
+        img {
+          width: 501px;
+          height: 440px;
+        }
+      }
+      .list:nth-child(5) {
+        img {
+          width: 536px;
+          height: 409px;
+        }
+      }
+      .list:nth-child(6) {
+        img {
+          width: 530px;
+          height: 375px;
+        }
       }
     }
     .path {
-        .subTitle {
-            text-align: left !important;
+      width: 1300px;
+      margin: 0 auto;
+      padding-top: 140px;
+      padding-bottom: 160px;
+      .subTitle {
+        font-size: 50px;
+        font-family: PingFangSC, PingFangSC-Medium;
+        font-weight: 500;
+        text-align: left;
+        color: #0d051f;
+        line-height: 70px;
+        margin-bottom: 74px;
+      }
+      .images {
+        background-color: #fff;
+        img {
+          width: 1300px;
+          height: 2000px;
         }
-        .all_center {
-          height: 700px;
-        }
+      }
     }
   }
 }
