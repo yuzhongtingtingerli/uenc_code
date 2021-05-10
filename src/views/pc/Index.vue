@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2019-08-29 23:45:36
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-10 19:47:28
+ * @LastEditTime: 2021-05-10 19:53:47
  * @Descripttion: 
 -->
 <template>
@@ -58,20 +58,19 @@
                   </div>
                 </el-col>
                 <el-col :span="24">
-                  <el-button type="text" class="btn_style">查看主网数据-></el-button>
+                  <el-button type="text" class="btn_style">查看主网数据<i class="el-icon-right"></i></el-button>
                 </el-col>
               </el-row>
             </el-col>
           </el-row>
         </div>
-       </div>
-        <TechnicalCharacteristics></TechnicalCharacteristics>
-
       </div>
-        <EconomicModels></EconomicModels>
-        <Blog :blogList="blogList" v-if="blogList.length > 0"></Blog>
-        <CoreMembers :msemberList="msemberList" v-if="msemberList.length > 0"></CoreMembers>
-        <Partners :partnerList="partnerList" v-if="partnerList.length > 0"></Partners>
+      <TechnicalCharacteristics></TechnicalCharacteristics>
+    </div>
+    <EconomicModels></EconomicModels>
+    <Blog :blogList="blogList" v-if="blogList.length > 0"></Blog>
+    <CoreMembers :msemberList="msemberList" v-if="msemberList.length > 0"></CoreMembers>
+    <Partners :partnerList="partnerList" v-if="partnerList.length > 0"></Partners>
   </div>
 </template>
 
@@ -157,7 +156,7 @@ export default {
         //     list = [];
         //   }
         // }
-        this.partnerList = dataList.rows
+        this.partnerList = dataList.rows;
       } else {
         this.$message.error(dataList.msg);
       }
@@ -166,14 +165,14 @@ export default {
 };
 </script>
 <style lang="less">
-  .w1352 {
-    width: 1352px;
-    margin: 0 auto;
-  }
-  .w1300 {
-    width: 1300px;
-    margin: 0 auto;
-  }
+.w1352 {
+  width: 1352px;
+  margin: 0 auto;
+}
+.w1300 {
+  width: 1300px;
+  margin: 0 auto;
+}
 </style>
 <style lang="less" scoped>
 .index {
@@ -201,7 +200,7 @@ export default {
     }
   }
 }
-.content1{
+.content1 {
   background-image: url("../../assets/images/index/indexbg1.png");
   background-size: cover;
   background-position: center center;
@@ -241,7 +240,7 @@ export default {
     }
   }
 }
-.content_bg{
+.content_bg {
   background-image: url("../../assets/images/index/indexbg4.png");
   background-size: cover;
   background-position: center center;
