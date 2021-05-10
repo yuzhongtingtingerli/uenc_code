@@ -64,14 +64,14 @@
             </el-col>
           </el-row>
         </div>
-        
-      </div>
+       </div>
         <TechnicalCharacteristics></TechnicalCharacteristics>
+
+      </div>
         <EconomicModels></EconomicModels>
         <Blog :blogList="blogList" v-if="blogList.length > 0"></Blog>
         <CoreMembers :msemberList="msemberList" v-if="msemberList.length > 0"></CoreMembers>
         <Partners :partnerList="partnerList" v-if="partnerList.length > 0"></Partners>
-    </div>
   </div>
 </template>
 
@@ -241,9 +241,14 @@ export default {
     }
   }
 }
-
+.content_bg{
+  background-image: url("../../assets/images/index/indexbg4.png");
+  background-size: cover;
+  background-position: center center;
+  padding-bottom: 300px;
+  padding-top: 100px;
+}
 .overview {
-  margin-top: 160px;
   img {
     width: 50px;
     height: 50px;

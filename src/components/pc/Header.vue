@@ -13,7 +13,7 @@
           :default-active="$route.path"
           class="el-menu-vertical-demo"
           mode="horizontal"
-          active-text-color="#00EBF2"
+          active-text-color="#fff"
         >
           <template v-for="navItem in navList">
             <el-submenu
@@ -59,26 +59,29 @@
             :default-active="$route.path"
             class="el-menu-vertical-demo"
             mode="horizontal"
-            active-text-color="#00EBF2"
+            active-text-color="#fff"
           >
             <el-menu-item index="/pc/community/Proposal">提案</el-menu-item>
             <el-menu-item index="/pc/community/Vote">投票</el-menu-item>
           </el-menu>
         </div>
         <div class="goBack" v-if="!isShowMenu && isGoback">
-          <el-button type="text" @click="goBack"><<返回</el-button>
+          <el-button type="text" @click="goBack"> 返回 </el-button>
         </div>
         <div class="login" v-if="isLogin">
           <el-button plain size="small" @click="login" class="login_style">登录/注册</el-button>
         </div>
         <div class="login" v-if="!isLogin">
-          <el-menu class="el-menu-vertical-demo" mode="horizontal" active-text-color="#00EBF2">
+          <el-menu class="el-menu-vertical-demo" mode="horizontal" active-text-color="#fff">
             <el-submenu index="userInfo">
-              <template slot="title">{{ userName }}</template>
-              <el-menu-item index="2-1" v-if="usersStatus == '1'" @click="check"
+              <template slot="title">{{ userName }} </template>
+              
+              <el-menu-item index="2-2" v-if="usersStatus == '1'" @click="check"
                 >绑定钱包</el-menu-item
               >
-              <el-menu-item index="2-2" @click="logout">退出登录</el-menu-item>
+              <el-menu-item index="2-3" v-else @click="getUsersAddress">查看钱包</el-menu-item>
+              <el-menu-item index="2-1" @click="logout">退出登录</el-menu-item>
+
             </el-submenu>
           </el-menu>
         </div>
@@ -90,7 +93,7 @@
     <div
       :class="dialogVisible ? 'block dialog' : 'none dialog'"
       id="dialog"
-      :style="`width:${width}px;height:${height}px`"
+      :style="`width:100vw;height:100vh`"
     >
       <div class="details">
         <div class="close" @click="close">x</div>
@@ -107,7 +110,7 @@
 </template>
 <script>
 import { navList } from "@/assets/server/navServer.js";
-import { WebLogout, CheckUsersStatus } from "@/assets/server/api.js";
+import { WebLogout, CheckUsersStatus ,GetUsersAddress} from "@/assets/server/api.js";
 import Login from "./Login.vue";
 import CheckUser from "./CheckUser.vue";
 export default {
@@ -191,6 +194,12 @@ export default {
     // 监听（绑定）滚轮 滚动事件
   },
   methods: {
+    async getUsersAddress(){
+      const data = await GetUsersAddress(this.userName);
+      if (data.code==0) {
+        console.log(data.data);
+      }
+    },
     async checkUsersStatus() {
       const data = await CheckUsersStatus(this.userName);
       this.usersStatus = data.data;
@@ -241,9 +250,11 @@ export default {
       this.isShowMenu = true;
     },
     login() {
-      this.$refs.login.getCaptchaImage();
       this.dialogVisible = true;
       this.dialogType = "login";
+      this.$nextTick(()=>{
+        this.$refs.login.getCaptchaImage();
+      })
     },
     check() {
       this.dialogVisible = true;
@@ -320,8 +331,6 @@ export default {
       background-color: rgba(0, 0, 0, 0);
       margin: 0 20px;
       font-size: 20px;
-      font-family: PingFangSC, PingFangSC-Regular;
-      font-weight: 400;
       text-align: center;
       color: #ffffff;
     }
@@ -330,7 +339,7 @@ export default {
     width: 120px;
     height: 40px;
     opacity: 1;
-    border: 1px solid #ffffff;
+    // border: 1px solid #ffffff;
     border-radius: 11px;
     // line-height: 40px;
   }
@@ -342,13 +351,13 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
-  bottom: 0;
-  right: 0;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .details {
-    width: 400px;
-    margin: 200px auto;
+    width: 600px;
     background-color: #fff;
     position: relative;
     border-radius: 10px;
@@ -375,27 +384,39 @@ export default {
   display: none;
 }
 .block {
-  display: block;
+  display: flex;
 }
 </style>
 
-<style>
+<style lang="less">
 .el-menu-vertical-demo {
   /* margin-top: 25px; */
   background-color: rgba(0, 0, 0, 0);
   padding: 20px 0;
   box-sizing: border-box;
+  .el-menu--horizontal{
+    border-bottom: 0px solid #000;
+     .el-menu-item {
+      height: 56px;
+      line-height: 56px;
+    }
+    
+  }
+  .el-submenu__icon-arrow{
+    font-size: 16px;
+  }
+  
+  .el-submenu__title i{
+    color: #fff;
+  }
 }
-.el-menu--horizontal > .el-menu-item {
-  height: 56px;
-  line-height: 56px;
-}
+.el-menu--horizontal>.el-submenu .el-submenu__icon-arrow{
+    margin-left: 0;
+  }
 .el-menu.el-menu--horizontal {
   border-bottom: 0px solid #000;
 }
-.el-icon-arrow-down:before {
-  content: "";
-}
+
 .el-submenu.is-opened .el-submenu__title {
   background-color: rgba(0, 0, 0, 0);
 }
@@ -405,75 +426,65 @@ export default {
   /* width: 100px; */
   text-align: center;
 }
-.el-menu--horizontal > .el-submenu .el-submenu__title:hover {
-  background-color: #01192e;
-  font-size: 26px;
-  font-family: PingFangSC, PingFangSC-Semibold;
-  font-weight: 600;
-  text-align: center;
-  color: #ffffff;
-  line-height: 56px;
-}
+
 .el-menu--horizontal > .el-menu-item:not(.is-disabled):focus,
 .el-menu--horizontal > .el-menu-item:not(.is-disabled):hover,
 .el-menu--horizontal > .el-submenu .el-submenu__title:hover {
   background-color: rgba(0, 0, 0, 0);
   font-size: 26px;
-  font-family: PingFangSC, PingFangSC-Semibold;
-  font-weight: 600;
-  text-align: center;
+  text-align: left;
   color: #ffffff;
   line-height: 56px;
 }
 .el-submenu__title .el-menu--horizontal {
-  background-color: #01192e;
+  background-color: #1d3244;
 }
-.el-menu--horizontal .el-menu .el-menu-item {
+.el-menu--horizontal .el-menu{
   background-color: #01192e;
-  width: 160px;
-  height: 50px;
-  line-height: 50px;
+  width: 220px;
+  .el-menu-item {
+    background-color: #01192e;
+    width: 220px;
+    height: 56px;
+    font-size: 18px;
+    line-height: 56px;
+    border: none;
+  }
+  .el-menu-item:hover {
+    font-size: 26px;
+    text-align: left;
+    color: #ffffff;
+    border: none;
+  }
 }
-.el-menu--horizontal .el-menu .el-menu-item:hover {
-  background-color: #01192e;
-  font-size: 26px;
-  font-family: PingFangSC, PingFangSC-Semibold;
-  font-weight: 600;
-  text-align: center;
-  color: #ffffff;
-  line-height: 56px;
-}
+ 
 .el-menu {
   background-color: rgba(0, 0, 0, 0);
 }
 .el-menu--horizontal > .el-submenu:last-child {
-  border: 1px solid rgba(255, 255, 255, 0);
+  border: none
 }
-.el-menu--horizontal > .el-submenu:last-child .el-submenu__title {
-}
-.el-menu--horizontal > .el-submenu .el-submenu__icon-arrow {
-  display: none;
-}
+
+
 .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
   border: none;
 }
 .el-menu--horizontal > .el-menu-item {
   font-size: 26px;
-  font-family: PingFangSC, PingFangSC-Regular;
-  font-weight: 400;
   text-align: center;
   color: #ffffff;
   line-height: 56px;
+  margin: 0 20px;
+}
+.login{
+  .el-submenu{
+  }
 }
 .el-menu--horizontal > .el-submenu .el-submenu__title {
   font-size: 26px;
-  font-family: PingFangSC, PingFangSC-Regular;
-  font-weight: 400;
   text-align: center;
   color: #ffffff;
   line-height: 56px;
 }
-.el-menu--horizontal > .el-menu-item.is-active {
-  /* border: none; */
-}
+
 </style>

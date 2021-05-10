@@ -77,7 +77,7 @@ export default {};
     margin: 100px 0;
   }
   .vertical_center {
-    height: 508px;
+    padding: 130px 0;
     p{
       font-size: 20px;
       color: #0d051f;

@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="Login">
-    <img class="logo" src="@/assets/images/index/1-2.png" alt="" />
+    <img class="logo" src="@/assets/images/index/logo.png" alt="" />
     <el-form v-if="type === 'login'" :model="loginForm" class="demo-form-inline">
       <el-form-item label="">
         <el-input v-model="loginForm.loginName" placeholder="用户名"></el-input>
@@ -249,8 +249,7 @@ export default {
 .Login{
   text-align: center;
   .logo{
-    width: 164px;
-    height: 112px;
+    height: 90px;
     margin: 36px auto;
   }
   .el-button{

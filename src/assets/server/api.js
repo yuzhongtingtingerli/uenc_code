@@ -54,3 +54,5 @@ export const GetPoll = p => post('/system/proposal/poll', p);
 export const GetDictList = p => post('/system/dict/data/list1', p);
 // 添加提案
 export const AddProposal = p => post('/system/proposal/add1', p);
+// 获取账户地址-个人信息展示用
+export const GetUsersAddress = id => get(`/system/user/getUsersAddress/${id}`);

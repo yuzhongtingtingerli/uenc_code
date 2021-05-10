@@ -39,7 +39,7 @@ export default {};
 
 <style lang="less" scoped>
 .EconomicModels {
-  margin: 200px 0 100px;
+  margin-bottom:  100px;
   .subTitle {
     padding-left: 460px;
     margin-bottom: 40px;
