@@ -2,53 +2,58 @@
  * @Author: yaoyuting
  * @Date: 2021-04-18 18:04:59
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-07 19:36:14
+ * @LastEditTime: 2021-05-10 10:53:43
  * @Descripttion: 
 -->
 <template>
   <div class="Proposal">
-    <div class="sub_title">欢迎发布新的提案</div>
-    <div class="search">
-      <div class="tpp">
-        <el-input
-          v-model="searchForm.title"
-          placeholder="输入提案标题"
-          class="input_style"
-        ></el-input>
-        <el-select v-model="searchForm.status" placeholder="选择提案状态" class="select_style">
-          <el-option
-            v-for="item in statusList"
-            :key="item.dictValue"
-            :label="item.dictLabel"
-            :value="item.dictValue"
-          ></el-option>
-        </el-select>
-      </div>
-      <div class="bottom">
-        <el-button type="primary" @click="search">查询</el-button>
-        <router-link to="/m/community/Proposal/Add"
-          ><el-button type="primary">发布</el-button></router-link
-        >
+    <div class="banner">
+      <div class="sub_title">欢迎发布新的提案</div>
+      <div class="search">
+        <div class="tpp">
+          <input
+            type="text"
+            v-model="searchForm.title"
+            class="el-input__inner"
+            placeholder="输入提案标题"
+          />
+          <el-select v-model="searchForm.status" placeholder="选择提案状态" class="select_style">
+            <el-option
+              v-for="item in statusList"
+              :key="item.dictValue"
+              :label="item.dictLabel"
+              :value="item.dictValue"
+            ></el-option>
+          </el-select>
+        </div>
+        <div class="bottom">
+          <el-button type="primary" @click="search">查询</el-button>
+          <router-link to="/m/community/Proposal/Add"
+            ><el-button type="primary"><i class="el-icon-plus"></i> 发布</el-button></router-link
+          >
+        </div>
       </div>
     </div>
-    <template v-for="list in proposalList">
-      <div class="details" @click="details(list.id)" :key="list.id">
-        <div class="top">
-          <div class="num">{{ list.id }}</div>
-          <div class="right">
-            <div class="title">{{ list.title }}</div>
-            <div class="date">{{ list.createTime }}</div>
+    <div class="detalis_bg">
+      <template v-for="list in proposalList">
+        <div class="details" @click="details(list.id)" :key="list.id">
+          <div class="top">
+            <div class="num">{{ list.id }}</div>
+            <div class="right">
+              <div class="title">{{ list.title }}</div>
+              <div class="date">{{ list.createTime }}</div>
+            </div>
+          </div>
+          <div class="content">
+            <div class="bottom">
+              <div class="people">提议人:{{ list.name }}</div>
+              <div class="status">状态：{{ getStatus(list.status) }}</div>
+            </div>
+            <div class="text" v-html="list.summary">{{ list.summary }}</div>
           </div>
         </div>
-        <div class="content">
-          <div class="bottom">
-            <div class="people">提议人:{{ list.name }}</div>
-            <div class="status">状态：{{ getStatus(list.status) }}</div>
-          </div>
-          <div class="text" v-html="list.summary">{{ list.summary }}</div>
-        </div>
-      </div>
-    </template>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -128,69 +133,92 @@ export default {
 
 <style lang="less" scoped>
 .Proposal {
-  width: 750px;
-  padding-top: 60px;
-  .sub_title {
-    font-size: 28px;
-    font-family: PingFangSC, PingFangSC-Medium;
-    font-weight: 500;
-    text-align: left;
-    color: #333333;
-    line-height: 40px;
-    margin-left: 30px;
-    margin-bottom: 28px;
+  .banner {
+    height: 372 * 2px;
+    background-image: url("../../assets/imagesm/ta/banner.png");
+    background-size: cover;
+    background-position: center center;
+    padding: 0 32px;
+    .sub_title {
+      font-size: 44px;
+      font-family: PingFang-SC-Heavy, PingFang-SC;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 60px;
+      margin-bottom: 28px;
+      padding-top: 148 * 2px;
+    }
+    .search {
+      .tpp {
+        margin-bottom: 54px;
+        .el-input__inner {
+          line-height: 64px;
+          width: 343 * 2px;
+          height: 38 * 2px;
+          background: #ffffff;
+          border-radius: 8px;
+          font-size: 24px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #999999;
+          line-height: 34px;
+          margin-bottom: 30px;
+        }
+        .select_style {
+          width: 126 * 2px;
+          height: 76px;
+          background: #ffffff;
+          border-radius: 8px;
+        }
+      }
+      .bottom {
+        text-align: center;
+        margin-bottom: 120px;
+        display: flex;
+        justify-content: space-around;
+        .el-button {
+          padding: 0;
+          margin: 0;
+          width: 109 * 2px;
+          height: 64px;
+          border-radius: 8px;
+          border: 4px solid #ffffff;
+          background-color: rgba(0, 0, 0, 0);
+          font-size: 28px !important;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #ffffff;
+        }
+      }
+    }
   }
-  .search {
-    .tpp {
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 30px;
-      .el-input {
-        width: auto;
-      }
-    }
-    .bottom {
-      text-align: center;
-      margin-bottom: 120px;
-      .el-button {
-        padding: 0;
-        margin: 0;
-        width: 160px;
-        height: 64px;
-        line-height: 64px;
-        opacity: 1;
-        background: #4c67ef;
-        border: 4px solid #ffffff;
-        border-radius: 20px;
-        font-size: 24px;
-        font-family: PingFangSC, PingFangSC-Regular;
-        font-weight: 400;
-        color: #ffffff;
-        line-height: 34px;
-      }
-    }
+  .detalis_bg {
+    background-image: url("../../assets/imagesm/ta/bg.png");
+    // background-size: cover;
+    // background-position: center center;
+    background-size: 750px;
   }
   .details {
     cursor: pointer;
-    color: #000;
-    margin-bottom: 60px;
+    padding-bottom: 86px;
     .top {
       display: flex;
       justify-content: flex-start;
+      height: 77*2px;
+      padding-top: 48px;
       .num {
-        margin-left: 34px;
         width: 72px;
         height: 72px;
-        opacity: 1;
-        background: #5459ff;
-        border-radius: 12px;
-        font-size: 24px;
-        font-family: PingFangSC, PingFangSC-Medium;
-        font-weight: 500;
-        text-align: center;
-        color: #ffffff;
         line-height: 72px;
+        text-align: center;
+        background: #6624fa;
+        border-radius: 12px;
+        margin-left: 30px;
         margin-right: 30px;
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ffffff;
       }
       .title {
         font-size: 28px;
@@ -218,14 +246,14 @@ export default {
       font-weight: 400;
       text-align: left;
       color: #656565;
-      line-height: 36px;
+      line-height: 34px;
       background: #f6f6f6;
       .bottom {
         display: flex;
         justify-content: space-between;
       }
       .text {
-        height: 180px;
+        height: 206px;
         overflow: hidden;
         margin-top: 20px;
       }
@@ -235,32 +263,23 @@ export default {
 </style>
 
 <style lang="less">
-.input_style {
-  margin-left: 30px;
-  .el-input__inner {
-    line-height: 64px;
-    width: 510px;
-    height: 64px;
-    background: #f3f4f5;
-    border-radius: 8px;
+.banner {
+  .el-input {
+    position: static;
   }
-}
-.select_style {
-  margin-left: 10px;
+  .el-select {
+    position: static;
+  }
+  .el-input__suffix {
+    position: static;
+    margin-left: -60px;
+  }
   .el-input__inner {
-    border: none;
-    width: 202px;
-    height: 64px;
-    font-size: 20px;
-    font-family: PingFangSC, PingFangSC-Regular;
+    font-size: 24px !important;
+    font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
-    text-align: left;
-    color: #9a9a9a;
-    // line-height: 64px;
-    padding-left: 0;
-  }
-  .el-input__icon {
-    line-height: 64px;
+    color: #999999;
+    line-height: 34px;
   }
 }
 </style>
