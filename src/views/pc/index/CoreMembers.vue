@@ -2,14 +2,14 @@
  * @Author: yaoyuting
  * @Date: 2021-04-12 21:25:05
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-02 12:09:56
+ * @LastEditTime: 2021-05-10 20:03:52
  * @Descripttion: 
 -->
 <template>
   <div class="CoreMembers">
     <div class="w1352 flex">
       <div class="userList">
-        <div class="level2title">{{ $t("index.members") }}</div>
+        <div class="level2title" @click="goMore()">{{ $t("index.members") }}</div>
         <div class="banner">
             <div :class="introduce.usersId === msember.usersId?'border':''"  v-for="msember in msemberList" :key="msember.usersId">
               <img :src="msember.images" alt="" @click="tab(msember.usersId)" />
@@ -77,6 +77,7 @@ export default {
   }
   
   .level2title {
+    cursor: pointer;
     line-height: 60px;
     font-size: 50px;
     color: #333333;

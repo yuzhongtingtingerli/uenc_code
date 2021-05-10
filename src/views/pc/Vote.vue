@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-18 18:04:59
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-10 19:38:46
+ * @LastEditTime: 2021-05-10 20:28:52
  * @Descripttion: 
 -->
 <template>
@@ -11,7 +11,7 @@
       <el-form :inline="true" :model="searchForm" class="demo-form-inline">
         <el-form-item label="">
           <el-input
-           class="title_bn"
+            class="title_bn"
             v-model="searchForm.title"
             placeholder="输入提案标题"
             style="width: 320px"
@@ -19,15 +19,14 @@
         </el-form-item>
         <el-form-item label="">
           <el-select
-              class="status_bn"
-
+            class="status_bn"
             v-model="searchForm.status"
             placeholder="选择提案状态"
             clearable
             style="width: 320px"
           >
             <el-option
-            class="statusItem"
+              class="statusItem"
               v-for="item in statusList"
               :key="item.dictValue"
               :label="item.dictLabel"
@@ -43,54 +42,71 @@
     <div class="content">
       <div class="w1300">
         <template v-for="list in proposalList">
-        <div class="details"  :key="list.id">
-          <div class="head">
-            <div class="num">{{ list.id }}</div>
-            <div class="cen">
-              <div class="title" @click="details(list.id)">{{ list.title }}</div>
-              <div class="bottom">
-                <div class="people">提议人:{{ list.name }}</div>
-                <div class="date">投票截止时间：{{ list.deadline }}</div>
-                <div class="status">状态：{{ getStatus(list.status) }}</div>
+          <div class="details" :key="list.id">
+            <div class="head">
+              <div class="num">{{ list.id }}</div>
+              <div class="cen">
+                <div class="title" @click="details(list.id)">{{ list.title }}</div>
+                <div class="bottom">
+                  <div class="people">提议人:{{ list.name }}</div>
+                  <div class="date">投票截止时间：{{ list.deadline }}</div>
+                  <div class="status">状态：{{ getStatus(list.status) }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text" v-html="list.summary">{{ list.summary }}</div>
+
+            <div class="votes">
+              <div class="num">
+                <span>{{ list.approve }}</span>
+                <span class="r">{{ list.oppose }}</span>
+              </div>
+              <div class="meddile">
+                <div
+                  class="approve"
+                  :style="
+                    `width: ${
+                      list.approve
+                        ? (
+                            (Number(list.approve) / (list.approve + Number(list.oppose))) *
+                            100
+                          ).toFixed(2)
+                        : 0
+                    }%`
+                  "
+                ></div>
+                <div class="center" v-if="list.approve > 0 && list.oppose > 0"></div>
+                <div
+                  class="oppose"
+                  :style="
+                    ` width: ${
+                      list.oppose
+                        ? (
+                            (list.oppose / (Number(list.approve) + Number(list.oppose))) *
+                            100
+                          ).toFixed(2)
+                        : 0
+                    }%`
+                  "
+                ></div>
+              </div>
+              <div class="foot">
+                <div @click="isPoll(1, list)">
+                  {{ list.userPollStatus === 1 ? "已" : "" }}赞成
+                  <img src="@/assets/images/icon/点赞 (1).png" alt="" />
+                </div>
+                <div @click="isPoll(2, list)" class="r">
+                  <img src="@/assets/images/icon/点赞.png" alt="" />{{
+                    list.userPollStatus === 2 ? "已" : ""
+                  }}反对
+                </div>
               </div>
             </div>
           </div>
-          
-          <div class="text" v-html="list.summary">{{ list.summary }}</div>
-
-          <div class="votes">
-            <div class="num">
-              <span>{{list.approve}}</span>
-              <span class="r">{{list.oppose}}</span>
-            </div>
-            <div class="meddile">
-              <div
-                class="approve"
-                :style="
-                  `width: ${
-                    list.approve ? (( Number(list.approve) / (list.approve + Number(list.oppose))) * 100).toFixed(2) : 0
-                  }%`
-                "
-              ></div>
-              <div class="center" v-if="list.approve>0&&list.oppose>0"></div>
-              <div
-                class="oppose"
-                :style="
-                  ` width: ${
-                    list.oppose ? (( list.oppose / (Number(list.approve) + Number(list.oppose))) * 100).toFixed(2) : 0
-                  }%`
-                "
-              ></div>
-            </div>
-            <div class="foot">
-              <div @click="isPoll(1,list)">赞成 <img src="@/assets/images/icon/点赞 (1).png" alt=""> </div>
-              <div @click="isPoll(2,list)" class="r"> <img src="@/assets/images/icon/点赞.png" alt=""> 反对</div>
-            </div>
-          </div>
-        </div>
-      </template>
+        </template>
       </div>
-     
+
       <div class="page">
         <el-pagination
           @size-change="handleSizeChange"
@@ -105,19 +121,19 @@
         </el-pagination>
       </div>
     </div>
-     <el-dialog
-        custom-class="vote-dialog"
-        title="投票数量"
-        :visible="dialogVisible"
-        width="600px"
-        :before-close="close">
-        <el-input v-model="numPoll" placeholder="请输入投票数量（不小于1000）"></el-input>
-        <div slot="footer" class="dialog-footer">
-          <div class="dialog-btn" @click="getPoll">绑 定</div>
-          <div class="dialog-btn close" @click="close">取 消</div>
-        </div>
-      </el-dialog>
-
+    <el-dialog
+      custom-class="vote-dialog"
+      title="投票数量"
+      :visible="dialogVisible"
+      width="600px"
+      :before-close="close"
+    >
+      <el-input v-model="numPoll" placeholder="请输入投票数量（不小于1000）"></el-input>
+      <div slot="footer" class="dialog-footer">
+        <div class="dialog-btn" @click="getPoll">绑 定</div>
+        <div class="dialog-btn close" @click="close">取 消</div>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -127,9 +143,9 @@ import { log } from "util";
 export default {
   data() {
     return {
-      statusPoll:'',
-      itemPoll:null,
-      numPoll:'',
+      statusPoll: "",
+      itemPoll: null,
+      numPoll: "",
       searchForm: {
         title: "",
         status: "",
@@ -146,9 +162,9 @@ export default {
       exec: false
     };
   },
-  created () {
+  created() {
     let loginName = localStorage.getItem("username");
-    this.searchForm.loginName = loginName
+    this.searchForm.loginName = loginName;
   },
   mounted() {
     this.getProposalList();
@@ -156,40 +172,40 @@ export default {
   },
   methods: {
     async isPoll(status, list) {
-      this.statusPoll = status
-      this.itemPoll = list
+      this.statusPoll = status;
+      this.itemPoll = list;
       const data = await DetailInfo({
         loginName: this.searchForm.loginName,
         id: list.id
-      })
-      if(data.code == 0) {
-        this.pollNumber = data.data.pollNumber
-        this.poll = data.data.poll
-        this.exec = data.data.exec
-        if(this.poll) {
-          if(this.pollNumber/1 < 1000) {
-            this.$message.error('余额至少1000以上才可以投票哦！')
+      });
+      if (data.code == 0) {
+        this.pollNumber = data.data.pollNumber;
+        this.poll = data.data.poll;
+        this.exec = data.data.exec;
+        if (this.poll) {
+          if (this.pollNumber / 1 < 1000) {
+            this.$message.error("余额至少1000以上才可以投票哦！");
           } else {
-            this.dialogVisible = true
+            this.dialogVisible = true;
           }
         } else {
-          this.$message.error('您没有投票权限！')
+          this.$message.error("您没有投票权限！");
         }
       }
     },
-    close(){
-      this.statusPoll=0;
-      this.dialogVisible = false
-      this.itemPoll=null
-      this.numPoll=''
+    close() {
+      this.statusPoll = 0;
+      this.dialogVisible = false;
+      this.itemPoll = null;
+      this.numPoll = "";
     },
     async getPoll() {
       let loginName = localStorage.getItem("username");
-      if(this.itemPoll.userPollStatus != '0') {
-        return this.$message.warning('已投票，请勿重复投递！');
+      if (this.itemPoll.userPollStatus != "0") {
+        return this.$message.warning("已投票，请勿重复投递！");
       }
-      if (this.numPoll <1000) {
-        return this.$message.warning('投票数量不得小于1000');
+      if (this.numPoll < 1000) {
+        return this.$message.warning("投票数量不得小于1000");
       }
       const data = await GetPoll({
         loginName: loginName,
@@ -197,11 +213,11 @@ export default {
         status: this.statusPoll,
         num: this.numPoll,
         mark: this.itemPoll.status
-      })
+      });
       if (data.code === 0) {
-        this.$message.success('投票成功！');
-        this.getProposalList()
-        this.close()
+        this.$message.success("投票成功！");
+        this.getProposalList();
+        this.close();
       } else {
         this.$message.error(dataList.msg);
       }
@@ -212,7 +228,7 @@ export default {
         dataList.rows.forEach(item => {
           item.summary = item.summary.replace(/\n/g, "<br>");
         });
-        this.total = dataList.total
+        this.total = dataList.total;
         this.proposalList = dataList.rows;
       } else {
         this.$message.error(dataList.msg);
@@ -242,99 +258,97 @@ export default {
     details(id) {
       this.$router.push({
         path: "/pc/community/Proposal/Details",
-        query: { id: id, type: 'vote', exec: this.exec}
+        query: { id: id, type: "vote", exec: this.exec }
       });
     },
     handleSizeChange(val) {
-      this.searchForm.pageSize = val
-      this.getProposalList()
+      this.searchForm.pageSize = val;
+      this.getProposalList();
     },
     handleCurrentChange(val) {
-      this.searchForm.pageNum = val
-      this.getProposalList()
+      this.searchForm.pageNum = val;
+      this.getProposalList();
     }
   }
 };
 </script>
 <style lang="less">
-.statusItem.el-select-dropdown__item{
+.statusItem.el-select-dropdown__item {
   height: 48px;
   line-height: 48px;
   font-size: 22px;
 }
-.Proposal{
-  .title_bn{
+.Proposal {
+  .title_bn {
     width: 670px !important;
     height: 78px;
-    input{
+    input {
       height: 78px;
       font-size: 32px;
     }
-    input::placeholder{
+    input::placeholder {
       font-size: 32px;
       color: #9a9a9a;
       height: 78px;
       line-height: 78px;
-    }       
+    }
   }
-  
-  .status_bn{
+
+  .status_bn {
     width: 270px !important;
     height: 78px;
-    input{
+    input {
       height: 78px;
       font-size: 32px;
-      
     }
-    i{
-        font-size: 24px!important;
-      }
-    input::placeholder{
+    i {
+      font-size: 24px !important;
+    }
+    input::placeholder {
       font-size: 32px;
       color: #9a9a9a;
       height: 78px;
       line-height: 78px;
-    } 
-    
+    }
   }
 }
-.vote-dialog{
+.vote-dialog {
   width: 600px;
   height: 417px;
   border-radius: 25px;
-  .el-dialog__header{
+  .el-dialog__header {
     padding: 30px 60px;
-    .el-dialog__title{
+    .el-dialog__title {
       font-size: 28px;
     }
-    .el-dialog__headerbtn{
+    .el-dialog__headerbtn {
       top: 30px;
     }
-    .el-dialog__close{
+    .el-dialog__close {
       font-size: 26px;
       color: #305bbc;
     }
   }
-  .el-dialog__body{
-      padding: 40px 60px 60px ;
-      .el-input__inner{
-        width: 480px;
-        height: 70px;
-        background: #ffffff;
-        border: 1px solid #999999;
-        border-radius: 3px;
-        font-size: 24px;
-        border: 1px solid #999999;
-      }
+  .el-dialog__body {
+    padding: 40px 60px 60px;
+    .el-input__inner {
+      width: 480px;
+      height: 70px;
+      background: #ffffff;
+      border: 1px solid #999999;
+      border-radius: 3px;
+      font-size: 24px;
+      border: 1px solid #999999;
     }
-  .el-dialog__footer{
+  }
+  .el-dialog__footer {
     padding-ottom: 60px;
-    .dialog-footer{
+    .dialog-footer {
       display: flex;
       justify-content: center;
     }
-    
-    .dialog-btn{
+
+    .dialog-btn {
       width: 158px;
       line-height: 70px;
       height: 70px;
@@ -346,14 +360,13 @@ export default {
       margin: 0 28px;
       cursor: pointer;
     }
-    .close{
+    .close {
       background: #afb7e0;
     }
   }
 }
 </style>
 <style lang="less" scoped>
-
 .Proposal {
   .btn {
     width: 200px;
@@ -367,7 +380,7 @@ export default {
     display: inline-block;
     margin-right: 20px;
   }
-  .search{
+  .search {
     height: 900px;
     background-image: url("../../assets/images/index/voteBanner.png");
     background-size: cover;
@@ -376,7 +389,7 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  .content{
+  .content {
     background-image: url("../../assets/images/index/votebg.png");
     background-size: cover;
     background-position: center center;
@@ -384,7 +397,7 @@ export default {
   }
   .details {
     margin-top: 86px;
-    .head{
+    .head {
       display: flex;
       align-items: center;
       .num {
@@ -398,34 +411,32 @@ export default {
         font-weight: bold;
         border-radius: 6px;
       }
-      .cen{
+      .cen {
         padding: 0 10px;
-        flex:1; 
-        .title{
+        flex: 1;
+        .title {
           font-size: 32px;
           color: #333;
         }
-        .bottom{
+        .bottom {
           display: flex;
           justify-content: space-between;
           font-size: 24px;
           color: #323232;
         }
       }
-      
     }
-    .text{
+    .text {
       padding: 18px 10px;
     }
     .votes {
-      
-      .num{
+      .num {
         display: flex;
         justify-content: space-between;
         font-size: 44px;
         color: #053ffb;
-        .r{
-          color: #F1594C;
+        .r {
+          color: #f1594c;
         }
       }
       .meddile {
@@ -434,23 +445,23 @@ export default {
         overflow: hidden;
         background: #ccc;
         display: flex;
-        .approve{
+        .approve {
           height: 40px;
-          background: linear-gradient(90deg,#4d71ff, #003cfb);
+          background: linear-gradient(90deg, #4d71ff, #003cfb);
         }
-        .oppose{
+        .oppose {
           height: 40px;
-          background: linear-gradient(270deg,#f78069, #ed4038);
+          background: linear-gradient(270deg, #f78069, #ed4038);
         }
       }
-      .foot{
+      .foot {
         display: flex;
         justify-content: space-between;
         margin-top: 14px;
-        div{
+        div {
           width: 164px;
           height: 54px;
-          background: linear-gradient(90deg,#4d71ff, #003cfb);
+          background: linear-gradient(90deg, #4d71ff, #003cfb);
           border-radius: 56px;
           font-size: 24px;
           color: #ffffff;
@@ -458,13 +469,13 @@ export default {
           justify-content: center;
           align-items: center;
           cursor: pointer;
-          img{
+          img {
             width: 24px;
             margin: 0 6px;
           }
         }
-        .r{
-          background: linear-gradient(270deg,#f78069, #ed4038);
+        .r {
+          background: linear-gradient(270deg, #f78069, #ed4038);
         }
       }
     }
