@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-18 18:04:59
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-10 18:27:51
+ * @LastEditTime: 2021-05-10 19:38:46
  * @Descripttion: 
 -->
 <template>
@@ -242,7 +242,7 @@ export default {
     details(id) {
       this.$router.push({
         path: "/pc/community/Proposal/Details",
-        query: { id: id, type: 'vote', exec: exec}
+        query: { id: id, type: 'vote', exec: this.exec}
       });
     },
     handleSizeChange(val) {

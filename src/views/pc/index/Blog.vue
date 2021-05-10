@@ -2,28 +2,33 @@
  * @Author: yaoyuting
  * @Date: 2021-04-11 18:24:56
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-04-27 07:17:27
+ * @LastEditTime: 2021-05-10 19:59:02
  * @Descripttion: 
 -->
 <template>
   <div class="Blog">
     <div class="w1352 box-card box-card-p20">
-      <el-row >
+      <el-row>
         <el-col :span="4">
           <div class="level2title">{{ $t("index.Blog") }}</div>
-          <router-link to="/pc/Blog" class="btn_style">进入博客 <i class="el-icon-right"></i></router-link>
+          <router-link to="/pc/Blog" class="btn_style"
+            >进入博客 <i class="el-icon-right"></i
+          ></router-link>
         </el-col>
         <el-col :span="20" class="pr">
           <div class="ra">
-            <div class="item" v-for="blog in blogList" :key="blog.blogId">
+            <div class="item" v-for="blog in blogList" :key="blog.blogId" @click="detalis(blog)">
               <div>
                 <img :src="blog.images" alt="" />
               </div>
               <div class="m">
-                <div class="level4title">{{blog.blogTitle}}</div>
+                <div class="level4title">{{ blog.blogTitle }}</div>
                 <div class="content" v-html="blog.text"></div>
               </div>
-              <div class="footerUser"><span>{{blog.createBy}}</span>{{blog.createTime}}</div>
+              <div class="footerUser">
+                <span>{{ blog.createBy }}</span
+                >{{ blog.createTime }}
+              </div>
               <!-- <div class="btn">
                 <router-link :to="{path: '/pc/Blog/Details', query: {id: blog.blogId}}">
                   <el-button type="text" size="mini">More</el-button>
@@ -41,9 +46,17 @@
 export default {
   props: {
     blogList: {
-      type: Array,
-    },
+      type: Array
+    }
   },
+  methods: {
+    detalis(blog) {
+      this.$router.push({
+        path: "/pc/Blog/Details",
+        query: { id: blog.blogId }
+      });
+    }
+  }
 };
 </script>
 
@@ -62,12 +75,12 @@ export default {
       color: #333333;
       margin-bottom: 80px;
     }
-    .btn_style{
+    .btn_style {
       font-size: 20px;
       color: #6624fa;
       display: block;
     }
-    
+
     .ra {
       padding: 0;
       margin: 0;
@@ -81,17 +94,19 @@ export default {
     .pr {
       overflow-x: scroll;
       margin-top: -180px;
-      scrollbar-width:none;/* firefox */
-      -ms-overflow-style:none;/* IE 10+ */
-      overflow-x:auto;
+      scrollbar-width: none; /* firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+      overflow-x: auto;
     }
-    .pr::-webkit-scrollbar {display:none}
+    .pr::-webkit-scrollbar {
+      display: none;
+    }
     .btn {
       text-align: center;
       padding-bottom: 5px;
     }
   }
-  .footerUser{
+  .footerUser {
     font-size: 16px;
     color: #8d8a9a;
     display: flex;
@@ -99,12 +114,13 @@ export default {
     padding: 10px 0 19px;
   }
   .item {
+    cursor: pointer;
     width: 280px;
-    margin-right:20px;
+    margin-right: 20px;
     padding: 0;
     background: #fff;
     height: 374px;
-    .m{
+    .m {
       padding: 0 20px;
     }
     .level4title {
@@ -119,7 +135,10 @@ export default {
       height: 74px;
       line-height: 24px;
       overflow: hidden;
-      display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
     }
   }
 }

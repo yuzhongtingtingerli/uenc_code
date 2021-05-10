@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-12 21:57:33
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-02 11:56:35
+ * @LastEditTime: 2021-05-10 19:51:42
  * @Descripttion: 
 -->
 <template>
@@ -28,19 +28,29 @@ export default {
   props: {
     partnerList: {
       type: Array
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
 .Partners {
-   margin: 80px 0 200px;
-    .imgs{
-      display: flex;
-      img {
-        height: 50px;
-      }
+  margin: 80px 0 200px;
+  .subTitle {
+    margin-bottom: 81px;
+    font-size: 50px;
+    font-family: PingFangSC, PingFangSC-Medium;
+    font-weight: 500;
+    text-align: center;
+    color: #333333;
+    line-height: 70px;
+  }
+  .imgs {
+    display: flex;
+    justify-content: space-around;
+    img {
+      height: 100px;
     }
+  }
 }
 </style>

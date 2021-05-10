@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-25 20:37:07
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-10 18:38:18
+ * @LastEditTime: 2021-05-10 19:30:36
  * @Descripttion: 
 -->
 <template>
@@ -125,7 +125,7 @@ export default {
         id: this.$route.query.id
       })
       if(data.code == 0) {
-        this.getProposaProposaData(this.ProposaData.id);
+        this.isPoll();
       }
     },
     async submit() {
