@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-23 17:17:07
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-03 21:13:17
+ * @LastEditTime: 2021-05-10 18:35:15
  * @Descripttion: 
  */
 import {get, gets, post, posts} from './server.js'
@@ -56,3 +56,19 @@ export const GetDictList = p => post('/system/dict/data/list1', p);
 export const AddProposal = p => post('/system/proposal/add1', p);
 // 获取账户地址-个人信息展示用
 export const GetUsersAddress = id => get(`/system/user/getUsersAddress/${id}`);
+// 获取用户角色
+export const GetUserRoleByLoginName = loginName => get(`/system/role/getUserRoleByLoginName/${loginName}`);
+// 全部完成
+export const AddImplPlanOver = p => post('/system/proposal/addImplPlanOver', p);
+// 判断是否为执行理事
+export const CheckIsExecDirector = p => post('/system/user/checkIsExecDirector', p);
+// 添加执行计划
+export const AddImplPlan = p => post('/system/proposal/addImplPlan', p);
+// 获取账户余额-投票时用
+export const GetUsersBalance = loginName => get(`/system/user/getUsersBalance/${loginName}`);
+// 提案状态更新
+export const DetailInfo = p => post('/system/proposal/detailInfo', p);
+
+
+
+

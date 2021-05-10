@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2021-04-18 18:04:59
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-03 21:48:29
+ * @LastEditTime: 2021-05-10 18:27:51
  * @Descripttion: 
 -->
 <template>
@@ -83,8 +83,8 @@
               ></div>
             </div>
             <div class="foot">
-              <div @click="statusPoll=1;itemPoll = list">赞成 <img src="@/assets/images/icon/点赞 (1).png" alt=""> </div>
-              <div @click="statusPoll=2;itemPoll = list" class="r"> <img src="@/assets/images/icon/点赞.png" alt=""> 反对</div>
+              <div @click="isPoll(1,list)">赞成 <img src="@/assets/images/icon/点赞 (1).png" alt=""> </div>
+              <div @click="isPoll(2,list)" class="r"> <img src="@/assets/images/icon/点赞.png" alt=""> 反对</div>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@
      <el-dialog
         custom-class="vote-dialog"
         title="投票数量"
-        :visible="statusPoll>0"
+        :visible="dialogVisible"
         width="600px"
         :before-close="close">
         <el-input v-model="numPoll" placeholder="请输入投票数量（不小于1000）"></el-input>
@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import { GetPollList, GetDictList, GetPoll } from "@/assets/server/api.js";
+import { GetPollList, GetDictList, GetPoll, DetailInfo } from "@/assets/server/api.js";
 import { log } from "util";
 export default {
   data() {
@@ -139,7 +139,11 @@ export default {
       statusList: [],
       currentPage: 1,
       proposalList: [],
-      total: 0
+      total: 0,
+      dialogVisible: false,
+      pollNumber: 0,
+      poll: false,
+      exec: false
     };
   },
   created () {
@@ -151,8 +155,31 @@ export default {
     this.getDictList();
   },
   methods: {
+    async isPoll(status, list) {
+      this.statusPoll = status
+      this.itemPoll = list
+      const data = await DetailInfo({
+        loginName: this.searchForm.loginName,
+        id: list.id
+      })
+      if(data.code == 0) {
+        this.pollNumber = data.data.pollNumber
+        this.poll = data.data.poll
+        this.exec = data.data.exec
+        if(this.poll) {
+          if(this.pollNumber/1 < 1000) {
+            this.$message.error('余额至少1000以上才可以投票哦！')
+          } else {
+            this.dialogVisible = true
+          }
+        } else {
+          this.$message.error('您没有投票权限！')
+        }
+      }
+    },
     close(){
       this.statusPoll=0;
+      this.dialogVisible = false
       this.itemPoll=null
       this.numPoll=''
     },
@@ -168,7 +195,8 @@ export default {
         loginName: loginName,
         proposalId: this.itemPoll.id,
         status: this.statusPoll,
-        num: this.numPoll
+        num: this.numPoll,
+        mark: this.itemPoll.status
       })
       if (data.code === 0) {
         this.$message.success('投票成功！');
@@ -214,7 +242,7 @@ export default {
     details(id) {
       this.$router.push({
         path: "/pc/community/Proposal/Details",
-        query: { id: id, type: 'vote'}
+        query: { id: id, type: 'vote', exec: exec}
       });
     },
     handleSizeChange(val) {
