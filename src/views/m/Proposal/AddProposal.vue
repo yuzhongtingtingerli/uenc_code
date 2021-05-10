@@ -2,12 +2,16 @@
  * @Author: yaoyuting
  * @Date: 2021-04-18 18:50:34
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-02 22:32:57
+ * @LastEditTime: 2021-05-10 11:42:24
  * @Descripttion: 
 -->
 <template>
   <div class="AddProposal">
-    <div class="title">发 起 提 案</div>
+    <div class="banner">
+      <div class="placeholder"></div>
+      <div class="title">发 起 提 案</div>
+    </div>
+
     <div class="content">
       <el-form :model="proposalForm" class="demo-form-inline">
         <el-form-item label="提案人">
@@ -40,7 +44,11 @@
           <el-input v-model="proposalForm.budget"></el-input>
         </el-form-item>
         <el-form-item label="投票结束时间">
-          <el-date-picker v-model="proposalForm.deadline" type="datetime" placeholder="选择日期时间">
+          <el-date-picker
+            v-model="proposalForm.deadline"
+            type="datetime"
+            placeholder="选择日期时间"
+          >
           </el-date-picker>
         </el-form-item>
         <el-form-item>
@@ -71,7 +79,7 @@ import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
 import { AddProposal } from "@/assets/server/api.js";
-import {FormatTime} from '@/utils/utils.js'
+import { FormatTime } from "@/utils/utils.js";
 export default {
   components: {
     quillEditor
@@ -85,12 +93,12 @@ export default {
   },
   methods: {
     async release() {
-      this.proposalForm.deadline = FormatTime(this.proposalForm.deadline, 'Y-M-D h:m:s')
-      const data = await AddProposal(this.proposalForm)
-      console.log(data,'data');
+      this.proposalForm.deadline = FormatTime(this.proposalForm.deadline, "Y-M-D h:m:s");
+      const data = await AddProposal(this.proposalForm);
+      console.log(data, "data");
       if (data.code === 0) {
-        this.proposalForm = new ProposalForm()
-        this.$router.back(-1)
+        this.proposalForm = new ProposalForm();
+        this.$router.back(-1);
       } else {
         this.$message.error(data.msg);
       }
@@ -112,12 +120,24 @@ export default {
 
 <style lang="less" scoped>
 .AddProposal {
-  width: 750px;
-  // margin: 300px auto;
+  .banner {
+    height: 227 * 2px;
+    background-image: url("../../../assets/imagesm/ta/banner3.png");
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    .placeholder {
+      flex: 1;
+    }
+  }
   .title {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 30px;
+    font-size: 60px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 84px;
+    margin-bottom: 110px;
   }
   .content {
     border-radius: 20px;
@@ -125,13 +145,23 @@ export default {
     box-shadow: 2px 2px 10px 2px #999;
     color: #000;
     padding: 30px;
+    margin-top: -54px;
   }
   .btn {
     text-align: center;
     margin-top: 20px;
     .el-button {
-      padding-left: 100px;
-      padding-right: 100px;
+      padding: 0;
+      border: none;
+      width: 246 * 2px;
+      height: 36 * 2px;
+      background: #6624fa;
+      border-radius: 8px;
+      font-size: 28px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 40px;
     }
   }
 }

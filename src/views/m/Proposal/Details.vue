@@ -2,18 +2,19 @@
  * @Author: yaoyuting
  * @Date: 2021-04-25 20:37:07
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-03 22:10:56
+ * @LastEditTime: 2021-05-10 11:22:54
  * @Descripttion: 
 -->
 <template>
   <div class="ProposaDetails">
     <div class="banner">
-      <div class="placeholder">编号：{{ ProposaData.id }}</div>
+      <div class="placeholder"></div>
       <div class="details">
-        <div class="title">{{ ProposaData.title }}</div>
         <div class="createBy">提案人：{{ ProposaData.createBy }}</div>
         <div class="date">创建时间：{{ ProposaData.createTime }}</div>
         <div class="status">状态：{{ getStatus(ProposaData.status) }}</div>
+        <div class="num">编号：{{ ProposaData.id }}</div>
+        <div class="title">{{ ProposaData.title }}</div>
         <div class="votes" v-if="$route.query.type === 'vote'">
           <div
             class="left"
@@ -29,7 +30,10 @@
                   ProposaData.userPollStatus === 0 ? 'green' : '#ccc'
                 }; width: ${
                   ProposaData.approve
-                    ? ((ProposaData.approve / (ProposaData.approve + ProposaData.oppose)) * 100).toFixed(2)
+                    ? (
+                        (ProposaData.approve / (ProposaData.approve + ProposaData.oppose)) *
+                        100
+                      ).toFixed(2)
                     : 0
                 }%`
               "
@@ -40,7 +44,12 @@
                 `height: 10px;background-color: ${
                   ProposaData.userPollStatus === 0 ? 'red' : '#ccc'
                 }; width: ${
-                  ProposaData.oppose ? ((ProposaData.oppose / (ProposaData.approve + ProposaData.oppose)) * 100).toFixed(2) : 0
+                  ProposaData.oppose
+                    ? (
+                        (ProposaData.oppose / (ProposaData.approve + ProposaData.oppose)) *
+                        100
+                      ).toFixed(2)
+                    : 0
                 }%`
               "
             ></div>
@@ -51,19 +60,29 @@
         </div>
       </div>
     </div>
-    <div class="content">
-      <el-card class="box-card">
-        <div class="lebelTitle">摘要</div>
+    <div class="content_bg">
+      <div class="content">
+        <div class="top">
+          <div class="lebelTitle">摘要</div>
+          <div class="bg"></div>
+        </div>
         <div class="text" v-html="ProposaData.summary"></div>
-      </el-card>
-      <el-card class="box-card">
-        <div class="lebelTitle">目标</div>
+        <div class="top">
+          <div class="lebelTitle">目标</div>
+          <div class="bg"></div>
+        </div>
         <div class="text">{{ ProposaData.target }}</div>
-        <div class="lebelTitle">计划</div>
+        <div class="top">
+          <div class="lebelTitle">计划</div>
+          <div class="bg"></div>
+        </div>
         <div class="text">{{ ProposaData.plan }}</div>
-        <div class="lebelTitle">预算</div>
+        <div class="top">
+          <div class="lebelTitle">预算</div>
+          <div class="bg"></div>
+        </div>
         <div class="text">{{ ProposaData.budget }}</div>
-      </el-card>
+      </div>
     </div>
   </div>
 </template>
@@ -114,39 +133,31 @@ export default {
 
 <style lang="less" scoped>
 .banner {
-  //   height: 350px;
-  background-image: url("../../../assets/images/index/背景@2x.png");
+  height: 660px;
+  background-image: url("../../../assets/imagesm/ta/banner2.png");
   background-size: cover;
   background-position: center center;
   display: flex;
   flex-direction: column;
   font-size: 14px;
   .placeholder {
-    // margin: 0 300px;
-    padding: 100px 30px 20px;
-    align-items: flex-end;
-    display: flex;
-    box-sizing: border-box;
+    flex: 1;
   }
   .details {
-    border-top: 1px solid #fff;
-    // margin: 0 300px;
     padding: 30px;
     margin-bottom: 10px;
-    .date {
-      line-height: 50px;
-      font-size: 14px;
-    }
+    font-size: 28px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #ccc;
+    line-height: 60px;
     .title {
-      font-size: 40px;
-      font-weight: bold;
-      line-height: 60px;
-    }
-    .text {
-      font-size: 12px;
-      line-height: 20px;
-      height: 100px;
-      overflow: hidden;
+      font-size: 60px;
+      font-family: PingFang-SC-Heavy, PingFang-SC;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 84px;
+      margin-top: 46px;
     }
   }
   .votes {
@@ -168,22 +179,40 @@ export default {
     }
   }
 }
+.content_bg {
+  background-image: url("../../../assets/imagesm/ta/bg2.png");
+  background-size: 750px;
+}
 .content {
-  // margin: 0 300px;
-  padding: 30px;
-  font-size: 14px;
-  .box-card {
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
+  padding-bottom: 120px;
+  .top {
+    height: 128px;
+    padding-top: 54px;
+    padding-bottom: 24px;
   }
   .lebelTitle {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 36px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #333333;
+    line-height: 50px;
+    margin-left: 30px;
+  }
+  .bg {
+    margin-left: 30px;
+    width: 97 * 2px;
+    height: 16px;
+    margin-top: -20px;
+    background: linear-gradient(270deg, rgba(141, 146, 255, 0), #5459ff);
   }
   .text {
-    margin-bottom: 30px;
+    padding: 32px;
+    background: #f6f6f6;
+    font-size: 24px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #656565;
+    line-height: 40px;
   }
 }
 </style>
