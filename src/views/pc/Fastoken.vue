@@ -11,13 +11,13 @@
       <div class="content w1300">
         <img src="@/assets/images/index/手机@2x.png" alt="">
         <div class="r">
-          <div class="title">{{ $t("index.bannerTitle") }}</div>
-          <div class="list">{{ $t("index.bannerContent") }}</div>
+          <div class="title">{{ $t("Fastoken.Wallet") }}</div>
+          <div class="list">{{ $t("Fastoken.Safe") }}</div>
           <div class="box">
             <div class="flex"></div>
             <div class="code">
               <img src="@/assets/images/index/appCode.png" alt="">
-              <span>扫描二维码，下载APP</span>
+              <span>{{ $t("Fastoken.Scan") }}</span>
             </div>
           </div>
         </div>
@@ -54,6 +54,8 @@ export default {};
     .r{
       display: flex;
       flex-direction: column;
+      margin-left: -48px;
+
     }
     img   {
       width: 645px;
@@ -74,6 +76,7 @@ export default {};
       img{
         width: 167px;
         height: 167px;
+        margin-top: 60px;
       }
       span{
         padding: 20px 0;
@@ -82,7 +85,7 @@ export default {};
     }
     .title {
       font-size: 80px;
-      margin-top: 150px;
+      margin-top: 60px;
     }
     .list {
       margin-top: 30px;

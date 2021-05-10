@@ -23,8 +23,8 @@
       <div class="what">
         <img width="566" src="@/assets/images/index/1-2.png" alt="" />
         <div class="text">
-          <div class="title">{{ $t("index.UENCTitle") }}</div>
-          <div class="details">{{ $t("index.UENCContent") }}</div>
+          <div class="title">{{ $t("index.EFSTitle") }}</div>
+          <div class="details">{{ $t("index.EFSContent") }}</div>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
                   </div>
                 </el-col>
                 <el-col :span="24">
-                  <el-button type="text" class="btn_style">查看主网数据<i class="el-icon-right"></i></el-button>
+                  <el-button type="text" class="btn_style">{{ $t("index.Lookmore") }}<i class="el-icon-right"></i></el-button>
                 </el-col>
               </el-row>
             </el-col>

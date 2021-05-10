@@ -12,7 +12,7 @@
         <el-col :span="4">
           <div class="level2title">{{ $t("index.Blog") }}</div>
           <router-link to="/pc/Blog" class="btn_style"
-            >进入博客 <i class="el-icon-right"></i
+            >{{ $t("index.EnterBlog") }} <i class="el-icon-right"></i
           ></router-link>
         </el-col>
         <el-col :span="20" class="pr">

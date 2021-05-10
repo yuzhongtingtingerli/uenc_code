@@ -18,7 +18,7 @@
 export default {
   props: {
     moneyAddress: {
-      type: Number,
+      type: String,
       default: ''
     },
   },

@@ -41,7 +41,7 @@ export default {};
 .EconomicModels {
   margin-bottom:  100px;
   .subTitle {
-    padding-left: 460px;
+    padding-left: 480px;
     margin-bottom: 40px;
   }
   .lists {
