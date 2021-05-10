@@ -76,8 +76,8 @@ export default {
 
 <style lang="less" scoped>
 .banner {
-  height: 900px;
-  background-image: url("../../assets/images/index/背景@2x.png");
+  height: 736px;
+  background-image: url("../../assets/images/index/CoreMembersDetailsbg.png");
   background-size: cover;
   background-position: center center;
 }

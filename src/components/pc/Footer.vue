@@ -10,11 +10,11 @@
     <div class="top">
       <div class="subTitle">{{ $t("navbar.Connect") }}</div>
       <div class="aboutUs">
-        <i class="el-icon-share"></i>
-        <i class="el-icon-s-promotion"></i>
-        <i class="el-icon-s-finance"></i>
-        <i class="el-icon-s-help"></i>
-        <i class="el-icon-s-goods"></i>
+        <span class="iconfont icongithub"></span>
+        <span class="iconfont iconfeishu"></span>
+        <span class="iconfont iconfacebook"></span>
+        <span class="iconfont icontuite"></span>
+        <span class="iconfont iconweibo"></span>
         <div class="email">{{ $t("navbar.Email") }}：tech@uenc.net</div>
       </div>
     </div>
@@ -41,12 +41,11 @@ export default {
     .subTitle {
       text-align: left !important;
       line-height: 56px;
-      margin-left: 15px;
       margin-bottom: 36px;
     }
     .aboutUs {
       display: flex;
-      i{
+      span{
         font-size: 32px;
         margin-right: 42px;
       }

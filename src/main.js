@@ -17,6 +17,8 @@ import i18n from '@/i18n/i18n.js'
 import ElementUI from 'element-ui';
 import {goPAGE} from './utils/utils';
 import 'element-ui/lib/theme-chalk/index.css';
+import '@/assets/iconfont/iconfont.css';
+import '@/assets/iconfont/iconfont.js';
 
 import plugin from './utils/Bus';
 Vue.use(plugin);

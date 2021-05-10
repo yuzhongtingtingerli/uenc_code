@@ -199,7 +199,7 @@ export default {
 .Proposal {
   .search{
     height: 900px;
-    background-image: url("../../assets/images/index/背景@2x.png");
+    background-image: url("../../assets/images/index/voteBanner.png");
     background-size: cover;
     background-position: center center;
     display: flex;

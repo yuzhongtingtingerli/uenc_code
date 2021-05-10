@@ -127,7 +127,9 @@ export default {
     }
   }
   .content{
-    background: sandybrown;
+    background-image: url("../../assets/images/index/Blog.png");
+    background-size: cover;
+    background-position: center center;
   }
   .w {
     

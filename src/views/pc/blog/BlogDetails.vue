@@ -52,7 +52,7 @@ export default {
 <style lang="less" scoped>
 .banner {
   height: 900px;
-  background-image: url("../../../assets/images/index/背景@2x.png");
+  background-image: url("../../../assets/images/index/blogdba.png");
   background-size: cover;
   background-position: center center;
   padding-top: 203px;
@@ -85,7 +85,10 @@ export default {
   }
 }
 .content {
-    margin: 50px 0 100px;
+    background-image: url("../../../assets/images/index/blogdbg.png");
+    background-size: cover;
+    background-position: center center;
+    padding: 50px 0 100px;
     font-size: 14px;
 }
 </style>

@@ -22,14 +22,7 @@ export default {
 }
 </script>
 <style lang="less">
-.w1352 {
-  width: 1352px;
-  margin: 0 auto;
-}
-.w1300 {
-  width: 1300px;
-  margin: 0 auto;
-}
+
 html,body {
   /* background-color: #00101F; */
   color: #fff;

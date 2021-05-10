@@ -65,9 +65,9 @@
             <el-menu-item index="/pc/community/Vote">投票</el-menu-item>
           </el-menu>
         </div>
-        <div class="goBack" v-if="!isShowMenu && isGoback">
+        <!-- <div class="goBack" v-if="!isShowMenu && isGoback">
           <el-button type="text" @click="goBack"> 返回 </el-button>
-        </div>
+        </div> -->
         <div class="login" v-if="isLogin">
           <el-button plain size="small" @click="login" class="login_style">登录/注册</el-button>
         </div>
@@ -96,7 +96,7 @@
       :style="`width:100vw;height:100vh`"
     >
       <div class="details">
-        <div class="close" @click="close">x</div>
+        <div class="close" @click="close"><i class="el-icon-close"></i></div>
         <Login
           ref="login"
           @close="close"
@@ -104,8 +104,10 @@
           v-if="dialogType == 'login'"
         ></Login>
         <CheckUser v-if="dialogType == 'check'" @close="close"></CheckUser>
+        <ShowMoney v-if="dialogType == 'money'" @close="close" :moneyAddress="moneyAddress"></ShowMoney>
       </div>
     </div>
+    
   </div>
 </template>
 <script>
@@ -113,10 +115,12 @@ import { navList } from "@/assets/server/navServer.js";
 import { WebLogout, CheckUsersStatus ,GetUsersAddress} from "@/assets/server/api.js";
 import Login from "./Login.vue";
 import CheckUser from "./CheckUser.vue";
+import ShowMoney from "./ShowMoney.vue";
 export default {
   components: {
     Login,
-    CheckUser
+    CheckUser,
+    ShowMoney
   },
   watch: {
     $route: {
@@ -130,6 +134,7 @@ export default {
   },
   data() {
     return {
+      moneyAddress:'',
       navList: navList,
       headerclass: true,
       type: "",
@@ -197,7 +202,9 @@ export default {
     async getUsersAddress(){
       const data = await GetUsersAddress(this.userName);
       if (data.code==0) {
-        console.log(data.data);
+        this.moneyAddress = data.data
+        this.dialogType = 'money'
+        this.dialogVisible = true;
       }
     },
     async checkUsersStatus() {
@@ -262,6 +269,7 @@ export default {
     },
     close() {
       this.dialogVisible = false;
+      this.checkUsersStatus()
     },
     handleClose(done) {
       this.$confirm("确认关闭？")
@@ -367,16 +375,11 @@ export default {
     box-sizing: border-box;
     .close {
       position: absolute;
-      right: 0;
-      top: 0;
-      height: 30px;
-      width: 30px;
-      text-align: center;
-      line-height: 30px;
+      right: 32px;
+      top: 32px;
+      font-size: 26px;
       cursor: pointer;
-      background-color: #ccc;
-      border-radius: 0 0 0 10px;
-      color: #fff;
+      color: #305bbc;
     }
   }
 }
@@ -389,6 +392,7 @@ export default {
 </style>
 
 <style lang="less">
+
 .el-menu-vertical-demo {
   /* margin-top: 25px; */
   background-color: rgba(0, 0, 0, 0);

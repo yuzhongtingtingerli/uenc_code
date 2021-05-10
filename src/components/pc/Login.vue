@@ -159,9 +159,10 @@ export default {
     onSubmit() {},
     async onRegistered() {
       for (const key in this.registeredForm) {
+        console.log(key);
         const element = this.registeredForm[key];
         if (element === "" || !element) {
-          return this.$message.error("不能为空");
+          return this.$message.error(key+"不能为空");
         }
       }
       if (this.registeredForm.password !== this.registeredForm.arginPassword) {

@@ -23,12 +23,14 @@
         </div>
       </div>
     </div>
-    <div class="main w1352">
+    <div class="main">
+      <div class="w1300">
         <div class="about">
             <div class="top">{{ $t("Fastoken.software") }}</div>
             <div class="bottom">{{ $t("Fastoken.provides") }}</div>
         </div>
         <img src="@/assets/images/index/6-1.png" alt="">
+        </div>
     </div>
   </div>
 </template>
@@ -89,10 +91,16 @@ export default {};
   }
 }
 .main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 130px auto 176px;
+    
+    padding: 130px 0 176px;
+    background-image: url("../../assets/images/index/Fastokenbg.png");
+    background-size: cover;
+    background-position: center center;
+    .w1300{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .about {
       width: 700px;
       font-size: 16px;

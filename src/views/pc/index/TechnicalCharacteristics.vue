@@ -12,22 +12,24 @@
       <div>
         <el-row :gutter="20">
           <el-col :span="8" class="vertical_center">
-            <div>
+            <div class="box">
               <p>01</p>
               <div class="level3title">{{ $t("index.Structure") }}</div>
               <div class="content">{{ $t("index.StructureText") }}</div>
             </div>
           </el-col>
           <el-col :span="10" :offset="4" class="vertical_center">
-            <img width="400" src="@/assets/images/index/1-3.png" alt="" />
+            <!-- <img width="400" src="@/assets/images/index/1-3.png" alt="" /> -->
+            <img width="400" src="@/assets/images/index/1-3-1.gif" alt="" />
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="10" class="vertical_center">
-            <img width="400" style="margin-left:120px" src="@/assets/images/index/1-4.png" alt="" />
+            <!-- <img width="400" style="margin-left:120px" src="@/assets/images/index/1-4.png" alt="" /> -->
+            <img width="400" style="margin-left:120px" src="@/assets/images/index/1-4-1.gif" alt="" />
           </el-col>
           <el-col :span="8" class="vertical_center" :offset="4">
-            <div>
+            <div class="box">
               <p>02</p>
               <div class="level3title">{{ $t("index.Algorithm") }}</div>
               <div class="content">{{ $t("index.AlgorithmText") }}</div>
@@ -36,22 +38,24 @@
         </el-row>
         <el-row :gutter="20">
           <el-col :span="8" class="vertical_center">
-            <div>
+            <div class="box">
               <p>03</p>
               <div class="level3title">{{ $t("index.Hybrid") }}</div>
               <div class="content">{{ $t("index.HybridText") }}</div>
             </div>
           </el-col>
           <el-col :span="10" :offset="4" class="vertical_center">
-            <img width="674" src="@/assets/images/index/1-5.png" alt="" />
+            <!-- <img width="674" src="@/assets/images/index/1-5.png" alt="" /> -->
+            <img width="674" src="@/assets/images/index/1-5-1.gif" alt="" />
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="10" class="vertical_center">
-            <img width="390" style="margin-left:120px" src="@/assets/images/index/1-6.png" alt="" />
+            <!-- <img width="390" style="margin-left:120px" src="@/assets/images/index/1-6.png" alt="" /> -->
+            <img width="390" style="margin-left:120px" src="@/assets/images/index/1-6-1.gif" alt="" />
           </el-col>
           <el-col :span="8" class="vertical_center" :offset="4">
-            <div>
+            <div class="box">
               <p>04</p>
               <div class="level3title">{{ $t("index.WASM") }}</div>
               <div class="content">{{ $t("index.WASMText") }}</div>
@@ -77,7 +81,9 @@ export default {};
     margin: 100px 0;
   }
   .vertical_center {
-    padding: 130px 0;
+    .box{
+      padding: 130px 0;
+    }
     p{
       font-size: 20px;
       color: #0d051f;

@@ -21,11 +21,11 @@
       <el-form-item label="交易哈希">
         <el-input v-model="checkForm.hash" placeholder="请输入交易哈希"></el-input>
       </el-form-item>
-      <div style="text-align: center;color: red;">注：钱包地址绑定后不可更改，请认真核对</div>
-      <el-form-item style="text-align: right;">
-        <el-button type="primary" @click="checkSubmit">绑定</el-button>
-        <el-button type="info" @click="close()" >取消</el-button>
-      </el-form-item>
+      <div style="color: red;">注：钱包地址绑定后不可更改，请认真核对</div>
+      <div class="btns">
+        <div  @click="checkSubmit">绑定</div>
+        <div class="r" @click="close()" >取消</div>
+      </div>
     </el-form>
   </div>
 </template>
@@ -72,32 +72,62 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.title {
-    line-height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    border-bottom: 1px solid #ccc;
-}
-.el-tabs__item.is-active {
-  font-size: 20px;
-}
-.submit {
-  width: 100%;
-}
-.between {
-  display: flex;
-  justify-content: space-between;
-  .forget {
-    color: #ccc;
+<style lang="less">
+  .Check{
+    text-align: left;
+    .title{
+      font-size: 28px;
+      color: #313131;
+      font-weight: 500;
+      padding-bottom: 40px;
+    }
+    .el-form-item__label{
+      font-size: 28px;
+      color: #666;
+    }
+    .el-input__inner,input{
+      height: 70px;
+      font-size: 28px;
+    }
+    input::placeholder{
+      font-size:  28px;
+    }
+    .el-checkbox__inner{
+      width: 22px;
+      height: 22px;
+    }
+    .el-checkbox__input{
+      vertical-align: sub;
+    }
+    .el-checkbox__inner::after{
+      height: 14px;
+      left: 6px;
+      width: 6px;
+      top: 0px;
+    }
+    .el-checkbox__label{
+      font-size: 24px;
+    }
+    .btns{
+      padding: 36px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      div{
+        width: 158px;
+        height: 70px;
+        text-align: center;
+        line-height: 70px;
+        background: #4b3eff;
+        border-radius: 4px;
+        font-size: 28px;
+        color: #fff;
+        margin: 0 26px;
+        cursor: pointer;
+      }
+      .r{
+        background: #afb7e0;
+      }
+    }
   }
-  img {
-    height: 40px;
-    width: 80px;
-    margin-left: 10px;
-  }
-  .code {
-    margin-left: 10px;
-  }
-}
 </style>

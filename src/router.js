@@ -54,6 +54,10 @@ export default new Router({
           name: 'TaskDetails',
           component: () => import('./views/pc/Task/TaskDetails'),
         }, {
+          path: '/pc/Devdocument',
+          name: 'Devdocument',
+          component: () => import('./views/pc/Devdocument'),
+        },{
           path: '/pc/Developers',
           name: 'Developers',
           component: () => import('./views/pc/Developers'),

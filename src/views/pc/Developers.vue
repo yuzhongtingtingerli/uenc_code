@@ -10,7 +10,7 @@
     <div class="banner">
       <div class="content w1300">
         <div class="title">{{ $t("index.index1") }}</div>
-        <router-link to="/">文档 <i class="el-icon-right"></i></router-link>
+        <router-link to="/pc/Devdocument">文档 <i class="el-icon-right"></i></router-link>
         <router-link to="/">GitHub <i class="el-icon-right"></i></router-link>
       </div>
     </div>
@@ -36,7 +36,7 @@ export default {
 .Developers {
   .banner {
     height: 900px;
-    background-image: url("../../assets/images/index/背景@2x.png");
+    background-image: url("../../assets/images/index/Developersbg.png");
     background-size: cover;
     background-position: center center;
     padding-top: 203px;
