@@ -2,7 +2,7 @@
  * @Author: yaoyuting
  * @Date: 2019-08-29 23:45:36
  * @LastEditors: yaoyuting
- * @LastEditTime: 2021-05-08 08:42:17
+ * @LastEditTime: 2021-05-10 19:47:28
  * @Descripttion: 
 -->
 <template>
@@ -149,15 +149,15 @@ export default {
         dataList.rows.forEach(item => {
           item.images = baseURL + item.images;
         });
-        let list = [];
-        for (let index = 1; index < dataList.rows.length + 1; index++) {
-          list.push(dataList.rows[index - 1]);
-          if (index % 6 == 0) {
-            this.partnerList.push(list);
-            list = [];
-          }
-        }
-        this.partnerList.push(list);
+        // let list = [];
+        // for (let index = 1; index < dataList.rows.length + 1; index++) {
+        //   list.push(dataList.rows[index - 1]);
+        //   if (index % 6 == 0) {
+        //     this.partnerList.push(list);
+        //     list = [];
+        //   }
+        // }
+        this.partnerList = dataList.rows
       } else {
         this.$message.error(dataList.msg);
       }
