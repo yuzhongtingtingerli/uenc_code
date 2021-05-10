@@ -71,6 +71,7 @@ module.exports = {
 
   },
   Technology: {
+    index:'这里是一段技术方面的文案',
     TechnologyTitle: '技术',
     DHT: 'DHT网状网络',
     DHTText: '进步的混合式网状网络，基于DHT的点对点网络本质上是在计算机网络物理拓扑结构中加入一层逻辑结构，使之能快速的对网络上的节点进行的查找、发送消息、广播数据等操作。',
@@ -118,6 +119,9 @@ module.exports = {
     Security: '安全漏洞奖励',
     SecurityText: 'UENC给广大的社区安全专家们提供一个通道，如果发现关于我们的区块链底层潜在安全性问题或者威胁，都可发送邮件至 tech@uenc.net，我们将调查所有合格的漏洞报告，并尽最大努力迅速解决问题。报告人将获得丰厚的UENC奖励。',
     SecurityNote: '注意：根据评定的漏洞严重程度等级，漏洞的严重程度、影响度越高，奖励越高；对于UENC技术人员已发现或已解决的漏洞，奖励将不予发放。',
-    DevDoc: 'UENC 开发者文档'
+    DevDoc: 'UENC 开发者文档',
+    more:'查看更多',
+    copyEmail:'复制邮箱',
+    reward:'奖励'
   }
 }

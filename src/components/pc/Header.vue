@@ -61,15 +61,15 @@
             mode="horizontal"
             active-text-color="#fff"
           >
-            <el-menu-item index="/pc/community/Proposal">提案</el-menu-item>
-            <el-menu-item index="/pc/community/Vote">投票</el-menu-item>
+            <el-menu-item index="/pc/community/Proposal">{{type === "zh" ?'提案':'Proposal'}}</el-menu-item>
+            <el-menu-item index="/pc/community/Vote">{{type === "zh" ?'投票':'Vote'}}</el-menu-item>
           </el-menu>
         </div>
         <!-- <div class="goBack" v-if="!isShowMenu && isGoback">
           <el-button type="text" @click="goBack"> 返回 </el-button>
         </div> -->
         <div class="login" v-if="isLogin">
-          <el-button plain size="small" @click="login" class="login_style">登录/注册</el-button>
+          <el-button plain size="small" @click="login" class="login_style">{{type === "zh" ?'登录/注册':'Login/Register'}}</el-button>
         </div>
         <div class="login" v-if="!isLogin">
           <el-menu class="el-menu-vertical-demo" mode="horizontal" active-text-color="#fff">
@@ -77,10 +77,10 @@
               <template slot="title">{{ userName }} </template>
               
               <el-menu-item index="2-2" v-if="usersStatus == '1'" @click="check"
-                >绑定钱包</el-menu-item
+                >{{type === "zh" ?'绑定钱包':'Bind Wallet'}}</el-menu-item
               >
-              <el-menu-item index="2-3" v-else @click="getUsersAddress">查看钱包</el-menu-item>
-              <el-menu-item index="2-1" @click="logout">退出登录</el-menu-item>
+              <el-menu-item index="2-3" v-else @click="getUsersAddress">{{type === "zh" ?'查看钱包':'Check Wallet'}}</el-menu-item>
+              <el-menu-item index="2-1" @click="logout">{{type === "zh" ?'退出登录':'Log out'}}</el-menu-item>
 
             </el-submenu>
           </el-menu>

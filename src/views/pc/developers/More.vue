@@ -16,7 +16,7 @@
           <div class="title">{{ $t("Developer.Run") }}</div>
           <div class="content">{{ $t("Developer.RunText") }}</div>
           <div class="bottom">
-            <el-button type="text" round>开始运行节点<i class="el-icon-right"></i></el-button>
+            <el-button type="text" round>{{$t("Developer.more")}}<i class="el-icon-right"></i></el-button>
           </div>
         </div>
         <div class="item">
@@ -26,7 +26,7 @@
           <div class="title">{{ $t("Developer.Developer") }}</div>
           <div class="content">{{ $t("Developer.DeveloperText") }}</div>
           <div class="bottom">
-            <el-button type="text" round>了解更多<i class="el-icon-right"></i></el-button>
+            <el-button type="text" round>{{$t("Developer.more")}}<i class="el-icon-right"></i></el-button>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
           <div class="title">{{ $t("Developer.Main") }}</div>
           <div class="content">{{ $t("Developer.MainText") }}</div>
           <div class="bottom">
-            <el-button type="text" round>查看更多<i class="el-icon-right"></i></el-button>
+            <el-button type="text" round>{{$t("Developer.more")}}<i class="el-icon-right"></i></el-button>
           </div>
         </div>
         <div class="item">
@@ -48,7 +48,7 @@
           <div class="title">{{ $t("Developer.Interface") }}</div>
           <div class="content">{{ $t("Developer.InterfaceText") }}</div>
           <div class="bottom">
-            <el-button type="text" round>查看更多<i class="el-icon-right"></i></el-button>
+            <el-button type="text" round>{{$t("Developer.more")}}<i class="el-icon-right"></i></el-button>
           </div>
         </div>
       </div>

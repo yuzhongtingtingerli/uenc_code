@@ -50,9 +50,9 @@
                 <div class="box-title">{{bount.title}}</div>
                 <div class="medile">{{bount.introduction}}</div>
                 <div class="bottom">
-                  <div class="reward">奖励 <span>{{bount.reward}}</span></div>
+                  <div class="reward">{{$t("Developer.reward")}} <span>{{bount.reward}}</span></div>
                   <router-link :to="{path: '/pc/Task/Details', query: {id: bount.taskId}}">
-                    <span class="more">了解更多<i class="el-icon-right"></i></span>
+                    <span class="more">{{$t("Developer.more")}}<i class="el-icon-right"></i></span>
                   </router-link>
                 </div>
               </div>
@@ -60,9 +60,9 @@
                 <div class="box-title">{{bount.title}}</div>
                 <div class="medile">{{bount.introduction}}</div>
                 <div class="bottom">
-                  <div class="reward">奖励 <span>{{bount.reward}}</span></div>
+                  <div class="reward">{{$t("Developer.reward")}} <span>{{bount.reward}}</span></div>
                   <router-link :to="{path: '/pc/Task/Details', query: {id: bount.taskId}}">
-                    <span class="more">了解更多<i class="el-icon-right"></i></span>
+                    <span class="more">{{$t("Developer.more")}}<i class="el-icon-right"></i></span>
                   </router-link>
                 </div>
               </div>
@@ -80,7 +80,7 @@
                 <div class="title">{{ $t("Developer.Security") }}</div>
                 <div class="text">{{ $t("Developer.SecurityText") }}</div>
                 <div class="text">{{ $t("Developer.SecurityNote") }}</div>
-                <div class="copy" @click="copyLink">复制邮箱<i class="el-icon-right"></i></div>
+                <div class="copy" @click="copyLink">{{ $t("Developer.copyEmail") }}<i class="el-icon-right"></i></div>
               </div>
             </div>
         </div>

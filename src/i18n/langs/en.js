@@ -71,6 +71,7 @@ module.exports = {
 
   },
   Technology: {
+    index:'这里是一段技术方面的文案',
     TechnologyTitle: 'Technology',
     DHT: 'DHT Mesh network',
     DHTText: 'The advanced hybrid mesh network, the point-to-point network based on DHT, is essentially adding a layer of logical structure to the physical topology of computer network, so that it can quickly search, send messages, broadcast data and other operations on the network nodes.',
@@ -119,7 +120,9 @@ module.exports = {
     Security: 'Security vulnerability Award',
     SecurityText: 'Uenc provides a channel for the majority of community security experts. If you find potential security problems or threats on the underlying layer of our blockchain, you can send an email to tech@uenc.net , we will investigate all qualified vulnerability reports and do our best to resolve the problem quickly. The reporter will be rewarded by uenc.',
     SecurityNote: 'Note: according to the severity level of vulnerability, the higher the severity and impact of vulnerability, the higher the reward; for the vulnerability that uenc technicians have found or solved, the reward will not be issued.',
-    DevDoc: 'UENC Developer documentation'
-
+    DevDoc: 'UENC Developer documentation',
+    more: 'more',
+    copyEmail:'Copy email',
+    reward:'reward'
   }
 }

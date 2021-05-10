@@ -11,7 +11,7 @@ let classify = goPAGE()
 export const navList = [{
   id: 1,
   text: "首页",
-  texten: 'index',
+  texten: 'Home',
   menuUrl: "/" + classify + "/Index"
   // submenus: [{
   //   submenuName: "项目团队",
@@ -29,7 +29,7 @@ export const navList = [{
 }, {
   id:2,
   text: "技术",
-  texten: 'technology',
+  texten: 'Tech',
   menuUrl: "/" + classify + "/Technology",
   // submenus: [
   //   // {
@@ -47,7 +47,7 @@ export const navList = [{
 }, {
   id:3,
   text: "开发者",
-  texten: 'Developers',
+  texten: 'Developer',
   menuUrl: "/" + classify + "/Developers",
   // submenus: [{
   //   submenuNameen: "whitepaper",
@@ -58,9 +58,9 @@ export const navList = [{
 }, {
   id:4,
   text: "钱包",
-  texten: 'wallet',
+  texten: 'Wallet',
   submenus: [{
-    submenuNameen: "wallet",
+    submenuNameen: "Access Wallet",
     submenuName: "访问钱包",
     submenuUrl: "/",
   },{
@@ -68,7 +68,7 @@ export const navList = [{
     submenuName: "Fastoken下载",
     submenuUrl: "/" + classify + "/Fastoken",
   },{
-    submenuNameen: "wallet",
+    submenuNameen: "Blockchain Browser",
     submenuName: "区块链浏览器",
     submenuUrl: "/",
   }],
@@ -86,7 +86,7 @@ export const navList = [{
 }, {
   id:6,
   text: "社区",
-  texten: 'community',
+  texten: 'Community',
   submenus: [{
     submenuNameen: "Github",
     submenuName: "Github",

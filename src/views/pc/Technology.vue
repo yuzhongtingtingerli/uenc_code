@@ -9,7 +9,7 @@
   <div class="Technology">
     <div class="banner">
       <div class="content w1300">
-        <div class="title">{{ $t("index.index1") }}</div>
+        <div class="title">{{ $t("Technology.index") }}</div>
         <router-link to="/">了解更多关于技术 <i class="el-icon-right"></i></router-link>
         <router-link to="/">白皮书 <i class="el-icon-right"></i></router-link>
       </div>
