@@ -19,12 +19,12 @@
             </div>
           </el-col>
           <el-col :span="10" :offset="4" class="vertical_center">
-            <img width="390" src="@/assets/images/index/配图3@2x.png" alt="" />
+            <img width="400" src="@/assets/images/index/1-3.png" alt="" />
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="10" class="vertical_center">
-            <img width="390" style="margin-left:120px" src="@/assets/images/index/配图4@2x.png" alt="" />
+            <img width="400" style="margin-left:120px" src="@/assets/images/index/1-4.png" alt="" />
           </el-col>
           <el-col :span="8" class="vertical_center" :offset="4">
             <div>
@@ -43,12 +43,12 @@
             </div>
           </el-col>
           <el-col :span="10" :offset="4" class="vertical_center">
-            <img width="675" src="@/assets/images/index/配图5@2x.png" alt="" />
+            <img width="674" src="@/assets/images/index/1-5.png" alt="" />
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="10" class="vertical_center">
-            <img width="390" style="margin-left:120px" src="@/assets/images/index/配图6@2x.png" alt="" />
+            <img width="390" style="margin-left:120px" src="@/assets/images/index/1-6.png" alt="" />
           </el-col>
           <el-col :span="8" class="vertical_center" :offset="4">
             <div>

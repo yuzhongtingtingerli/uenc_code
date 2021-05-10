@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="More">
-    <div class="more">
+    <div class="w1300">
       <div class="list">
         <div class="item">
           <div class="images">
@@ -26,7 +26,7 @@
           <div class="title">{{ $t("Developer.Developer") }}</div>
           <div class="content">{{ $t("Developer.DeveloperText") }}</div>
           <div class="bottom">
-            <el-button type="text" round>开始运行节点<i class="el-icon-right"></i></el-button>
+            <el-button type="text" round>了解更多<i class="el-icon-right"></i></el-button>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
           <div class="title">{{ $t("Developer.Main") }}</div>
           <div class="content">{{ $t("Developer.MainText") }}</div>
           <div class="bottom">
-            <el-button type="text" round>开始运行节点<i class="el-icon-right"></i></el-button>
+            <el-button type="text" round>查看更多<i class="el-icon-right"></i></el-button>
           </div>
         </div>
         <div class="item">
@@ -48,7 +48,7 @@
           <div class="title">{{ $t("Developer.Interface") }}</div>
           <div class="content">{{ $t("Developer.InterfaceText") }}</div>
           <div class="bottom">
-            <el-button type="text" round>开始运行节点<i class="el-icon-right"></i></el-button>
+            <el-button type="text" round>查看更多<i class="el-icon-right"></i></el-button>
           </div>
         </div>
       </div>
@@ -63,11 +63,9 @@ export default {};
 <style lang="less" scoped>
 .More {
   background-image: url("../../../assets/images/index/kfz_bg.png");
-      background-size: cover;
-      background-position: center center;
-  .more {
-    width: 1300px;
-    margin: 0 auto;
+  background-size: cover;
+  background-position: center center;
+  .w1300 {
     padding-top: 158px;
     padding-bottom: 20px;
     .list {

@@ -68,7 +68,7 @@
           :current-page="currentPage"
           :page-sizes="[5, 10, 15, 20]"
           :page-size="10"
-          layout="total, sizes, prev, pager, next, jumper"
+          layout="total, prev, pager, next, jumper"
           :total="total"
           background
         >
@@ -219,7 +219,11 @@ export default {
     margin-right: 20px;
   }
   .content{
-    margin-top: 96px ;
+    background-image: url("../../assets/images/index/votebg.png");
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+    padding-top: 96px ;
   }
   .details {
     width: 1400px;
@@ -227,7 +231,6 @@ export default {
     margin: 20px auto;
     
     border-radius: 20px;
-    background-color: #fff;
     color: #000;
     .head{
       display: flex;

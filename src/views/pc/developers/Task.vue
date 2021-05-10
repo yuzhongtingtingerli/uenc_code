@@ -6,94 +6,85 @@
  * @Descripttion: 
 -->
 <template>
-  <div class="Task">
-    <div class="subTitle">{{ $t("Developer.Bounty") }}</div>
-    <div class="task_const">
-      <div class="level2title">{{ $t("Developer.Mission") }}</div>
-      <el-row :gutter="20" v-if="bountyData">
-        <el-col :span="8">
-          <el-card class="box-card">
-            <div class="dfsp">
-              <div class="all_center">
-                <img src="@/assets/images/right.png" alt="" />
+  <div>
+    <div class="Task">
+      <div class="w1300">
+        <div class="subTitle">{{ $t("Developer.Bounty") }}</div>
+        <div class="task_const">
+          <div class="title">{{ $t("Developer.Mission") }}</div>
+          <div class="tasks" v-if="bountyData">
+            <div class="box">
+              <div class="l">
+                <img src="@/assets/images/index/任务@2x.png" alt="" />
               </div>
-              <div class="other">
-                <div class="level3title">{{ $t("Developer.Total") }}</div>
+              <div class="r">
+                <div class="text">{{ $t("Developer.Total") }}</div>
                 <div class="num">{{bountyData.count}}</div>
               </div>
             </div>
-          </el-card>
-        </el-col>
-        <el-col :span="8">
-          <el-card class="box-card">
-            <div class="dfsp">
-              <div class="all_center">
-                <img src="@/assets/images/right.png" alt="" />
+            <div class="box">
+              <div class="l">
+                <img src="@/assets/images/index/完成@2x.png" alt="" />
               </div>
-              <div class="other">
-                <div class="level3title">{{ $t("Developer.Finished") }}</div>
+              <div class="r">
+                <div class="text">{{ $t("Developer.Finished") }}</div>
                 <div class="num">{{bountyData.end}}</div>
               </div>
             </div>
-          </el-card>
-        </el-col>
-        <el-col :span="8">
-          <el-card class="box-card">
-            <div class="dfsp">
-              <div class="all_center">
-                <img src="@/assets/images/right.png" alt="" />
+            <div class="box">
+              <div class="l">
+                <img src="@/assets/images/index/奖励@2x.png" alt="" />
               </div>
-              <div class="other">
-                <div class="level3title">{{ $t("Developer.Award") }}</div>
+              <div class="r">
+                <div class="text">{{ $t("Developer.Award") }}</div>
                 <div class="num">{{bountyData.reward}}</div>
               </div>
             </div>
-          </el-card>
-        </el-col>
-      </el-row>
-    </div>
-    <div class="task_list">
-      <div class="level2title">{{ $t("Developer.list") }}</div>
-      <div class="lists">
-        <el-carousel :interval="5000" arrow="always" height="370px" indicator-position="outside">
-          <el-carousel-item v-for="item in bountyList.length%4+1" :key="item">
-            <el-row>
-              <el-col :span="12" v-for="bount in bountyList" :key="bount.taskId">
-                <el-card class="box-card">
-                  <div class="top">
-                    <div class="title">{{bount.title}}</div>
-                    <div class="reward">奖励：<span>{{bount.reward}}</span></div>
-                  </div>
-                  <div class="medile">{{bount.introduction}}</div>
-                  <div class="bottom">
-                    <router-link :to="{path: '/pc/Task/Details', query: {id: bount.taskId}}">
-                      <el-button type="text">了解更多></el-button>
-                    </router-link>
-                  </div>
-                </el-card>
-              </el-col>
-            </el-row>
-          </el-carousel-item>
-        </el-carousel>
+          </div>
+        </div>
+        <div class="task_list">
+          <div class="title">{{ $t("Developer.list") }}</div>
+          <div class="x">
+            <div class="lists">
+              <div class="box" v-for="bount in bountyList" :key="bount.taskId">
+                <div class="box-title">{{bount.title}}</div>
+                <div class="medile">{{bount.introduction}}</div>
+                <div class="bottom">
+                  <div class="reward">奖励 <span>{{bount.reward}}</span></div>
+                  <router-link :to="{path: '/pc/Task/Details', query: {id: bount.taskId}}">
+                    <span class="more">了解更多<i class="el-icon-right"></i></span>
+                  </router-link>
+                </div>
+              </div>
+              <div class="box" v-for="bount in bountyList" :key="bount.taskId">
+                <div class="box-title">{{bount.title}}</div>
+                <div class="medile">{{bount.introduction}}</div>
+                <div class="bottom">
+                  <div class="reward">奖励 <span>{{bount.reward}}</span></div>
+                  <router-link :to="{path: '/pc/Task/Details', query: {id: bount.taskId}}">
+                    <span class="more">了解更多<i class="el-icon-right"></i></span>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
     <div class="vulnerability">
-      <el-card class="box-card">
-        <el-row :gutter="20">
-          <el-col :span="8">
-            <div class="all_center">
-              <img src="@/assets/images/right.png" alt="" />
+        <div class="w1300">
+            <div class="box">
+              <img src="@/assets/images/index/安全漏洞奖励@2x.png" alt="" />
+              <div class="content">
+                <div class="title">{{ $t("Developer.Security") }}</div>
+                <div class="text">{{ $t("Developer.SecurityText") }}</div>
+                <div class="text">{{ $t("Developer.SecurityNote") }}</div>
+                <div class="copy" @click="copyLink">复制邮箱<i class="el-icon-right"></i></div>
+              </div>
             </div>
-          </el-col>
-          <el-col :span="16">
-            <div class="title">{{ $t("Developer.Security") }}</div>
-            <div class="content">{{ $t("Developer.SecurityText") }}</div>
-            <div class="content">{{ $t("Developer.SecurityNote") }}</div>
-            <div><el-button type="primary" size="small" round>复制邮箱</el-button></div>
-          </el-col>
-        </el-row>
-      </el-card>
-    </div>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -111,6 +102,16 @@ export default {
     this.getBountyStatistics()
   },
   methods: {
+    copyLink(){
+        var link = "tech@uenc.net";
+        var newNode = document.createElement('input');
+        newNode.value = link;
+        document.body.appendChild(newNode);
+        newNode.select(); // 选择对象
+        document.execCommand("Copy"); // 执行浏览器复制命令
+        newNode.style.display='none';
+        this.$message.success('复制成功');
+    },
     async getBountyList() {
       const dataList = await GetBountyList({pageNum: 1,pageSize: 12})
       if(dataList.code === 0) {
@@ -133,117 +134,158 @@ export default {
 
 <style lang="less" scoped>
 .Task {
+  border-top: 1px solid #fff;
+  background-image: url("../../../assets/images/index/devbg3.png");
+  background-size: cover;
+  background-position: center center;
+  .subTitle{
+      margin:175px 0 140px;
+      padding-top: 44px;
+      border-top: 4px solid #333;
+      text-align: left;
+      font-weight: 500;font-size: 50px;
+    }
   .task_const {
     margin-bottom: 50px;
-    .box-card {
-      padding: 30px 50px;
-      box-sizing: border-box;
-      border-radius: 20px;
-      .dfsp {
+    .title{
+      font-size: 40px;
+      text-align: left;
+      color: #333333;
+      padding-bottom: 50px;
+    }
+    .tasks{
+      display: flex;
+      justify-content: space-between;
+      .box {
+        width: 400px;
+        height: 208px;
+        background: #fbf6ff;
         display: flex;
-        justify-content: space-between;
-        .all_center {
-          img {
-            width: 88px;
-            height: 88px;
+        justify-content: center;
+        align-items: center;
+        .l{
+          width: 120px;
+          height: 120px;
+          background: #e8ddf1;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img{
+            width: 60px;
+            height: 60px;
           }
         }
-        .other {
-          .num {
-            text-align: center;
-            font-size: 40px;
-            font-weight: bold;
-            margin-top: 10px;
+        .r{
+          padding: 0 30px;
+          display: flex;
+          flex-direction: column;
+          .text{
+            color: #0d051f;
+            font-size: 20px;
+          }
+          .num{
+            color: #0d051f;
+            font-size: 70px;
           }
         }
       }
     }
+    
   }
   .task_list {
+    padding-bottom: 160px;
+    .title{
+      font-size: 40px;
+      text-align: left;
+      color: #333333;
+      padding-bottom: 50px;
+    }
+    .x{
+      overflow-x: auto;
+    }
     .lists {
-      .box-card {
-        padding: 10px 50px;
+      display: inline-flex;
+      .box {
+        width: 500px;
+        height: 448px;
+        padding: 50px 40px;
         box-sizing: border-box;
-        margin: 10px 60px;
-        border-radius: 20px;
-
-        .top {
+        background: #fbf6ff;
+        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        .box-title{
+          font-size: 24px;
+          color: #0d051f;
+          font-weight: 500;
+          color: #0d051f;
+          line-height: 30px;
+        }
+        .medile{
+          flex: 1;
+          padding: 20px 0;
+          border-top: 1px solid #000;
+          border-bottom: 1px solid #000;
+          font-size: 16px;
+          margin: 20px 0 10px;
+        }
+        .bottom{
           display: flex;
           justify-content: space-between;
-          .title {
-            font-weight: bold;
-            line-height: 50px;
-          }
-          .reward {
-            font-size: 14px;
-            span {
-              font-size: 30px;
+          align-items: flex-end;
+          .reward{
+            font-size: 16px;
+            color: #0d051f;
+            span{
+              font-size: 50px;
+              color: #0d051f;
             }
           }
-        }
-        .medile {
-          font-size: 12px;
-          height: 50px;
-          overflow: hidden;
-        }
-        .bottom {
-          text-align: right;
-        }
-      }
-      .el-row {
-        .el-col:nth-child(1) {
-          .box-card {
-            margin-right: 15px;
-          }
-        }
-        .el-col:nth-child(2) {
-          .box-card {
-            margin-left: 15px;
-          }
-        }
-        .el-col:nth-child(3) {
-          .box-card {
-            margin-right: 15px;
-          }
-        }
-        .el-col:nth-child(4) {
-          .box-card {
-            margin-left: 15px;
+          .more{
+            color: #6624fa;
+            font-size: 16px;
           }
         }
       }
+      
     }
   }
-  .vulnerability {
-    .box-card {
-      border-radius: 20px;
-      padding: 50px;
-      box-sizing: border-box;
-      img {
-        width: 300px;
-        height: 250px;
-      }
-      .title {
-        font-size: 36px;
-        font-weight: bold;
-      }
-      .content {
-        line-height: 30px;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        margin-right: 50px;
-      }
-      .all_center {
-        height: 290px;
-      }
-    }
-  }
+  
 
-  .level3title {
-    font-size: 20px;
-  }
-  .level2title {
-    margin-bottom: 50px;
-  }
 }
+.vulnerability {
+  background-image: url("../../../assets/images/index/devbg2.png");
+  background-size: cover;
+  background-position: center center;
+      padding: 160px 0 180px;
+      .box{
+        display: flex;
+        .content{
+          width: 650px;
+          margin-left: 50px;
+          .title {
+            font-size: 50px;
+            font-weight: 500;
+            color: #333333;
+            padding: 60px 0;
+          }
+          .text{
+            font-size: 16px;
+            color: #333333;
+            line-height: 40px;
+            margin-bottom: 40px;
+          }
+          .copy{
+            font-size: 16px;
+            color: #6624fa;
+          }
+        }
+      }
+      img {
+        width: 600px;
+        height: 700px;
+      }
+      
+  }
 </style>

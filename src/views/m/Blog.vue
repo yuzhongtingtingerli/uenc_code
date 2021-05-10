@@ -8,6 +8,7 @@
 <template>
   <div class="Blog" v-if="blogList.length > 0">
     <div class="banner">
+<<<<<<< HEAD
       <div class="placeholder"></div>
       <div class="details">
         <div class="title">{{ blogList[0].blogTitle }}</div>
@@ -19,6 +20,19 @@
             <el-button type="primary">More</el-button>
           </router-link>
           <el-button type="primary" style="margin-left: 10px">订阅</el-button>
+=======
+        <div class="placeholder"></div>
+        <div class="details">
+            <div class="date">{{blogList[0].createTime}} / {{blogList[0].createBy}}</div>
+            <div class="title">{{blogList[0].blogTitle}}</div>
+            <div class="text"  v-html="blogList[0].text"></div>
+            <div class="btn">
+                <router-link :to="{path: '/m/Blog/Details', query: {id: blogList[0].blogId}}">
+                  <el-button type="primary">More</el-button>
+                </router-link>
+                <el-button type="primary" style="margin-left: 10px">订阅</el-button>
+            </div>
+>>>>>>> 4ce108bd35c2b657f62b30a280bf1504e95fa379
         </div>
       </div>
     </div>

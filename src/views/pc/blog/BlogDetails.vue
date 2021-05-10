@@ -12,13 +12,12 @@
       <div class="details">
         <div class="date">{{ blogData.createTime }} / {{ blogData.createBy }}</div>
         <div class="title">{{ blogData.blogTitle }}</div>
-        <!-- <div class="text" v-html="blogData.text"></div> -->
-        <div class="btn">
-          <el-button type="primary">订阅</el-button>
-        </div>
+        <div class="btn">订阅</div>
       </div>
     </div>
-    <div class="content" v-html="blogData.text"></div>
+    <div class="content">
+      <div class="w1300" v-html="blogData.text"></div>
+    </div>
   </div>
 </template>
 
@@ -52,7 +51,7 @@ export default {
 
 <style lang="less" scoped>
 .banner {
-  height: 550px;
+  height: 900px;
   background-image: url("../../../assets/images/index/背景@2x.png");
   background-size: cover;
   background-position: center center;
@@ -63,34 +62,30 @@ export default {
     flex: 1;
   }
   .details {
-    border-top: 1px solid #fff;
-    margin: 0 300px;
+    margin: 0 274px;
+    color: #fff;
     .date {
-      line-height: 50px;
-      font-size: 14px;
+      font-size: 26px;
+      margin-bottom: 20px;
     }
     .title {
-      font-size: 40px;
-      font-weight: bold;
-      line-height: 60px;
-    }
-    .text {
-      font-size: 12px;
-      line-height: 20px;
-      height: 100px;
-      overflow: hidden;
+      font-size: 80px;
+      margin-bottom: 70px;
     }
     .btn {
-      margin: 20px 0;
-      .el-button {
-        padding: 10px 50px;
-      }
+      width: 141px;
+      height: 54px;
+      line-height: 54px;
+      text-align: center;
+      background: linear-gradient(90deg,#4d71ff, #003cfb);
+      border-radius: 33px;
+      font-size: 24px;
+      margin-bottom: 136px;
     }
   }
 }
 .content {
-    width: 1100px;
-    margin: 50px auto 100px;
+    margin: 50px 0 100px;
     font-size: 14px;
 }
 </style>
